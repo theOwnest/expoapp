@@ -6,7 +6,10 @@ final productsList = List.generate(
   10,
   (index) => ProductModel(
     id: uuid.v1(),
-    image: 'assets/debug/headphone.png',
+    images: List.generate(
+      random.nextInt(4) + 1,
+      (index) => 'assets/debug/headphone.png',
+    ),
     price: random.nextInt(1000),
     name: 'Наушники беспроводные Wireless',
     rating: random.nextDouble() * 5,

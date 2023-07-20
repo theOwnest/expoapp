@@ -3,7 +3,7 @@ import 'package:expo_kg/features/home/data/models/shop.dart';
 
 class ProductModel {
   final String id;
-  final String image;
+  final List<String> images;
   final int price;
   final String name;
   final double rating;
@@ -11,7 +11,7 @@ class ProductModel {
   final ShopModel shop;
   ProductModel({
     required this.id,
-    required this.image,
+    required this.images,
     required this.price,
     required this.name,
     required this.rating,

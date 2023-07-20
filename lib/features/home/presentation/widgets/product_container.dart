@@ -4,6 +4,7 @@ import 'package:expo_kg/features/home/presentation/widgets/favorite_button.dart'
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:flutter/material.dart';
 
 import 'package:expo_kg/features/home/data/models/product.dart';
@@ -33,15 +34,18 @@ class ProductContainer extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: AppColor.lightGrey,
-                    borderRadius: borderR6,
-                  ),
-                  child: Image.asset(
-                    product.image,
+                Hero(
+                  tag: 'image ${product.id}',
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      color: AppColor.lightGrey,
+                      borderRadius: borderR6,
+                    ),
+                    child: Image.asset(
+                      product.images.first,
+                    ),
                   ),
                 ),
                 const Positioned(
@@ -68,9 +72,8 @@ class ProductContainer extends StatelessWidget {
                 product.shop.name,
                 style: st12,
               ),
-              Text(
-                product.rating.toStringAsFixed(1),
-                style: st12,
+              CustomRatingContainer(
+                rating: product.rating,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

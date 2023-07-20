@@ -23,7 +23,7 @@ const h16 = TextStyle(
 );
 const h14 = TextStyle(
   fontStyle: FontStyle.normal,
-  fontSize: 16,
+  fontSize: 14,
   fontWeight: FontWeight.w700,
 );
 const st36 = TextStyle(

@@ -13,12 +13,14 @@ class RoundedButton extends StatelessWidget {
     this.color,
     this.width,
     this.height,
+    this.margin,
   }) : super(key: key);
   final String title;
   final Function? function;
   final Color? color;
   final double? width;
   final double? height;
+  final EdgeInsets? margin;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -34,7 +36,7 @@ class RoundedButton extends StatelessWidget {
           color: color ?? AppColor.orange,
           borderRadius: borderR10,
         ),
-        margin: const EdgeInsets.symmetric(
+        margin: margin?? const EdgeInsets.symmetric(
           horizontal: 15,
         ),
         alignment: Alignment.center,
