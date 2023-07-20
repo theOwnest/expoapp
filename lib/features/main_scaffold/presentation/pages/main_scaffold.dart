@@ -1,3 +1,4 @@
+import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/cubit/bottom_navbar_cont.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,19 @@ class MainScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BottomNavbarCont(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => BottomNavbarCont(),
+        ),
+        BlocProvider(
+          create: (context) => ProductCubit()..load(),
+        ),
+      ],
       child: Scaffold(
-        body: child,
+        body: SafeArea(
+          child: child,
+        ),
         bottomNavigationBar: const MainBottomNavbar(),
       ),
     );

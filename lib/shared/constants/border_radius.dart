@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+final borderRC = BorderRadius.circular(100);
 final borderR20 = BorderRadius.circular(20);
 final borderR15 = BorderRadius.circular(15);
 final borderR12 = BorderRadius.circular(12);

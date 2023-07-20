@@ -24,6 +24,7 @@ dependencies:
   flutter_animate: ^4.2.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:
@@ -52,8 +53,12 @@ flutter:
 
   assets:
     - assets/
+    - assets/debug/
+    - assets/debug/ads/
+    - assets/debug/category/
     - assets/images/
     - assets/images/onboarding/
     - assets/icons/
+    - assets/icons/home/
     - assets/icons/navbar/
 
