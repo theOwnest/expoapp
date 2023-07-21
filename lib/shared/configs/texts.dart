@@ -26,6 +26,11 @@ const h14 = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w700,
 );
+const h12 = TextStyle(
+  fontStyle: FontStyle.normal,
+  fontSize: 12,
+  fontWeight: FontWeight.w700,
+);
 const st36 = TextStyle(
   fontStyle: FontStyle.normal,
   fontSize: 36,

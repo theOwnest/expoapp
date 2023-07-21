@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 
@@ -9,11 +11,13 @@ class CustomTextButton extends StatelessWidget {
     this.function,
     this.width,
     this.height,
+    this.textStyle,
   }) : super(key: key);
   final String title;
   final Function? function;
   final double? width;
   final double? height;
+  final TextStyle? textStyle;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -31,9 +35,10 @@ class CustomTextButton extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           title,
-          style: h18.copyWith(
-            color: AppColor.black,
-          ),
+          style: textStyle ??
+              h18.copyWith(
+                color: AppColor.black,
+              ),
         ),
       ),
     );

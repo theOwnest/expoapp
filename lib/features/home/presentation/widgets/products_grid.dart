@@ -41,8 +41,11 @@ class HomeProductsGrid extends StatelessWidget {
                 padding: marginH,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => OpenContainer(
-                  openBuilder: (context, action) => ProductPage(
-                    product: state.products[index],
+                  openBuilder: (context, action) => BlocProvider.value(
+                    value: BlocProvider.of<ProductCubit>(context),
+                    child: ProductPage(
+                      product: state.products[index],
+                    ),
                   ),
                   closedBuilder: (context, action) => ProductContainer(
                     product: state.products[index],

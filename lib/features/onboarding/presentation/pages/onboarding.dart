@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -50,57 +51,59 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: 60.h,
-          ),
-          Expanded(
-            child: PageView.builder(
-              controller: _pageController,
-              itemCount: onboardingList.length,
-              itemBuilder: (context, index) {
-                return OnboardingContainer(
-                  page: onboardingList[index],
-                );
-              },
+    return KeyboardDismisser(
+      child: Scaffold(
+        body: Column(
+          children: [
+            SizedBox(
+              height: 60.h,
             ),
-          ),
-          Column(
-            children: [
-              RoundedButton(
-                title: 'Далее',
-                function: () {
-                  animateToPage(pageIndex + 1);
-                },
-              ),
-              CustomTextButton(
-                title: 'Пропустить',
-                function: () {
-                  animateToPage(
-                    onboardingList.length,
+            Expanded(
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: onboardingList.length,
+                itemBuilder: (context, index) {
+                  return OnboardingContainer(
+                    page: onboardingList[index],
                   );
                 },
               ),
-            ],
-          ),
-          SmoothPageIndicator(
-            controller: _pageController,
-            count: onboardingList.length,
-            effect: const WormEffect(
-              dotHeight: 6,
-              dotWidth: 6,
-              type: WormType.thinUnderground,
             ),
-            onDotClicked: (index) {
-              animateToPage(index);
-            },
-          ),
-          const SizedBox(
-            height: 35,
-          ),
-        ],
+            Column(
+              children: [
+                RoundedButton(
+                  title: 'Далее',
+                  function: () {
+                    animateToPage(pageIndex + 1);
+                  },
+                ),
+                CustomTextButton(
+                  title: 'Пропустить',
+                  function: () {
+                    animateToPage(
+                      onboardingList.length,
+                    );
+                  },
+                ),
+              ],
+            ),
+            SmoothPageIndicator(
+              controller: _pageController,
+              count: onboardingList.length,
+              effect: const WormEffect(
+                dotHeight: 6,
+                dotWidth: 6,
+                type: WormType.thinUnderground,
+              ),
+              onDotClicked: (index) {
+                animateToPage(index);
+              },
+            ),
+            const SizedBox(
+              height: 35,
+            ),
+          ],
+        ),
       ),
     );
   }

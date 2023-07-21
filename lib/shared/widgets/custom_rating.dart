@@ -19,6 +19,7 @@ class CustomRatingContainer extends StatelessWidget {
             Icons.star,
             color: AppColor.orange,
           ),
+          unratedColor: AppColor.lightGrey,
           itemCount: 5,
           itemSize: 15,
           direction: Axis.horizontal,

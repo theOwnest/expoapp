@@ -3,6 +3,7 @@ import 'package:expo_kg/features/main_scaffold/presentation/cubit/bottom_navbar_
 import 'package:expo_kg/features/main_scaffold/presentation/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 class MainScaffold extends StatelessWidget {
   const MainScaffold({
@@ -22,11 +23,13 @@ class MainScaffold extends StatelessWidget {
           create: (context) => ProductCubit()..load(),
         ),
       ],
-      child: Scaffold(
-        body: SafeArea(
-          child: child,
+      child: KeyboardDismisser(
+        child: Scaffold(
+          body: SafeArea(
+            child: child,
+          ),
+          bottomNavigationBar: const MainBottomNavbar(),
         ),
-        bottomNavigationBar: const MainBottomNavbar(),
       ),
     );
   }
