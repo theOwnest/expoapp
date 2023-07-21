@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/features/product/presentation/cubit/product_cont.dart';
 import 'package:expo_kg/features/product/presentation/widgets/appbar_button.dart';
 import 'package:expo_kg/features/product/presentation/widgets/product_image.dart';
@@ -7,7 +6,6 @@ import 'package:expo_kg/features/product/presentation/widgets/shop_container.dar
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:flutter/material.dart';
-
 import 'package:expo_kg/features/home/data/models/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -37,7 +35,7 @@ class ProductPage extends StatelessWidget {
                         context.pop();
                       },
                     ),
-                    Row(
+                    const Row(
                       children: [
                         AppbarButtonContainer(
                           icon: 'upload',
@@ -59,7 +57,7 @@ class ProductPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      ProductImageSlider(),
+                      const ProductImageSlider(),
                       Padding(
                         padding: marginH,
                         child: Column(
@@ -69,15 +67,15 @@ class ProductPage extends StatelessWidget {
                               product.name,
                               style: h18,
                             ),
-                            ProductShopContainer(),
+                            const ProductShopContainer(),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Описание',
                                   style: h14,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 Text(
@@ -86,10 +84,10 @@ class ProductPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
-                            ProductSpecs(),
+                            const ProductSpecs(),
                           ],
                         ),
                       ),

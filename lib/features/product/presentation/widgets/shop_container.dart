@@ -6,7 +6,6 @@ import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductShopContainer extends StatelessWidget {
   const ProductShopContainer({super.key});
@@ -23,17 +22,17 @@ class ProductShopContainer extends StatelessWidget {
           width: 1,
         ),
       ),
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         vertical: 20,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Продавец',
             style: st14,
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Row(
@@ -48,10 +47,10 @@ class ProductShopContainer extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
-          RoundedButton(
+          const RoundedButton(
             title: 'На страницу продавца',
             height: 40,
             margin: EdgeInsets.zero,

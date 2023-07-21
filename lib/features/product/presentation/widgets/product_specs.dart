@@ -1,8 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
-
 import 'package:expo_kg/shared/configs/texts.dart';
 
 class ProductSpecs extends StatelessWidget {
@@ -10,7 +8,7 @@ class ProductSpecs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -76,7 +74,7 @@ class ProductSpecContainer extends StatelessWidget {
             ),
           ],
         ),
-        Divider(
+        const Divider(
           color: AppColor.lightGrey,
           thickness: 1,
           height: 30,

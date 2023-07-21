@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class CustomRatingContainer extends StatelessWidget {
       children: [
         RatingBarIndicator(
           rating: rating,
-          itemBuilder: (context, index) => Icon(
+          itemBuilder: (context, index) => const Icon(
             Icons.star,
             color: AppColor.orange,
           ),
@@ -24,7 +23,7 @@ class CustomRatingContainer extends StatelessWidget {
           itemSize: 15,
           direction: Axis.horizontal,
         ),
-        SizedBox(
+        const SizedBox(
           width: 8,
         ),
         Text(

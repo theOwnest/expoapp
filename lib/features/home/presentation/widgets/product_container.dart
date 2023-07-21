@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/features/home/presentation/widgets/add_to_cart_button.dart';
 import 'package:expo_kg/features/home/presentation/widgets/favorite_button.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
@@ -6,7 +5,6 @@ import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:flutter/material.dart';
-
 import 'package:expo_kg/features/home/data/models/product.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

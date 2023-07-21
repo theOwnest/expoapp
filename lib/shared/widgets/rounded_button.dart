@@ -1,6 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
@@ -36,9 +34,10 @@ class RoundedButton extends StatelessWidget {
           color: color ?? AppColor.orange,
           borderRadius: borderR10,
         ),
-        margin: margin?? const EdgeInsets.symmetric(
-          horizontal: 15,
-        ),
+        margin: margin ??
+            const EdgeInsets.symmetric(
+              horizontal: 15,
+            ),
         alignment: Alignment.center,
         child: Text(
           title,
