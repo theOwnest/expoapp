@@ -1,12 +1,16 @@
+import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/home/presentation/widgets/add_to_cart_button.dart';
 import 'package:expo_kg/features/home/presentation/widgets/favorite_button.dart';
+import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:expo_kg/features/home/data/models/product.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductContainer extends StatelessWidget {
   const ProductContainer({
@@ -17,24 +21,32 @@ class ProductContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 168.w,
-      padding: const EdgeInsets.all(6),
-      decoration: BoxDecoration(
-        borderRadius: borderR10,
-        border: Border.all(
-          color: AppColor.lightGrey,
-          width: 1,
+    return GestureDetector(
+      onTap: () {
+        context.goNamed(
+          RoutesNames.productInfo,
+          extra: BlocProvider.of<ProductCubit>(context),
+          queryParameters: {
+            'productId': product.id,
+          },
+        );
+      },
+      child: Container(
+        width: 168.w,
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: borderR10,
+          border: Border.all(
+            color: AppColor.lightGrey,
+            width: 1,
+          ),
         ),
-      ),
-      child: Column(
-        children: [
-          Expanded(
-            child: Stack(
-              children: [
-                Hero(
-                  tag: 'image ${product.id}',
-                  child: Container(
+        child: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                children: [
+                  Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
@@ -45,49 +57,49 @@ class ProductContainer extends StatelessWidget {
                       product.images.first,
                     ),
                   ),
+                  const Positioned(
+                    right: 8,
+                    top: 8,
+                    child: FavoriteButton(),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 6,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product.name,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: h14,
                 ),
-                const Positioned(
-                  right: 8,
-                  top: 8,
-                  child: FavoriteButton(),
+                Text(
+                  product.shop.name,
+                  style: st12,
+                ),
+                CustomRatingContainer(
+                  rating: product.rating,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '${product.price} KGS',
+                      style: h16.copyWith(
+                        color: AppColor.orange,
+                      ),
+                    ),
+                    const AddToCartButton(),
+                  ],
                 ),
               ],
             ),
-          ),
-          const SizedBox(
-            height: 6,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                product.name,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: h14,
-              ),
-              Text(
-                product.shop.name,
-                style: st12,
-              ),
-              CustomRatingContainer(
-                rating: product.rating,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '${product.price} KGS',
-                    style: h16.copyWith(
-                      color: AppColor.orange,
-                    ),
-                  ),
-                  const AddToCartButton(),
-                ],
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

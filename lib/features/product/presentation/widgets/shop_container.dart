@@ -1,4 +1,6 @@
+import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/product/presentation/cubit/product_cont.dart';
+import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
@@ -6,6 +8,7 @@ import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductShopContainer extends StatelessWidget {
   const ProductShopContainer({super.key});
@@ -50,10 +53,19 @@ class ProductShopContainer extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          const RoundedButton(
+          RoundedButton(
             title: 'На страницу продавца',
             height: 40,
             margin: EdgeInsets.zero,
+            function: () {
+              context.goNamed(
+                RoutesNames.shopInfo,
+                extra: BlocProvider.of<ProductCubit>(context),
+                queryParameters: {
+                  'productId': context.read<ProductController>().state.id,
+                },
+              );
+            },
           ),
         ],
       ),

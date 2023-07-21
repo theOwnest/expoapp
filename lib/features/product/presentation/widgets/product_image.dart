@@ -22,30 +22,27 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Hero(
-          tag: 'image ${context.read<ProductController>().state.id}',
-          child: CarouselSlider(
-            items: context
-                .read<ProductController>()
-                .state
-                .images
-                .map(
-                  (e) => ProductImageSliderContainer(
-                    image: e,
-                  ),
-                )
-                .toList(),
-            carouselController: controller,
-            options: CarouselOptions(
-              autoPlay: true,
-              viewportFraction: 1,
-              height: 240.h,
-              onPageChanged: (index, reason) {
-                setState(() {
-                  _current = index;
-                });
-              },
-            ),
+        CarouselSlider(
+          items: context
+              .read<ProductController>()
+              .state
+              .images
+              .map(
+                (e) => ProductImageSliderContainer(
+                  image: e,
+                ),
+              )
+              .toList(),
+          carouselController: controller,
+          options: CarouselOptions(
+            autoPlay: true,
+            viewportFraction: 1,
+            height: 240.h,
+            onPageChanged: (index, reason) {
+              setState(() {
+                _current = index;
+              });
+            },
           ),
         ),
         const SizedBox(

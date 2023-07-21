@@ -37,7 +37,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     if (index == onboardingList.length) {
       context.read<OnboardingShown>().writeShown();
       context.goNamed(
-        RoutesNames.home,
+        RoutesNames.main,
       );
     }
     _pageController.animateToPage(

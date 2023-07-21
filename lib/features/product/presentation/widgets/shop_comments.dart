@@ -1,16 +1,20 @@
+import 'package:expo_kg/features/home/data/models/shop.dart';
 import 'package:expo_kg/features/product/data/datasources/comments.dart';
-import 'package:expo_kg/features/product/presentation/cubit/product_cont.dart';
-import 'package:expo_kg/features/product/presentation/widgets/comment_container.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/widgets/custom_text_button.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import '../widgets/comment_container.dart';
 
-class ProductComments extends StatelessWidget {
-  const ProductComments({super.key});
+class ShopComments extends StatelessWidget {
+  const ShopComments({
+    super.key,
+    required this.shop,
+  });
+
+  final ShopModel shop;
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +30,14 @@ class ProductComments extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  context
-                      .read<ProductController>()
-                      .state
-                      .rating
-                      .toStringAsFixed(1),
+                  shop.rating.toStringAsFixed(1),
                   style: h24,
                 ),
                 const SizedBox(
                   width: 10,
                 ),
                 RatingBarIndicator(
-                  rating: context.read<ProductController>().state.rating,
+                  rating: shop.rating,
                   itemBuilder: (context, index) => const Icon(
                     Icons.star,
                     color: AppColor.orange,
@@ -48,7 +48,7 @@ class ProductComments extends StatelessWidget {
                   direction: Axis.horizontal,
                 ),
               ],
-            )
+            ),
           ],
         ),
         const SizedBox(
@@ -63,7 +63,7 @@ class ProductComments extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(
             height: 10,
           ),
-          itemCount: commentsList.length > 3 ? 3 : commentsList.length,
+          itemCount: commentsList.length > 1 ? 1 : commentsList.length,
         ),
         CustomTextButton(
           title: 'Смотреть все (36)',

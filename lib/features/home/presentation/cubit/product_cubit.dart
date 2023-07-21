@@ -21,4 +21,10 @@ class ProductCubit extends Cubit<ProductState> {
       ),
     );
   }
+
+  ProductModel getById(String id) {
+    return state.products.firstWhere(
+      (element) => element.id == id,
+    );
+  }
 }

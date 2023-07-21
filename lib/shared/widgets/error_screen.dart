@@ -16,7 +16,7 @@ class ErrorScreen extends StatelessWidget {
         body: Center(
           child: ElevatedButton(
             onPressed: () => context.goNamed(
-              RoutesNames.home,
+              RoutesNames.main,
             ),
             child: const Text("Go to home page"),
           ),

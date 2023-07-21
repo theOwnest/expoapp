@@ -10,7 +10,6 @@ import 'package:expo_kg/features/product/presentation/widgets/shop_container.dar
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:flutter/material.dart';
-import 'package:expo_kg/features/home/data/models/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
@@ -18,13 +17,18 @@ import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 class ProductPage extends StatelessWidget {
   const ProductPage({
     Key? key,
-    required this.product,
+    required this.productId,
   }) : super(key: key);
-  final ProductModel product;
+  final String productId;
   @override
   Widget build(BuildContext context) {
+    final product = context.read<ProductCubit>().getById(
+          productId,
+        );
     return BlocProvider(
-      create: (context) => ProductController(product),
+      create: (context) => ProductController(
+        product,
+      ),
       child: KeyboardDismisser(
         child: Scaffold(
           body: SafeArea(

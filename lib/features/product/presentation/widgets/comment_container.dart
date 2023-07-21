@@ -4,10 +4,8 @@ import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:expo_kg/features/product/data/models/comment.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
-import '../cubit/product_cont.dart';
 
 class CommentContainer extends StatelessWidget {
   const CommentContainer({
@@ -32,7 +30,7 @@ class CommentContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               RatingBarIndicator(
-                rating: context.read<ProductController>().state.rating,
+                rating: comment.rating,
                 itemBuilder: (context, index) => const Icon(
                   Icons.star,
                   color: AppColor.orange,
