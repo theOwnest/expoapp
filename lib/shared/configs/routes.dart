@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:expo_kg/features/category/presentation/pages/category.dart';
+import 'package:expo_kg/features/category/presentation/pages/subcategory.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/pages/main_scaffold.dart';
 import 'package:expo_kg/features/onboarding/presentation/cubit/onboarding_shown.dart';
@@ -19,6 +20,7 @@ import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
 class Routes {
   static String home = '/';
   static String category = '/category';
+  static String subcategory = '/subcategory';
   static String favorite = '/favorite';
   static String cart = '/cart';
   static String profile = '/profile';
@@ -31,6 +33,7 @@ class Routes {
 class RoutesNames {
   static String home = 'home';
   static String category = 'category';
+  static String subcategory = 'subcategory';
   static String favorite = 'favorite';
   static String cart = 'cart';
   static String profile = 'profile';
@@ -98,6 +101,18 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) => const NoTransitionPage(
         child: CategoryPage(),
       ),
+    ),
+    GoRoute(
+      path: Routes.subcategory,
+      name: RoutesNames.subcategory,
+      pageBuilder: (context, state) {
+        final category = state.extra as String;
+        return NoTransitionPage(
+          child: SubcategoryPage(
+            category: category,
+          ),
+        );
+      },
     ),
     GoRoute(
       path: Routes.productInfo,

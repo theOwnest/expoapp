@@ -76,36 +76,44 @@ class HomePopularCategoryContainer extends StatelessWidget {
     final color = containerColors[random.nextInt(
       containerColors.length,
     )];
-    return Container(
-      width: 100.w,
-      decoration: BoxDecoration(
-        color: color.withOpacity(
-          0.2,
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed(
+          RoutesNames.subcategory,
+          extra: category.name,
+        );
+      },
+      child: Container(
+        width: 100.w,
+        decoration: BoxDecoration(
+          color: color.withOpacity(
+            0.2,
+          ),
+          borderRadius: borderR10,
+          border: Border.all(
+            color: color,
+            width: 1,
+          ),
         ),
-        borderRadius: borderR10,
-        border: Border.all(
-          color: color,
-          width: 1,
+        padding: const EdgeInsets.symmetric(
+          vertical: 5,
         ),
-      ),
-      padding: const EdgeInsets.symmetric(
-        vertical: 5,
-      ),
-      child: Column(
-        children: [
-          Expanded(
-            child: Image.asset(
-              'assets/debug/category/${category.image}.png',
+        child: Column(
+          children: [
+            Expanded(
+              child: Image.asset(
+                'assets/debug/category/${category.image}.png',
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Text(
-            category.name,
-            style: st12,
-          ),
-        ],
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              category.name,
+              style: st12,
+            ),
+          ],
+        ),
       ),
     );
   }
