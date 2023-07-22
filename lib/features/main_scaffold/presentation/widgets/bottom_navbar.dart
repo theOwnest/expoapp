@@ -1,3 +1,4 @@
+import 'package:expo_kg/features/main_scaffold/data/utils/bottombar_handler.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/other.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:expo_kg/features/main_scaffold/data/datasources/bottombar_items.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/cubit/bottom_navbar_cont.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:go_router/go_router.dart';
 
 class MainBottomNavbar extends StatelessWidget {
   const MainBottomNavbar({super.key});
@@ -36,6 +38,9 @@ class MainBottomNavbar extends StatelessWidget {
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
                   context.read<BottomNavbarCont>().change(index);
+                  context.goNamed(
+                    bottomNavigationHandler(index),
+                  );
                 },
                 child: BottomNavbarItem(
                   title: bottomBarLabels[index],

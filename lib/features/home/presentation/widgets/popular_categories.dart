@@ -1,3 +1,6 @@
+import 'package:expo_kg/features/category/data/datasources/container_colors.dart';
+import 'package:expo_kg/shared/configs/random.dart';
+import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:expo_kg/features/home/data/datasources/categories.dart';
@@ -5,6 +8,7 @@ import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePopularCategories extends StatelessWidget {
   const HomePopularCategories({super.key});
@@ -22,10 +26,18 @@ class HomePopularCategories extends StatelessWidget {
                 'Пупулярные категории',
                 style: h18,
               ),
-              Text(
-                'Смотреть все (36)',
-                style: st12.copyWith(
-                  color: AppColor.orange,
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  context.pushNamed(
+                    RoutesNames.category,
+                  );
+                },
+                child: Text(
+                  'Смотреть все (36)',
+                  style: st12.copyWith(
+                    color: AppColor.orange,
+                  ),
                 ),
               ),
             ],
@@ -61,15 +73,18 @@ class HomePopularCategoryContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = containerColors[random.nextInt(
+      containerColors.length,
+    )];
     return Container(
       width: 100.w,
       decoration: BoxDecoration(
-        color: AppColor.green.withOpacity(
+        color: color.withOpacity(
           0.2,
         ),
         borderRadius: borderR10,
         border: Border.all(
-          color: AppColor.green,
+          color: color,
           width: 1,
         ),
       ),

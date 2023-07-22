@@ -23,7 +23,7 @@ class ProductContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.goNamed(
+        context.pushNamed(
           RoutesNames.productInfo,
           extra: BlocProvider.of<ProductCubit>(context),
           queryParameters: {

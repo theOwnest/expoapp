@@ -58,7 +58,7 @@ class ProductShopContainer extends StatelessWidget {
             height: 40,
             margin: EdgeInsets.zero,
             function: () {
-              context.goNamed(
+              context.pushNamed(
                 RoutesNames.shopInfo,
                 extra: BlocProvider.of<ProductCubit>(context),
                 queryParameters: {
