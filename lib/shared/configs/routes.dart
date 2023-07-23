@@ -7,6 +7,7 @@ import 'package:expo_kg/features/onboarding/presentation/cubit/onboarding_shown.
 import 'package:expo_kg/features/onboarding/presentation/pages/onboarding.dart';
 import 'package:expo_kg/features/product/presentation/pages/product.dart';
 import 'package:expo_kg/features/product/presentation/pages/shop.dart';
+import 'package:expo_kg/features/search/presentation/pages/search.dart';
 import 'package:expo_kg/shared/widgets/error_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,7 @@ class Routes {
   static String home = '/';
   static String category = '/category';
   static String subcategory = '/subcategory';
+  static String search = '/search';
   static String favorite = '/favorite';
   static String cart = '/cart';
   static String profile = '/profile';
@@ -34,6 +36,7 @@ class RoutesNames {
   static String home = 'home';
   static String category = 'category';
   static String subcategory = 'subcategory';
+  static String search = 'search';
   static String favorite = 'favorite';
   static String cart = 'cart';
   static String profile = 'profile';
@@ -103,13 +106,25 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
+      path: Routes.search,
+      name: RoutesNames.search,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: SearchPage(),
+      ),
+    ),
+    GoRoute(
       path: Routes.subcategory,
       name: RoutesNames.subcategory,
       pageBuilder: (context, state) {
-        final category = state.extra as String;
+        log(state.location);
+        final category = state.queryParameters['category'] as String;
+        final productCubit = state.extra as ProductCubit;
         return NoTransitionPage(
-          child: SubcategoryPage(
-            category: category,
+          child: BlocProvider.value(
+            value: productCubit,
+            child: SubcategoryPage(
+              category: category,
+            ),
           ),
         );
       },

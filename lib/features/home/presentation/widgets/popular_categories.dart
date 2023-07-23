@@ -1,7 +1,9 @@
 import 'package:expo_kg/features/category/data/datasources/container_colors.dart';
+import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/shared/configs/random.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:expo_kg/features/home/data/datasources/categories.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
@@ -80,7 +82,10 @@ class HomePopularCategoryContainer extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           RoutesNames.subcategory,
-          extra: category.name,
+          queryParameters: {
+            'category': category.name,
+          },
+          extra: BlocProvider.of<ProductCubit>(context),
         );
       },
       child: Container(

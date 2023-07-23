@@ -1,10 +1,12 @@
 import 'package:expo_kg/features/category/data/datasources/container_colors.dart';
 import 'package:expo_kg/features/home/data/datasources/categories.dart';
+import 'package:expo_kg/features/search/presentation/cubit/search_cubit.dart';
 import 'package:expo_kg/shared/configs/random.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PopularCategories extends StatelessWidget {
   const PopularCategories({super.key});
@@ -14,11 +16,11 @@ class PopularCategories extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
+        Padding(
           padding: marginH,
           child: Text(
-            'Популярные категории',
-            style: h18,
+            'Найдено 67 товаров в категории ${context.read<SearchCubit>().state}',
+            style: h16,
           ),
         ),
         Container(

@@ -12,6 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox(HiveConstants.appBox);
+  await Hive.openBox(HiveConstants.searchHistoryBox);
   runApp(
     const MyApp(),
   );

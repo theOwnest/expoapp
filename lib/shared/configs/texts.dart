@@ -50,7 +50,7 @@ const st16 = TextStyle(
 );
 
 const st14 = TextStyle(
-  color: AppColor.black,
+  color: AppColor.darkGrey,
   fontSize: 14,
   fontWeight: FontWeight.w700,
 );
