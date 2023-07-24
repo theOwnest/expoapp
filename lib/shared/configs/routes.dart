@@ -1,4 +1,7 @@
 import 'dart:developer';
+import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:expo_kg/features/auth/presentation/pages/login.dart';
+import 'package:expo_kg/features/auth/presentation/pages/register.dart';
 import 'package:expo_kg/features/category/presentation/pages/category.dart';
 import 'package:expo_kg/features/category/presentation/pages/subcategory.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
@@ -20,30 +23,40 @@ import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
 
 class Routes {
   static String home = '/';
-  static String category = '/category';
-  static String subcategory = '/subcategory';
-  static String search = '/search';
   static String favorite = '/favorite';
   static String cart = '/cart';
   static String profile = '/profile';
   static String chat = '/chat';
+
   static String productInfo = '/productInfo';
   static String shopInfo = '/shopInfo';
+
+  static String category = '/category';
+  static String subcategory = '/subcategory';
+  static String search = '/search';
+
   static String onboarding = '/onboarding';
+  static String login = '/login';
+  static String register = '/register';
 }
 
 class RoutesNames {
   static String home = 'home';
-  static String category = 'category';
-  static String subcategory = 'subcategory';
-  static String search = 'search';
   static String favorite = 'favorite';
   static String cart = 'cart';
   static String profile = 'profile';
   static String chat = 'chat';
+
   static String productInfo = 'productInfo';
   static String shopInfo = 'shopInfo';
+
+  static String category = 'category';
+  static String subcategory = 'subcategory';
+  static String search = 'search';
+
   static String onboarding = 'onboarding';
+  static String login = 'login';
+  static String register = 'register';
 }
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -168,6 +181,24 @@ final GoRouter router = GoRouter(
       builder: (context, state) => BlocProvider.value(
         value: BlocProvider.of<OnboardingShown>(context),
         child: const OnboardingPage(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.login,
+      name: RoutesNames.login,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => BlocProvider.value(
+        value: BlocProvider.of<AuthCubit>(context),
+        child: const LoginPage(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.register,
+      name: RoutesNames.register,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => BlocProvider.value(
+        value: BlocProvider.of<AuthCubit>(context),
+        child: const RegisterPage(),
       ),
     ),
   ],

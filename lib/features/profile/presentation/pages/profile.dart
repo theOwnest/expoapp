@@ -1,9 +1,9 @@
-import 'package:expo_kg/shared/configs/texts.dart';
-import 'package:expo_kg/shared/constants/border_radius.dart';
-import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:expo_kg/features/profile/presentation/widgets/loggedin.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
-import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../widgets/not_loggedin.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -12,46 +12,15 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: marginHV10,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Ваш профиль',
-            style: h24,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            'Здесь находятся история покупок, статусы заказов, спасобы оплаты и другое.',
-            style: st14,
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Container(
-            padding: marginHV15,
-            decoration: BoxDecoration(
-              color: AppColor.lightGrey,
-              borderRadius: borderR10,
-            ),
-            child: const Column(
-              children: [
-                Text(
-                  'Войдите, чтобы покупать и продавать товары',
-                  style: h18,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RoundedButton(
-                  title: 'Вход/регистрация',
-                  margin: EdgeInsets.zero,
-                ),
-              ],
-            ),
-          ),
-        ],
+      child: BlocBuilder<AuthCubit, AuthState>(
+        builder: (context, state) {
+          if (state is AuthLoggedIn) {
+            return ProfileLoggedIn(
+              user: state.user,
+            );
+          }
+          return const ProfileNotLoggedIn();
+        },
       ),
     );
   }
