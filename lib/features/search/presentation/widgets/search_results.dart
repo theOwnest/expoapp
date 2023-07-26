@@ -1,5 +1,4 @@
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
-import 'package:expo_kg/features/home/presentation/widgets/product_grid_container.dart';
 import 'package:expo_kg/features/product/data/enums/list_grid_type.dart';
 import 'package:expo_kg/features/product/presentation/cubit/list_grid_type.dart';
 import 'package:expo_kg/features/search/data/utils/search.dart';

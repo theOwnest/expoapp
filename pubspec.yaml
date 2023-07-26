@@ -32,6 +32,13 @@ dependencies:
   keyboard_dismisser: ^3.0.0
   flutter_form_builder: ^9.1.0
   form_builder_validators: ^9.0.0
+  modal_bottom_sheet:
+     git:
+       url: https://github.com/followthemoney1/modal_bottom_sheet.git
+       ref: main
+       path: modal_bottom_sheet
+  dropdown_button2: ^2.3.7
+  flutter_xlider: ^3.5.0
 
 dev_dependencies:
   flutter_test:

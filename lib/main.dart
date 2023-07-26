@@ -33,7 +33,10 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: ScreenUtilInit(
-        designSize: const Size(390, 844),
+        designSize: const Size(
+          375,
+          812,
+        ),
         builder: (context, child) => MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'ExpoKG',
