@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:expo_kg/features/home/data/models/product.dart';
-import 'package:expo_kg/features/home/presentation/widgets/product_container.dart';
+import 'package:expo_kg/features/home/presentation/widgets/product_grid_container.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 
@@ -41,7 +41,7 @@ class ProductOtherProducts extends StatelessWidget {
           maxHeight: 250,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => ProductContainer(
+            itemBuilder: (context, index) => ProductGridContainer(
               product: products[index],
             ),
             separatorBuilder: (context, index) => const SizedBox(

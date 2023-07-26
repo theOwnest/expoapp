@@ -12,8 +12,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class ProductContainer extends StatelessWidget {
-  const ProductContainer({
+class ProductGridContainer extends StatelessWidget {
+  const ProductGridContainer({
     Key? key,
     required this.product,
   }) : super(key: key);

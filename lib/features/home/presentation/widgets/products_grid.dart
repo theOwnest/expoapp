@@ -1,5 +1,5 @@
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
-import 'package:expo_kg/features/home/presentation/widgets/product_container.dart';
+import 'package:expo_kg/features/home/presentation/widgets/product_grid_container.dart';
 import 'package:flutter/material.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
@@ -38,9 +38,9 @@ class HomeProductsGrid extends StatelessWidget {
               return ListView.separated(
                 padding: marginH,
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => ProductContainer(
-                    product: state.products[index],
-                  ),
+                itemBuilder: (context, index) => ProductGridContainer(
+                  product: state.products[index],
+                ),
                 separatorBuilder: (context, index) => const SizedBox(
                   width: 6,
                 ),
