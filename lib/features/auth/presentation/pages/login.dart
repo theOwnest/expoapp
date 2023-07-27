@@ -1,11 +1,13 @@
-import 'dart:developer';
 import 'package:expo_kg/features/auth/presentation/widgets/login_form.dart';
+import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+
 import '../widgets/login_top_clip.dart';
 
 class LoginPage extends StatelessWidget {
@@ -54,7 +56,9 @@ class LoginPage extends StatelessWidget {
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    log('регистрацию');
+                                    context.pushNamed(
+                                      RoutesNames.register,
+                                    );
                                   },
                               ),
                             ],

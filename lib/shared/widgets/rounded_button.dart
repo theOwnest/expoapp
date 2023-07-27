@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:flutter/material.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton({
@@ -9,6 +10,7 @@ class RoundedButton extends StatelessWidget {
     required this.title,
     this.function,
     this.color,
+    this.textColor,
     this.width,
     this.height,
     this.margin,
@@ -16,6 +18,7 @@ class RoundedButton extends StatelessWidget {
   final String title;
   final Function? function;
   final Color? color;
+  final Color? textColor;
   final double? width;
   final double? height;
   final EdgeInsets? margin;
@@ -34,15 +37,12 @@ class RoundedButton extends StatelessWidget {
           color: color ?? AppColor.orange,
           borderRadius: borderR10,
         ),
-        margin: margin ??
-            const EdgeInsets.symmetric(
-              horizontal: 15,
-            ),
+        margin: margin,
         alignment: Alignment.center,
         child: Text(
           title,
           style: h18.copyWith(
-            color: AppColor.white,
+            color: textColor ?? AppColor.white,
           ),
         ),
       ),

@@ -75,7 +75,6 @@ class ShopComments extends StatelessWidget {
           title: 'Добавить отзыв',
           color: AppColor.black,
           height: 60,
-          margin: EdgeInsets.zero,
         ),
       ],
     );

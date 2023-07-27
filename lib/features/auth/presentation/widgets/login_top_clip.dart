@@ -1,31 +1,34 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/shared/constants/colors.dart';
-import 'package:expo_kg/shared/constants/other.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../shared/constants/other.dart';
+
 class LoginTopClip extends StatelessWidget {
   const LoginTopClip({
-    super.key,
-  });
-
+    Key? key,
+    this.topHeight,
+  }) : super(key: key);
+  final double? topHeight;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: topHeight != null ? topHeight! + 200 : 200,
       width: double.infinity,
       child: Stack(
         alignment: Alignment.center,
         clipBehavior: Clip.none,
         children: [
           Positioned(
-            bottom: 50.h,
+            bottom: topHeight != null ? 50.h - topHeight! : 50.h,
             child: CircleAvatar(
               radius: 270.h,
               backgroundColor: AppColor.orange,
             ),
           ),
           Positioned(
-            bottom: 0,
+            bottom: topHeight != null ? -topHeight! : 0,
             child: Container(
               width: 120.h,
               height: 120.h,

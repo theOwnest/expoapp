@@ -1,5 +1,7 @@
-import 'package:expo_kg/features/auth/presentation/cubit/phone_controller.dart';
-import 'package:expo_kg/features/auth/presentation/widgets/register_phone.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:expo_kg/features/auth/presentation/cubit/button_available.dart';
+import 'package:expo_kg/features/auth/presentation/cubit/sms_controller.dart';
+import 'package:expo_kg/features/auth/presentation/widgets/sms_field.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
@@ -11,20 +13,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
-import '../cubit/button_available.dart';
-
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
-
+class SmsCodePage extends StatelessWidget {
+  const SmsCodePage({
+    Key? key,
+    required this.phone,
+  }) : super(key: key);
+  final String phone;
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => ButtonAvailableCont(),
+          create: (context) => SmsController(),
         ),
         BlocProvider(
-          create: (context) => PhoneController(),
+          create: (context) => ButtonAvailableCont(),
         ),
       ],
       child: Builder(builder: (context) {
@@ -43,13 +46,6 @@ class RegisterPage extends StatelessWidget {
                         'Регистрация',
                         style: h24,
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Для того чтобы оформлять заказы необходимо пройти регистрацию по номеру телефона',
-                        style: st14,
-                      ),
                     ],
                   ),
                   SizedBox(
@@ -59,17 +55,17 @@ class RegisterPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Регистрация',
+                        'Введите код из СМС сообщения',
                         style: h14,
                       ),
-                      RegisterPhoneField(),
+                      SmsCodeField(),
                     ],
                   ),
                   const Spacer(),
                   BlocBuilder<ButtonAvailableCont, bool>(
                     builder: (context, state) {
                       return RoundedButton(
-                        title: 'Отправить СМС',
+                        title: 'Готово',
                         color: state
                             ? AppColor.orange
                             : AppColor.orange.withOpacity(
@@ -79,10 +75,9 @@ class RegisterPage extends StatelessWidget {
                         function: state
                             ? () {
                                 context.pushNamed(
-                                  RoutesNames.smscode,
+                                  RoutesNames.anketa,
                                   queryParameters: {
-                                    'phone':
-                                        context.read<PhoneController>().state,
+                                    'phone': phone,
                                   },
                                 );
                               }

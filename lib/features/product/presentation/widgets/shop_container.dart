@@ -56,7 +56,6 @@ class ProductShopContainer extends StatelessWidget {
           RoundedButton(
             title: 'На страницу продавца',
             height: 40,
-            margin: EdgeInsets.zero,
             function: () {
               context.pushNamed(
                 RoutesNames.shopInfo,

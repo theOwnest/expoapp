@@ -1,5 +1,8 @@
-import 'package:expo_kg/features/auth/presentation/cubit/phone_controller.dart';
-import 'package:expo_kg/features/auth/presentation/widgets/register_phone.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:expo_kg/features/auth/data/models/user.dart';
+import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:expo_kg/features/auth/presentation/cubit/button_available.dart';
+import 'package:expo_kg/features/auth/presentation/widgets/anketa_form.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
@@ -11,11 +14,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
-import '../cubit/button_available.dart';
+class AnketaPage extends StatefulWidget {
+  const AnketaPage({
+    Key? key,
+    required this.phone,
+  }) : super(key: key);
+  final String phone;
+  @override
+  State<AnketaPage> createState() => _AnketaPageState();
+}
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
-
+class _AnketaPageState extends State<AnketaPage> {
+  final nameCont = TextEditingController();
+  final emailCont = TextEditingController();
+  final passCont = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -23,13 +35,11 @@ class RegisterPage extends StatelessWidget {
         BlocProvider(
           create: (context) => ButtonAvailableCont(),
         ),
-        BlocProvider(
-          create: (context) => PhoneController(),
-        ),
       ],
       child: Builder(builder: (context) {
         return KeyboardDismisser(
           child: Scaffold(
+            resizeToAvoidBottomInset: false,
             appBar: AppBar(),
             body: Padding(
               padding: marginHV15,
@@ -40,14 +50,14 @@ class RegisterPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Регистрация',
+                        'Анкета',
                         style: h24,
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
-                        'Для того чтобы оформлять заказы необходимо пройти регистрацию по номеру телефона',
+                        'Заполните поля ниже',
                         style: st14,
                       ),
                     ],
@@ -55,21 +65,16 @@ class RegisterPage extends StatelessWidget {
                   SizedBox(
                     height: 60.h,
                   ),
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Регистрация',
-                        style: h14,
-                      ),
-                      RegisterPhoneField(),
-                    ],
+                  AnketaForm(
+                    nameCont: nameCont,
+                    emailCont: emailCont,
+                    passCont: passCont,
                   ),
                   const Spacer(),
                   BlocBuilder<ButtonAvailableCont, bool>(
                     builder: (context, state) {
                       return RoundedButton(
-                        title: 'Отправить СМС',
+                        title: 'Готово',
                         color: state
                             ? AppColor.orange
                             : AppColor.orange.withOpacity(
@@ -78,12 +83,15 @@ class RegisterPage extends StatelessWidget {
                         textColor: state ? AppColor.white : AppColor.orange,
                         function: state
                             ? () {
-                                context.pushNamed(
-                                  RoutesNames.smscode,
-                                  queryParameters: {
-                                    'phone':
-                                        context.read<PhoneController>().state,
-                                  },
+                                context.read<AuthCubit>().register(
+                                      UserModel(
+                                        fullName: nameCont.text,
+                                        email: emailCont.text,
+                                        phone: widget.phone,
+                                      ),
+                                    );
+                                context.goNamed(
+                                  RoutesNames.congrats,
                                 );
                               }
                             : null,

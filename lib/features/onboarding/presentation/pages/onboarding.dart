@@ -2,6 +2,7 @@ import 'package:expo_kg/features/onboarding/data/datasources/onboarding_data.dar
 import 'package:expo_kg/features/onboarding/presentation/cubit/onboarding_shown.dart';
 import 'package:expo_kg/features/onboarding/presentation/widgets/onboard_container.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
+import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:expo_kg/shared/widgets/custom_text_button.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
@@ -73,6 +74,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               children: [
                 RoundedButton(
                   title: 'Далее',
+                  margin: marginH,
                   function: () {
                     animateToPage(pageIndex + 1);
                   },

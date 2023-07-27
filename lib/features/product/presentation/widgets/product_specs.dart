@@ -42,7 +42,6 @@ class ProductSpecs extends StatelessWidget {
           title: 'Все характеристики',
           color: AppColor.black,
           height: 60,
-          margin: EdgeInsets.zero,
         ),
       ],
     );

@@ -1,25 +1,29 @@
 import 'dart:developer';
+
 import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:expo_kg/features/auth/presentation/pages/anketa.dart';
+import 'package:expo_kg/features/auth/presentation/pages/congratulation.dart';
 import 'package:expo_kg/features/auth/presentation/pages/login.dart';
 import 'package:expo_kg/features/auth/presentation/pages/register.dart';
+import 'package:expo_kg/features/auth/presentation/pages/sms_code.dart';
+import 'package:expo_kg/features/cart/presentation/pages/cart.dart';
 import 'package:expo_kg/features/category/presentation/pages/category.dart';
 import 'package:expo_kg/features/category/presentation/pages/subcategory.dart';
+import 'package:expo_kg/features/chat/presentation/pages/chat.dart';
+import 'package:expo_kg/features/favorite/presentation/pages/favorite.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
+import 'package:expo_kg/features/home/presentation/pages/home.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/pages/main_scaffold.dart';
 import 'package:expo_kg/features/onboarding/presentation/cubit/onboarding_shown.dart';
 import 'package:expo_kg/features/onboarding/presentation/pages/onboarding.dart';
 import 'package:expo_kg/features/product/presentation/pages/product.dart';
 import 'package:expo_kg/features/product/presentation/pages/shop.dart';
+import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
 import 'package:expo_kg/features/search/presentation/pages/search.dart';
 import 'package:expo_kg/shared/widgets/error_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:expo_kg/features/cart/presentation/pages/cart.dart';
-import 'package:expo_kg/features/chat/presentation/pages/chat.dart';
-import 'package:expo_kg/features/favorite/presentation/pages/favorite.dart';
-import 'package:expo_kg/features/home/presentation/pages/home.dart';
-import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
 
 class Routes {
   static String home = '/';
@@ -38,6 +42,9 @@ class Routes {
   static String onboarding = '/onboarding';
   static String login = '/login';
   static String register = '/register';
+  static String smscode = '/smscode';
+  static String anketa = '/anketa';
+  static String congrats = '/congrats';
 }
 
 class RoutesNames {
@@ -57,6 +64,9 @@ class RoutesNames {
   static String onboarding = 'onboarding';
   static String login = 'login';
   static String register = 'register';
+  static String smscode = 'smscode';
+  static String anketa = 'anketa';
+  static String congrats = 'congrats';
 }
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -200,6 +210,34 @@ final GoRouter router = GoRouter(
         value: BlocProvider.of<AuthCubit>(context),
         child: const RegisterPage(),
       ),
+    ),
+    GoRoute(
+      path: Routes.smscode,
+      name: RoutesNames.smscode,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => BlocProvider.value(
+        value: BlocProvider.of<AuthCubit>(context),
+        child: SmsCodePage(
+          phone: state.queryParameters['phone'] as String,
+        ),
+      ),
+    ),
+    GoRoute(
+      path: Routes.anketa,
+      name: RoutesNames.anketa,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => BlocProvider.value(
+        value: BlocProvider.of<AuthCubit>(context),
+        child: AnketaPage(
+          phone: state.queryParameters['phone'] as String,
+        ),
+      ),
+    ),
+    GoRoute(
+      path: Routes.congrats,
+      name: RoutesNames.congrats,
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const RegisterCongratulationPage(),
     ),
   ],
   redirect: (context, state) {

@@ -38,7 +38,6 @@ class ProductAskQuestions extends StatelessWidget {
         const RoundedButton(
           title: 'Задать вопрос',
           color: AppColor.black,
-          margin: EdgeInsets.zero,
         ),
         const SizedBox(
           height: 30,

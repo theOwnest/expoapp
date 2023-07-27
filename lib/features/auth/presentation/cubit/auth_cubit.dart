@@ -19,6 +19,14 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  register(UserModel user) {
+    emit(
+      AuthLoggedIn(
+        user: user,
+      ),
+    );
+  }
+
   logOut() {
     emit(
       AuthInitial(),
