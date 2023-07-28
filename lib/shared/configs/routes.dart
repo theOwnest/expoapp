@@ -10,6 +10,7 @@ import 'package:expo_kg/features/cart/presentation/pages/cart.dart';
 import 'package:expo_kg/features/category/presentation/pages/category.dart';
 import 'package:expo_kg/features/category/presentation/pages/subcategory.dart';
 import 'package:expo_kg/features/chat/presentation/pages/chat.dart';
+import 'package:expo_kg/features/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:expo_kg/features/favorite/presentation/pages/favorite.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/home/presentation/pages/home.dart';
@@ -20,6 +21,7 @@ import 'package:expo_kg/features/product/presentation/pages/product.dart';
 import 'package:expo_kg/features/product/presentation/pages/shop.dart';
 import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
 import 'package:expo_kg/features/search/presentation/pages/search.dart';
+import 'package:expo_kg/shared/constants/cubit_strings.dart';
 import 'package:expo_kg/shared/models/multiple_cubits.dart';
 import 'package:expo_kg/shared/widgets/error_screen.dart';
 import 'package:flutter/material.dart';
@@ -161,13 +163,19 @@ final GoRouter router = GoRouter(
         log(state.location);
         final productId = state.queryParameters['productId'] as String;
         final cubits = state.extra as MultipleCubits;
+        final productsCubit =
+            cubits.cubits[CubitStrings.productsCubit] as ProductCubit;
+        final favoritesCubit =
+            cubits.cubits[CubitStrings.favoritesCubit] as FavoriteCubit;
         return MultiBlocProvider(
-          providers: List.generate(
-            cubits.cubits.length,
-            (index) => BlocProvider.value(
-              value: cubits.cubits[index],
+          providers: [
+            BlocProvider.value(
+              value: productsCubit,
             ),
-          ),
+            BlocProvider.value(
+              value: favoritesCubit,
+            ),
+          ],
           child: ProductPage(
             productId: productId,
           ),
@@ -181,9 +189,20 @@ final GoRouter router = GoRouter(
       builder: (context, state) {
         log(state.location);
         final productId = state.queryParameters['productId'] as String;
-        final productCubit = state.extra as ProductCubit;
-        return BlocProvider.value(
-          value: productCubit,
+        final cubits = state.extra as MultipleCubits;
+        final productsCubit =
+            cubits.cubits[CubitStrings.productsCubit] as ProductCubit;
+        final favoritesCubit =
+            cubits.cubits[CubitStrings.favoritesCubit] as FavoriteCubit;
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider.value(
+              value: productsCubit,
+            ),
+            BlocProvider.value(
+              value: favoritesCubit,
+            ),
+          ],
           child: ShopInfoPage(
             productId: productId,
           ),

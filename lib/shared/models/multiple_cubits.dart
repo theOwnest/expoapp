@@ -5,5 +5,5 @@ class MultipleCubits {
   MultipleCubits({
     required this.cubits,
   });
-  final List<Cubit<Equatable>> cubits;
+  final Map<String, Cubit<Equatable>> cubits;
 }

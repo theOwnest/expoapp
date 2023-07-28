@@ -1,9 +1,12 @@
+import 'package:expo_kg/features/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/product/presentation/cubit/product_cont.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/cubit_strings.dart';
+import 'package:expo_kg/shared/models/multiple_cubits.dart';
 import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +62,14 @@ class ProductShopContainer extends StatelessWidget {
             function: () {
               context.pushNamed(
                 RoutesNames.shopInfo,
-                extra: BlocProvider.of<ProductCubit>(context),
+                extra: MultipleCubits(
+                  cubits: {
+                    CubitStrings.productsCubit:
+                        BlocProvider.of<ProductCubit>(context),
+                    CubitStrings.favoritesCubit:
+                        BlocProvider.of<FavoriteCubit>(context),
+                  },
+                ),
                 queryParameters: {
                   'productId': context.read<ProductController>().state.id,
                 },

@@ -2,7 +2,7 @@
 part of 'favorite_cubit.dart';
 
 class FavoriteState extends Equatable {
-  final List<String> favorites;
+  final List<MapEntry<int, String>> favorites;
   const FavoriteState(
     this.favorites,
   );

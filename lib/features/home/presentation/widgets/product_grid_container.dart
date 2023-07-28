@@ -6,6 +6,7 @@ import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/cubit_strings.dart';
 import 'package:expo_kg/shared/models/multiple_cubits.dart';
 import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +30,12 @@ class ProductGridContainer extends StatelessWidget {
         context.pushNamed(
           RoutesNames.productInfo,
           extra: MultipleCubits(
-            cubits: [
-              BlocProvider.of<ProductCubit>(context),
-              BlocProvider.of<FavoriteCubit>(context),
-            ],
+            cubits: {
+              CubitStrings.productsCubit:
+                  BlocProvider.of<ProductCubit>(context),
+              CubitStrings.favoritesCubit:
+                  BlocProvider.of<FavoriteCubit>(context),
+            },
           ),
           queryParameters: {
             'productId': product.id,

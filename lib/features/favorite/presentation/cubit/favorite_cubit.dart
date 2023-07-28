@@ -8,12 +8,18 @@ part 'favorite_state.dart';
 class FavoriteCubit extends Cubit<FavoriteState> {
   FavoriteCubit() : super(const FavoriteState([]));
   load() {
-    List<String> favoritesList = [];
+    List<MapEntry<int, String>> favoritesList = [];
     final searchHistoryBox = Hive.box(
       HiveConstants.favoriteBox,
     );
-    for (var element in searchHistoryBox.values) {
-      favoritesList.add(element);
+    for (int i = 0; i < searchHistoryBox.values.length; i++) {
+      final key = searchHistoryBox.keyAt(i);
+      favoritesList.add(
+        MapEntry(
+          key,
+          searchHistoryBox.get(key),
+        ),
+      );
     }
     emit(
       FavoriteState(
@@ -22,24 +28,40 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     );
   }
 
-  addFavorite(String id) {
+  favoriteAction(String id) {
     final favoriteBox = Hive.box(
       HiveConstants.favoriteBox,
     );
-    favoriteBox.add(id);
+    List<MapEntry<int, String>> favoritesList = [
+      ...super.state.favorites,
+    ];
+    if (super.state.favorites.any((element) => element.value == id)) {
+      favoriteBox.delete(
+        super.state.favorites.firstWhere((element) => element.value == id).key,
+      );
+      favoritesList.removeWhere(
+        (element) => element.value == id,
+      );
+    } else {
+      final key = (favoriteBox.keys.last as int) + 1;
+      favoriteBox.put(key, id);
+      favoritesList.add(
+        MapEntry(
+          key,
+          id,
+        ),
+      );
+    }
     emit(
       FavoriteState(
-        [
-          ...super.state.favorites,
-          id,
-        ],
+        favoritesList,
       ),
     );
   }
 
   bool isFavorite(String id) {
     return super.state.favorites.any(
-          (element) => element == id,
+          (element) => element.value == id,
         );
   }
 

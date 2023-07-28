@@ -1,3 +1,4 @@
+import 'package:expo_kg/features/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/product/presentation/cubit/product_cont.dart';
 import 'package:expo_kg/features/product/presentation/widgets/appbar_button.dart';
@@ -45,16 +46,29 @@ class ProductPage extends StatelessWidget {
                           context.pop();
                         },
                       ),
-                      const Row(
+                      Row(
                         children: [
-                          AppbarButtonContainer(
+                          const AppbarButtonContainer(
                             icon: 'upload',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 15,
                           ),
-                          AppbarButtonContainer(
-                            icon: 'heart',
+                          BlocBuilder<FavoriteCubit, FavoriteState>(
+                            builder: (context, state) {
+                              return AppbarButtonContainer(
+                                icon: context
+                                        .read<FavoriteCubit>()
+                                        .isFavorite(productId)
+                                    ? 'heart-filled'
+                                    : 'heart',
+                                function: () {
+                                  context.read<FavoriteCubit>().favoriteAction(
+                                        productId,
+                                      );
+                                },
+                              );
+                            },
                           ),
                         ],
                       ),

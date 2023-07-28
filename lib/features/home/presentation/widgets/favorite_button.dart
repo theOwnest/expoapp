@@ -15,7 +15,7 @@ class FavoriteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.read<FavoriteCubit>().addFavorite(id);
+        context.read<FavoriteCubit>().favoriteAction(id);
       },
       child: Container(
         height: 22,
