@@ -1,3 +1,4 @@
+import 'package:expo_kg/features/home/data/models/product.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/home/presentation/widgets/add_to_cart_button.dart';
 import 'package:expo_kg/features/home/presentation/widgets/favorite_button.dart';
@@ -5,12 +6,14 @@ import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/models/multiple_cubits.dart';
 import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:flutter/material.dart';
-import 'package:expo_kg/features/home/data/models/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../favorite/presentation/cubit/favorite_cubit.dart';
 
 class ProductGridContainer extends StatelessWidget {
   const ProductGridContainer({
@@ -25,7 +28,12 @@ class ProductGridContainer extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           RoutesNames.productInfo,
-          extra: BlocProvider.of<ProductCubit>(context),
+          extra: MultipleCubits(
+            cubits: [
+              BlocProvider.of<ProductCubit>(context),
+              BlocProvider.of<FavoriteCubit>(context),
+            ],
+          ),
           queryParameters: {
             'productId': product.id,
           },
@@ -57,10 +65,12 @@ class ProductGridContainer extends StatelessWidget {
                       product.images.first,
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     right: 8,
                     top: 8,
-                    child: FavoriteButton(),
+                    child: FavoriteButton(
+                      id: product.id,
+                    ),
                   ),
                 ],
               ),

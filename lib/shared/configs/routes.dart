@@ -20,6 +20,7 @@ import 'package:expo_kg/features/product/presentation/pages/product.dart';
 import 'package:expo_kg/features/product/presentation/pages/shop.dart';
 import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
 import 'package:expo_kg/features/search/presentation/pages/search.dart';
+import 'package:expo_kg/shared/models/multiple_cubits.dart';
 import 'package:expo_kg/shared/widgets/error_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -159,9 +160,14 @@ final GoRouter router = GoRouter(
       builder: (context, state) {
         log(state.location);
         final productId = state.queryParameters['productId'] as String;
-        final productCubit = state.extra as ProductCubit;
-        return BlocProvider.value(
-          value: productCubit,
+        final cubits = state.extra as MultipleCubits;
+        return MultiBlocProvider(
+          providers: List.generate(
+            cubits.cubits.length,
+            (index) => BlocProvider.value(
+              value: cubits.cubits[index],
+            ),
+          ),
           child: ProductPage(
             productId: productId,
           ),

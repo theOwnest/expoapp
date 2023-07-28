@@ -5,7 +5,7 @@ import 'package:expo_kg/shared/configs/random.dart';
 final productsList = List.generate(
   10,
   (index) => ProductModel(
-    id: uuid.v1(),
+    id: '$index',
     images: List.generate(
       random.nextInt(4) + 1,
       (index) => 'assets/debug/headphone.png',
