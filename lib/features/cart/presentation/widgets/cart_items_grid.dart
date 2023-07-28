@@ -1,15 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:expo_kg/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:expo_kg/features/cart/presentation/widgets/cart_item_grid_container.dart';
+import 'package:expo_kg/features/cart/presentation/widgets/cart_item_list_container.dart';
 import 'package:expo_kg/features/home/data/models/product.dart';
-import 'package:expo_kg/features/home/presentation/widgets/product_grid_container.dart';
-import 'package:expo_kg/features/home/presentation/widgets/product_list_container.dart';
 import 'package:expo_kg/features/product/data/enums/list_grid_type.dart';
 import 'package:expo_kg/features/product/presentation/cubit/list_grid_type.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SearchResultsGrid extends StatelessWidget {
-  const SearchResultsGrid({
+class CartItemsGridContainer extends StatelessWidget {
+  const CartItemsGridContainer({
     Key? key,
     required this.products,
   }) : super(key: key);
@@ -29,11 +30,17 @@ class SearchResultsGrid extends StatelessWidget {
               mainAxisSpacing: 10,
             ),
             itemBuilder: (context, index) => isGrid
-                ? ProductGridContainer(
+                ? CartItemGridContainer(
                     product: products[index],
+                    amount: context.read<CartCubit>().getAmount(
+                          products[index].id,
+                        ),
                   )
-                : ProductListContainer(
+                : CartItemListContainer(
                     product: products[index],
+                    amount: context.read<CartCubit>().getAmount(
+                          products[index].id,
+                        ),
                   ),
             itemCount: products.length,
           ),

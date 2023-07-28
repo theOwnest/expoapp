@@ -1,6 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/features/home/data/models/product.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
-import 'package:expo_kg/features/home/presentation/widgets/add_to_cart_button.dart';
 import 'package:expo_kg/features/home/presentation/widgets/favorite_button.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
@@ -8,21 +8,22 @@ import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/cubit_strings.dart';
 import 'package:expo_kg/shared/models/multiple_cubits.dart';
-import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../favorite/presentation/cubit/favorite_cubit.dart';
+import 'remove_from_cart_button.dart';
 
-class ProductGridContainer extends StatelessWidget {
-  const ProductGridContainer({
+class CartItemGridContainer extends StatelessWidget {
+  const CartItemGridContainer({
     Key? key,
     required this.product,
+    required this.amount,
   }) : super(key: key);
   final ProductModel product;
-
+  final int amount;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -94,8 +95,8 @@ class ProductGridContainer extends StatelessWidget {
                   product.shop.name,
                   style: st12,
                 ),
-                CustomRatingContainer(
-                  rating: product.rating,
+                Text(
+                  'Amount: $amount',
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -106,7 +107,7 @@ class ProductGridContainer extends StatelessWidget {
                         color: AppColor.orange,
                       ),
                     ),
-                    AddToCartButton(
+                    RemoveFromCartButton(
                       id: product.id,
                     ),
                   ],

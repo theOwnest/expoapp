@@ -9,15 +9,15 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   FavoriteCubit() : super(const FavoriteState([]));
   load() {
     List<MapEntry<int, String>> favoritesList = [];
-    final searchHistoryBox = Hive.box(
+    final favoriteBox = Hive.box(
       HiveConstants.favoriteBox,
     );
-    for (int i = 0; i < searchHistoryBox.values.length; i++) {
-      final key = searchHistoryBox.keyAt(i);
+    for (int i = 0; i < favoriteBox.values.length; i++) {
+      final key = favoriteBox.keyAt(i);
       favoritesList.add(
         MapEntry(
           key,
-          searchHistoryBox.get(key),
+          favoriteBox.get(key),
         ),
       );
     }
@@ -43,7 +43,10 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         (element) => element.value == id,
       );
     } else {
-      final key = (favoriteBox.keys.last as int) + 1;
+      int key = 0;
+      if (favoriteBox.isNotEmpty) {
+        key = (favoriteBox.keys.last as int) + 1;
+      }
       favoriteBox.put(key, id);
       favoritesList.add(
         MapEntry(

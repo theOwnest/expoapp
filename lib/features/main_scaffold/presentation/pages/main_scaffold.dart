@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:expo_kg/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:expo_kg/features/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/cubit/bottom_navbar_cont.dart';
@@ -26,6 +27,9 @@ class MainScaffold extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => FavoriteCubit()..load(),
+        ),
+        BlocProvider(
+          create: (context) => CartCubit()..load(),
         ),
       ],
       child: KeyboardDismisser(
