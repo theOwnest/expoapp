@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
+import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -72,10 +73,7 @@ class _FilterCategoryState extends State<FilterCategory> {
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                border: Border.all(
-                  color: AppColor.lightGrey,
-                  width: 1,
-                ),
+                border: commonThinBorder,
                 color: AppColor.white,
               ),
             ),
@@ -95,10 +93,7 @@ class _FilterCategoryState extends State<FilterCategory> {
               decoration: BoxDecoration(
                 color: AppColor.white,
                 borderRadius: BorderRadius.circular(5),
-                border: Border.all(
-                  color: AppColor.lightGrey,
-                  width: 1,
-                ),
+                border: commonThinBorder,
               ),
               elevation: 0,
             ),

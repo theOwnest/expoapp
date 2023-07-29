@@ -1,4 +1,5 @@
 import 'package:expo_kg/shared/configs/texts.dart';
+import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,10 +59,7 @@ class _FilterPriceState extends State<FilterPrice> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: AppColor.white,
-              border: Border.all(
-                color: AppColor.lightGrey,
-                width: 1,
-              ),
+              border: commonThinBorder,
             ),
             child: Container(
               margin: const EdgeInsets.all(5),
@@ -75,10 +73,7 @@ class _FilterPriceState extends State<FilterPrice> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: AppColor.white,
-              border: Border.all(
-                color: AppColor.lightGrey,
-                width: 1,
-              ),
+              border: commonThinBorder,
             ),
             child: Container(
               margin: const EdgeInsets.all(5),

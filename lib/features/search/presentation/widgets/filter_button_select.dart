@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:flutter/material.dart';
@@ -61,10 +62,7 @@ class FilterSelectableButton extends StatelessWidget {
           horizontal: 15,
         ),
         decoration: BoxDecoration(
-          border: Border.all(
-            color: AppColor.lightGrey,
-            width: 1,
-          ),
+          border: commonThinBorder,
           borderRadius: borderR10,
         ),
         child: Row(
@@ -79,10 +77,7 @@ class FilterSelectableButton extends StatelessWidget {
                     width: 22,
                     decoration: BoxDecoration(
                       borderRadius: borderRC,
-                      border: Border.all(
-                        color: AppColor.lightGrey,
-                        width: 1,
-                      ),
+                      border: commonThinBorder,
                     ),
                   ),
             const SizedBox(

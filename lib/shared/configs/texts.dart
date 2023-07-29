@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../constants/colors.dart';
 
 const h28 = TextStyle(
@@ -34,7 +35,7 @@ const h14 = TextStyle(
 const h12 = TextStyle(
   fontStyle: FontStyle.normal,
   fontSize: 12,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w600,
   color: AppColor.black,
 );
 const st36 = TextStyle(

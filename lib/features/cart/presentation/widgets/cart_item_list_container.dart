@@ -6,6 +6,7 @@ import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/home/presentation/widgets/favorite_button.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
+import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/cubit_strings.dart';
@@ -47,10 +48,7 @@ class CartItemListContainer extends StatelessWidget {
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
           borderRadius: borderR10,
-          border: Border.all(
-            color: AppColor.lightGrey,
-            width: 1,
-          ),
+          border: commonThinBorder,
         ),
         child: Row(
           children: [

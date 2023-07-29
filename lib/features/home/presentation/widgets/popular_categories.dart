@@ -2,6 +2,7 @@ import 'package:expo_kg/features/category/data/datasources/container_colors.dart
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/shared/configs/random.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
+import 'package:expo_kg/shared/constants/border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -95,10 +96,7 @@ class HomePopularCategoryContainer extends StatelessWidget {
             0.2,
           ),
           borderRadius: borderR10,
-          border: Border.all(
-            color: color,
-            width: 1,
-          ),
+          border: commonThinBorder,
         ),
         padding: const EdgeInsets.symmetric(
           vertical: 5,

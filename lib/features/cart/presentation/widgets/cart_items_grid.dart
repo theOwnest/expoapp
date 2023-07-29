@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:expo_kg/features/cart/presentation/widgets/cart_item_grid_container.dart';
 import 'package:expo_kg/features/cart/presentation/widgets/cart_item_list_container.dart';
@@ -9,8 +8,8 @@ import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CartItemsGridContainer extends StatelessWidget {
-  const CartItemsGridContainer({
+class CartItemsGrid extends StatelessWidget {
+  const CartItemsGrid({
     Key? key,
     required this.products,
   }) : super(key: key);
@@ -20,9 +19,9 @@ class CartItemsGridContainer extends StatelessWidget {
     return BlocBuilder<ListGridType, ListGridEnum>(
       builder: (context, state) {
         final isGrid = state == ListGridEnum.grid;
-        return Expanded(
-          child: GridView.builder(
-            padding: marginH,
+        return SliverPadding(
+          padding: marginH,
+          sliver: SliverGrid.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: isGrid ? 2 : 1,
               childAspectRatio: isGrid ? 168 / 254 : 345 / 135,
