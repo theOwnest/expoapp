@@ -19,6 +19,10 @@ import 'package:expo_kg/features/onboarding/presentation/cubit/onboarding_shown.
 import 'package:expo_kg/features/onboarding/presentation/pages/onboarding.dart';
 import 'package:expo_kg/features/product/presentation/pages/product.dart';
 import 'package:expo_kg/features/product/presentation/pages/shop.dart';
+import 'package:expo_kg/features/profile/data/models/order.dart';
+import 'package:expo_kg/features/profile/presentation/pages/order_history.dart';
+import 'package:expo_kg/features/order/presentation/pages/order_info.dart';
+import 'package:expo_kg/features/profile/presentation/pages/order_tracking.dart';
 import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
 import 'package:expo_kg/features/search/presentation/pages/search.dart';
 import 'package:expo_kg/shared/constants/cubit_strings.dart';
@@ -37,6 +41,10 @@ class Routes {
 
   static String productInfo = '/productInfo';
   static String shopInfo = '/shopInfo';
+
+  static String profileOrderHistory = '/profileOrderHistory';
+  static String profileOrderTracking = '/profileOrderTracking';
+  static String orderInfo = '/orderInfo';
 
   static String category = '/category';
   static String subcategory = '/subcategory';
@@ -59,6 +67,10 @@ class RoutesNames {
 
   static String productInfo = 'productInfo';
   static String shopInfo = 'shopInfo';
+
+  static String profileOrderHistory = 'profileOrderHistory';
+  static String profileOrderTracking = 'profileOrderTracking';
+  static String orderInfo = 'orderInfo';
 
   static String category = 'category';
   static String subcategory = 'subcategory';
@@ -209,6 +221,31 @@ final GoRouter router = GoRouter(
         );
       },
     ),
+    //Profile pages
+    GoRoute(
+      path: Routes.profileOrderHistory,
+      name: RoutesNames.profileOrderHistory,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: OrderHistory(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.profileOrderTracking,
+      name: RoutesNames.profileOrderTracking,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: OrderTracking(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.orderInfo,
+      name: RoutesNames.orderInfo,
+      pageBuilder: (context, state) => NoTransitionPage(
+        child: OrderInfo(
+          order: state.extra as OrderModel,
+        ),
+      ),
+    ),
+    //Outer pages
     GoRoute(
       path: Routes.onboarding,
       name: RoutesNames.onboarding,

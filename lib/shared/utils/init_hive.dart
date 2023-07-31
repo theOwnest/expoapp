@@ -11,6 +11,7 @@ initHive() async {
   );
 
   await Hive.openBox(HiveConstants.appBox);
+  await Hive.openBox(HiveConstants.loginBox);
   await Hive.openBox(HiveConstants.cartBox);
   await Hive.openBox(HiveConstants.favoriteBox);
   await Hive.openBox(HiveConstants.searchHistoryBox);
