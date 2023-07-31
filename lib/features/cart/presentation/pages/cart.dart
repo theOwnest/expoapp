@@ -1,3 +1,4 @@
+import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:expo_kg/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:expo_kg/features/cart/presentation/widgets/cart_items_grid.dart';
 import 'package:expo_kg/features/cart/presentation/widgets/cart_recommended_container.dart';
@@ -6,12 +7,15 @@ import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/home/presentation/widgets/address_dropdown.dart';
 import 'package:expo_kg/features/product/data/enums/list_grid_type.dart';
 import 'package:expo_kg/features/product/presentation/cubit/list_grid_type.dart';
+import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:expo_kg/shared/constants/size.dart';
 import 'package:expo_kg/shared/widgets/dense_text_button.dart';
+import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -136,6 +140,44 @@ class CartPage extends StatelessWidget {
                   ),
                 ),
               ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: marginHV10,
+                  child: Row(
+                    children: [
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Стоимость',
+                            style: st14,
+                          ),
+                          Text(
+                            '2 599 KGS',
+                            style: h24,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: RoundedButton(
+                          title: 'К оформлению',
+                          function: () {
+                            if (context.read<AuthCubit>().state
+                                is AuthInitial) {
+                              context.pushNamed(
+                                RoutesNames.login,
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           );
         },

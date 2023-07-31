@@ -5,7 +5,6 @@ import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
-import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/cubit_strings.dart';
 import 'package:expo_kg/shared/models/multiple_cubits.dart';
 import 'package:expo_kg/shared/widgets/custom_rating.dart';

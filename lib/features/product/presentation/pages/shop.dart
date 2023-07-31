@@ -1,7 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/product/data/enums/list_grid_type.dart';
 import 'package:expo_kg/features/product/presentation/cubit/list_grid_type.dart';
@@ -9,6 +6,9 @@ import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../widgets/appbar_button.dart';
 import '../widgets/product_grid.dart';
@@ -38,7 +38,9 @@ class ShopInfoPage extends StatelessWidget {
                       AppbarButtonContainer(
                         icon: 'back',
                         function: () {
-                          context.pop();
+                          if (context.canPop()) {
+                            context.pop();
+                          }
                         },
                       ),
                       const AppbarButtonContainer(

@@ -135,7 +135,9 @@ class _LoginFormState extends State<LoginForm> {
                           emailCont.text,
                           passCont.text,
                         );
-                    context.pop();
+                    if (context.canPop()) {
+                      context.pop();
+                    }
                   }
                   // On another side, can access all field values without saving form with instantValues
                   // _formKey.currentState?.validate();

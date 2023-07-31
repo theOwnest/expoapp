@@ -43,7 +43,9 @@ class ProductPage extends StatelessWidget {
                       AppbarButtonContainer(
                         icon: 'back',
                         function: () {
-                          context.pop();
+                          if (context.canPop()) {
+                            context.pop();
+                          }
                         },
                       ),
                       Row(
