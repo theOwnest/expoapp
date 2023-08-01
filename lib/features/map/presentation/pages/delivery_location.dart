@@ -1,4 +1,5 @@
-import 'package:expo_kg/features/map/presentation/widgets/address_container.dart';
+import 'package:expo_kg/features/map/data/datasources/demo_location.dart';
+import 'package:expo_kg/features/map/presentation/widgets/delivery_container.dart';
 import 'package:expo_kg/features/map/presentation/widgets/map_container.dart';
 import 'package:expo_kg/shared/widgets/appbar_title.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,9 @@ class DeliveryLocation extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          const YandexMapContainer(),
+          MapContainer(
+            position: demoLocation,
+          ),
           Positioned(
             top: 45.h,
             left: 15,
@@ -20,7 +23,7 @@ class DeliveryLocation extends StatelessWidget {
           ),
           const Positioned(
             bottom: 0,
-            child: AddressContainer(),
+            child: DeliveryContainer(),
           ),
         ],
       ),

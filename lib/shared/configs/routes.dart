@@ -16,6 +16,7 @@ import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/home/presentation/pages/home.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/cubit/location_cubit.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/pages/main_scaffold.dart';
+import 'package:expo_kg/features/map/presentation/pages/address_location.dart';
 import 'package:expo_kg/features/map/presentation/pages/delivery_location.dart';
 import 'package:expo_kg/features/onboarding/presentation/cubit/onboarding_shown.dart';
 import 'package:expo_kg/features/onboarding/presentation/pages/onboarding.dart';
@@ -44,6 +45,7 @@ class Routes {
   static String productInfo = '/productInfo';
   static String shopInfo = '/shopInfo';
 
+  static String addressLocation = '/addressLocation';
   static String deliveryLocation = '/deliveryLocation';
 
   static String profileOrderHistory = '/profileOrderHistory';
@@ -72,6 +74,7 @@ class RoutesNames {
   static String productInfo = 'productInfo';
   static String shopInfo = 'shopInfo';
 
+  static String addressLocation = 'addressLocation';
   static String deliveryLocation = 'deliveryLocation';
 
   static String profileOrderHistory = 'profileOrderHistory';
@@ -253,14 +256,22 @@ final GoRouter router = GoRouter(
     ),
     //Map
     GoRoute(
-      path: Routes.deliveryLocation,
-      name: RoutesNames.deliveryLocation,
+      path: Routes.addressLocation,
+      name: RoutesNames.addressLocation,
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (context, state) => NoTransitionPage(
         child: BlocProvider.value(
           value: state.extra as LocationCubit,
-          child: const DeliveryLocation(),
+          child: const AddressLocation(),
         ),
+      ),
+    ),
+    GoRoute(
+      path: Routes.deliveryLocation,
+      name: RoutesNames.deliveryLocation,
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: DeliveryLocation(),
       ),
     ),
     //Outer pages

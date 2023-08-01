@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:collection/collection.dart';
 import 'package:expo_kg/features/home/data/datasources/products.dart';
 import 'package:expo_kg/features/profile/data/enums/order_status.dart';
@@ -10,7 +12,7 @@ final orderHistoryList = List.generate(
     id: uuid.v1(),
     address: 'Доставка в пункт выдачи',
     status: OrderStatus.values.elementAt(
-      random.nextInt(OrderStatus.values.length),
+      Random().nextInt(OrderStatus.values.length),
     ),
     createdAt: DateTime.now().subtract(
       Duration(

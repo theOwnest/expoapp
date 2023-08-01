@@ -9,7 +9,6 @@ part 'location_state.dart';
 class LocationCubit extends Cubit<LocationState> {
   LocationCubit() : super(LocationNotAccessed());
   getLocation() async {
-    log('getLocation');
     try {
       final currentLocation = await _getPermission();
       log('${currentLocation.latitude} - ${currentLocation.longitude}');

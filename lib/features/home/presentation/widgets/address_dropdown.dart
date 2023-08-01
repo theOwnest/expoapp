@@ -14,7 +14,7 @@ class HomeAddressDropDown extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.pushNamed(
-          RoutesNames.deliveryLocation,
+          RoutesNames.addressLocation,
           extra: BlocProvider.of<LocationCubit>(context),
         );
       },

@@ -88,9 +88,14 @@ class OrderContainer extends StatelessWidget {
               height: 15,
             ),
             if (order.status == OrderStatus.pending)
-              const RoundedButton(
+              RoundedButton(
                 title: 'Смотреть на карте',
                 height: 40,
+                function: () {
+                  context.pushNamed(
+                    RoutesNames.deliveryLocation,
+                  );
+                },
               ),
             const SizedBox(
               height: 15,
