@@ -29,7 +29,9 @@ class CategoryPage extends StatelessWidget {
                 ),
               ),
               const SliverToBoxAdapter(
-                child: PopularCategories(),
+                child: PopularCategories(
+                  title: 'Популярные категории',
+                ),
               ),
               const SliverToBoxAdapter(
                 child: Padding(

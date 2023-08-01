@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:expo_kg/features/category/presentation/widgets/popular_categories.dart';
 import 'package:expo_kg/features/home/presentation/widgets/search_products.dart';
 import 'package:expo_kg/features/search/data/utils/filter_bottomsheet.dart';
@@ -93,18 +94,21 @@ class _SearchPageState extends State<SearchPage> {
                       ],
                     );
                   }
-                  return const Expanded(
+                  return Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
-                        PopularCategories(),
-                        SizedBox(
+                        PopularCategories(
+                          title:
+                              'Найдено 67 товаров в категории ${context.read<SearchCubit>().state}',
+                        ),
+                        const SizedBox(
                           height: 10,
                         ),
-                        SearchResults(),
+                        const SearchResults(),
                       ],
                     ),
                   );

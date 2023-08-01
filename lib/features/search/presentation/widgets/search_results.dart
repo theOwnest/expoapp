@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/product/data/enums/list_grid_type.dart';
 import 'package:expo_kg/features/product/presentation/cubit/list_grid_type.dart';
@@ -59,14 +60,10 @@ class SearchResults extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              BlocBuilder<ProductCubit, ProductState>(
+              BlocBuilder<SearchCubit, String?>(
                 builder: (context, state) {
-                  final products = searchProduct(
-                    context.read<SearchCubit>().state,
-                    state.products,
-                  );
-                  return SearchResultsGrid(
-                    products: products,
+                  return SearchUpdater(
+                    query: state,
                   );
                 },
               ),
@@ -74,6 +71,28 @@ class SearchResults extends StatelessWidget {
           ),
         );
       }),
+    );
+  }
+}
+
+class SearchUpdater extends StatelessWidget {
+  const SearchUpdater({
+    Key? key,
+    this.query,
+  }) : super(key: key);
+  final String? query;
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProductCubit, ProductState>(
+      builder: (context, state) {
+        final products = searchProduct(
+          query,
+          state.products,
+        );
+        return SearchResultsGrid(
+          products: products,
+        );
+      },
     );
   }
 }

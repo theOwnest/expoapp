@@ -1,16 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/features/category/data/datasources/container_colors.dart';
 import 'package:expo_kg/features/home/data/datasources/categories.dart';
-import 'package:expo_kg/features/search/presentation/cubit/search_cubit.dart';
 import 'package:expo_kg/shared/configs/random.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PopularCategories extends StatelessWidget {
-  const PopularCategories({super.key});
-
+  const PopularCategories({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +21,7 @@ class PopularCategories extends StatelessWidget {
         Padding(
           padding: marginH,
           child: Text(
-            'Найдено 67 товаров в категории ${context.read<SearchCubit>().state}',
+            title,
             style: h16,
           ),
         ),
