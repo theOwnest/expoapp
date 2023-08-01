@@ -14,14 +14,16 @@ import 'package:expo_kg/features/favorite/presentation/cubit/favorite_cubit.dart
 import 'package:expo_kg/features/favorite/presentation/pages/favorite.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/home/presentation/pages/home.dart';
+import 'package:expo_kg/features/main_scaffold/presentation/cubit/location_cubit.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/pages/main_scaffold.dart';
+import 'package:expo_kg/features/map/presentation/pages/delivery_location.dart';
 import 'package:expo_kg/features/onboarding/presentation/cubit/onboarding_shown.dart';
 import 'package:expo_kg/features/onboarding/presentation/pages/onboarding.dart';
+import 'package:expo_kg/features/order/presentation/pages/order_info.dart';
 import 'package:expo_kg/features/product/presentation/pages/product.dart';
 import 'package:expo_kg/features/product/presentation/pages/shop.dart';
 import 'package:expo_kg/features/profile/data/models/order.dart';
 import 'package:expo_kg/features/profile/presentation/pages/order_history.dart';
-import 'package:expo_kg/features/order/presentation/pages/order_info.dart';
 import 'package:expo_kg/features/profile/presentation/pages/order_tracking.dart';
 import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
 import 'package:expo_kg/features/search/presentation/pages/search.dart';
@@ -41,6 +43,8 @@ class Routes {
 
   static String productInfo = '/productInfo';
   static String shopInfo = '/shopInfo';
+
+  static String deliveryLocation = '/deliveryLocation';
 
   static String profileOrderHistory = '/profileOrderHistory';
   static String profileOrderTracking = '/profileOrderTracking';
@@ -67,6 +71,8 @@ class RoutesNames {
 
   static String productInfo = 'productInfo';
   static String shopInfo = 'shopInfo';
+
+  static String deliveryLocation = 'deliveryLocation';
 
   static String profileOrderHistory = 'profileOrderHistory';
   static String profileOrderTracking = 'profileOrderTracking';
@@ -242,6 +248,18 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) => NoTransitionPage(
         child: OrderInfo(
           order: state.extra as OrderModel,
+        ),
+      ),
+    ),
+    //Map
+    GoRoute(
+      path: Routes.deliveryLocation,
+      name: RoutesNames.deliveryLocation,
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (context, state) => NoTransitionPage(
+        child: BlocProvider.value(
+          value: state.extra as LocationCubit,
+          child: const DeliveryLocation(),
         ),
       ),
     ),

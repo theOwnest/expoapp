@@ -9,6 +9,10 @@ const marginV = EdgeInsets.symmetric(
 const marginHV15 = EdgeInsets.all(
   15,
 );
+const marginHV20 = EdgeInsets.symmetric(
+  horizontal: 15,
+  vertical: 20,
+);
 const marginHV10 = EdgeInsets.symmetric(
   vertical: 10,
   horizontal: 15,
