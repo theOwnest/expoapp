@@ -1,94 +1,41 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:expo_kg/shared/constants/border.dart';
-import 'package:expo_kg/shared/constants/border_radius.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:expo_kg/shared/configs/texts.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
+import 'package:expo_kg/shared/widgets/selectable_button.dart';
+import 'package:flutter/material.dart';
 
 class FilterButtonSelect extends StatelessWidget {
   const FilterButtonSelect({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          height: 35.h,
-        ),
-        const Text(
+        sizedbox35,
+        Text(
           'Заголовок',
           style: h14,
         ),
-        const SizedBox(
+        SizedBox(
           height: 10,
         ),
-        const Row(
+        Row(
           children: [
-            FilterSelectableButton(
+            SelectableButton(
               title: 'Lorem Ipsum',
               isSelected: true,
             ),
             SizedBox(
               width: 15,
             ),
-            FilterSelectableButton(
+            SelectableButton(
               title: 'Lorem Ipsum',
               isSelected: false,
             ),
           ],
         )
       ],
-    );
-  }
-}
-
-class FilterSelectableButton extends StatelessWidget {
-  const FilterSelectableButton({
-    Key? key,
-    required this.title,
-    required this.isSelected,
-  }) : super(key: key);
-  final String title;
-  final bool isSelected;
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        height: 45,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15,
-        ),
-        decoration: BoxDecoration(
-          border: commonThinBorder,
-          borderRadius: borderR10,
-        ),
-        child: Row(
-          children: [
-            isSelected
-                ? Image.asset(
-                    'assets/icons/product/subtract.png',
-                    height: 22,
-                  )
-                : Container(
-                    height: 22,
-                    width: 22,
-                    decoration: BoxDecoration(
-                      borderRadius: borderRC,
-                      border: commonThinBorder,
-                    ),
-                  ),
-            const SizedBox(
-              width: 15,
-            ),
-            Text(
-              title,
-              style: st14,
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

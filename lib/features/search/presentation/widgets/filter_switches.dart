@@ -1,5 +1,6 @@
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,14 +10,12 @@ class FilterSwitches extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        SizedBox(
-          height: 35.h,
-        ),
-        const FilterSwitchContainer(),
-        const FilterSwitchContainer(),
-        const FilterSwitchContainer(),
+        sizedbox35,
+        FilterSwitchContainer(),
+        FilterSwitchContainer(),
+        FilterSwitchContainer(),
       ],
     );
   }

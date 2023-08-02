@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:expo_kg/shared/constants/border_radius.dart';
-import 'package:expo_kg/shared/constants/colors.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:expo_kg/features/home/data/datasources/categories.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
+import 'package:expo_kg/shared/constants/border_radius.dart';
+import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FilterSelectable extends StatelessWidget {
   const FilterSelectable({super.key});
@@ -15,9 +15,7 @@ class FilterSelectable extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          height: 35.h,
-        ),
+        sizedbox35,
         const Text(
           'Заголовок',
           style: h14,

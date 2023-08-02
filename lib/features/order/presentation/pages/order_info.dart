@@ -7,6 +7,7 @@ import 'package:expo_kg/features/order/presentation/widgets/order_total_price.da
 import 'package:expo_kg/features/profile/data/models/order.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/appbar_title.dart';
 import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:flutter/material.dart';
@@ -42,9 +43,7 @@ class OrderInfo extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              height: 35,
-                            ),
+                            sizedbox35,
                             Text(
                               'Состав заказа',
                               style: h14,
@@ -60,9 +59,7 @@ class OrderInfo extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              height: 35,
-                            ),
+                            sizedbox35,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

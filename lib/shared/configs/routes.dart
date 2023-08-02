@@ -18,6 +18,7 @@ import 'package:expo_kg/features/main_scaffold/presentation/cubit/location_cubit
 import 'package:expo_kg/features/main_scaffold/presentation/pages/main_scaffold.dart';
 import 'package:expo_kg/features/map/presentation/pages/address_location.dart';
 import 'package:expo_kg/features/map/presentation/pages/delivery_location.dart';
+import 'package:expo_kg/features/merchant/presentation/pages/merchant_anketa.dart';
 import 'package:expo_kg/features/onboarding/presentation/cubit/onboarding_shown.dart';
 import 'package:expo_kg/features/onboarding/presentation/pages/onboarding.dart';
 import 'package:expo_kg/features/order/presentation/pages/order_info.dart';
@@ -52,6 +53,8 @@ class Routes {
   static String profileOrderTracking = '/profileOrderTracking';
   static String orderInfo = '/orderInfo';
 
+  static String merchantAnketa = '/merchantAnketa';
+
   static String category = '/category';
   static String subcategory = '/subcategory';
   static String search = '/search';
@@ -80,6 +83,8 @@ class RoutesNames {
   static String profileOrderHistory = 'profileOrderHistory';
   static String profileOrderTracking = 'profileOrderTracking';
   static String orderInfo = 'orderInfo';
+
+  static String merchantAnketa = 'merchantAnketa';
 
   static String category = 'category';
   static String subcategory = 'subcategory';
@@ -251,6 +256,18 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) => NoTransitionPage(
         child: OrderInfo(
           order: state.extra as OrderModel,
+        ),
+      ),
+    ),
+    //Merchant pages
+    GoRoute(
+      path: Routes.merchantAnketa,
+      name: RoutesNames.merchantAnketa,
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (context, state) => NoTransitionPage(
+        child: BlocProvider.value(
+          value: BlocProvider.of<AuthCubit>(context),
+          child: const MerchantAnketa(),
         ),
       ),
     ),

@@ -1,8 +1,8 @@
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
 
 class FilterPrice extends StatefulWidget {
@@ -24,9 +24,7 @@ class _FilterPriceState extends State<FilterPrice> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          height: 35.h,
-        ),
+        sizedbox35,
         const Text(
           'Стоимость',
           style: h14,

@@ -1,0 +1,4 @@
+enum MerchantTypeEnum {
+  shop,
+  person,
+}

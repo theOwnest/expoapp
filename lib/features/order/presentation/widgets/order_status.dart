@@ -1,5 +1,6 @@
 import 'package:expo_kg/features/order/presentation/cubit/order_controller.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,9 +27,7 @@ class OrderInfoStatus extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 35,
-          ),
+          sizedbox35,
           const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

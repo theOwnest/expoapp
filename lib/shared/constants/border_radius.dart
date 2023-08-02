@@ -7,3 +7,4 @@ final borderR12 = BorderRadius.circular(12);
 final borderR10 = BorderRadius.circular(10);
 final borderR8 = BorderRadius.circular(8);
 final borderR6 = BorderRadius.circular(6);
+final borderR4 = BorderRadius.circular(4);
