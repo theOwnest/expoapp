@@ -48,9 +48,7 @@ class OrderInfo extends StatelessWidget {
                               'Состав заказа',
                               style: h14,
                             ),
-                            SizedBox(
-                              height: 15,
-                            ),
+                            sizedbox15,
                           ],
                         ),
                       ),
@@ -72,9 +70,7 @@ class OrderInfo extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: 15,
-                            ),
+                            sizedbox15,
                           ],
                         ),
                       ),

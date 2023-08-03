@@ -9,6 +9,7 @@ import 'package:expo_kg/features/search/presentation/widgets/popular.dart';
 import 'package:expo_kg/features/search/presentation/widgets/search_history.dart';
 import 'package:expo_kg/features/search/presentation/widgets/search_results.dart';
 import 'package:expo_kg/shared/constants/size.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
@@ -98,9 +99,7 @@ class _SearchPageState extends State<SearchPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(
-                          height: 15,
-                        ),
+                        sizedbox15,
                         PopularCategories(
                           title:
                               'Найдено 67 товаров в категории ${context.read<SearchCubit>().state}',

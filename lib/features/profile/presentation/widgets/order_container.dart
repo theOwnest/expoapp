@@ -7,6 +7,7 @@ import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/extensions/datetime.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
@@ -49,9 +50,7 @@ class OrderContainer extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            sizedbox15,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -84,9 +83,7 @@ class OrderContainer extends StatelessWidget {
                   ),
               ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            sizedbox15,
             if (order.status == OrderStatus.pending)
               RoundedButton(
                 title: 'Смотреть на карте',
@@ -97,9 +94,7 @@ class OrderContainer extends StatelessWidget {
                   );
                 },
               ),
-            const SizedBox(
-              height: 15,
-            ),
+            sizedbox15,
             SizedBox(
               height: 50,
               child: GridView.builder(

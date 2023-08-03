@@ -6,6 +6,7 @@ import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/cubit_strings.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/models/multiple_cubits.dart';
 import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
@@ -50,9 +51,7 @@ class ProductShopContainer extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 15,
-          ),
+          sizedbox15,
           RoundedButton(
             title: 'На страницу продавца',
             height: 40,

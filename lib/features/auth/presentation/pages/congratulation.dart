@@ -1,5 +1,6 @@
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,9 +37,7 @@ class RegisterCongratulationPage extends StatelessWidget {
                           'Поздравляем!',
                           style: h24,
                         ),
-                        const SizedBox(
-                          height: 15,
-                        ),
+                        sizedbox15,
                         const Text(
                           'Вы успешно зарегестрированы! Мы отправили код с подтверждением на вашу почту.',
                           style: st14,

@@ -1,14 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/features/search/presentation/cubit/search_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-
 import 'package:expo_kg/features/search/presentation/cubit/search_history_cubit.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SearchHistoryContainer extends StatelessWidget {
   const SearchHistoryContainer({
@@ -77,9 +77,7 @@ class SearchHistoryContainer extends StatelessWidget {
                     ],
                   ),
                 ),
-                separatorBuilder: (context, index) => const SizedBox(
-                  height: 15,
-                ),
+                separatorBuilder: (context, index) => sizedbox15,
                 itemCount: state.length > 5 ? 5 : state.length,
               );
             },

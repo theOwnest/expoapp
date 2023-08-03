@@ -10,6 +10,7 @@ import 'package:expo_kg/features/product/presentation/widgets/product_specs.dart
 import 'package:expo_kg/features/product/presentation/widgets/shop_container.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -101,9 +102,7 @@ class ProductPage extends StatelessWidget {
                                     'Описание',
                                     style: h14,
                                   ),
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
+                                  sizedbox15,
                                   Text(
                                     product.description,
                                     style: st14,

@@ -1,7 +1,8 @@
 import 'package:expo_kg/features/category/data/datasources/subcategories.dart';
-import 'package:flutter/material.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
+import 'package:flutter/material.dart';
 
 class SearchPopularContainer extends StatelessWidget {
   const SearchPopularContainer({
@@ -29,9 +30,7 @@ class SearchPopularContainer extends StatelessWidget {
               subcategoryList[index],
               style: st14,
             ),
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 15,
-            ),
+            separatorBuilder: (context, index) => sizedbox15,
             itemCount: subcategoryList.length > 5 ? 5 : subcategoryList.length,
           ),
         )

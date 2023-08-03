@@ -1,6 +1,7 @@
 import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -122,9 +123,7 @@ class _LoginFormState extends State<LoginForm> {
                 'Забыли свой пароль?',
                 style: st14,
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              sizedbox15,
               RoundedButton(
                 title: 'Войти',
                 function: () {

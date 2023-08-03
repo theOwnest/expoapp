@@ -7,6 +7,7 @@ import 'package:expo_kg/features/search/presentation/cubit/search_cubit.dart';
 import 'package:expo_kg/features/search/presentation/widgets/search_results_grid.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -57,9 +58,7 @@ class SearchResults extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              sizedbox15,
               BlocBuilder<SearchCubit, String?>(
                 builder: (context, state) {
                   return SearchUpdater(
