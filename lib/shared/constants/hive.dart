@@ -7,4 +7,6 @@ class HiveConstants {
   //properties
   static const onboardShown = 'onboardShown';
   static const user = 'user';
+  static const merchant = 'merchant';
+  static const shop = 'shop';
 }

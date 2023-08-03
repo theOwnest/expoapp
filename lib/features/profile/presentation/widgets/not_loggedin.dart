@@ -48,7 +48,6 @@ class ProfileNotLoggedIn extends StatelessWidget {
               ),
               RoundedButton(
                 title: 'Вход/регистрация',
-                margin: marginH,
                 function: () {
                   context.pushNamed(
                     RoutesNames.login,

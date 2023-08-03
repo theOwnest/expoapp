@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/features/merchant/data/enums/merchant_type.dart';
-import 'package:expo_kg/features/merchant/data/models/anketa.dart';
-import 'package:expo_kg/features/merchant/presentation/cubit/anketa_controller.dart';
+import 'package:expo_kg/features/merchant/presentation/cubit/merchant_anketa_cubit.dart';
 import 'package:expo_kg/features/merchant/presentation/cubit/merchant_type_cont.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
@@ -33,7 +32,7 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
               _formKey.currentState!.isValid,
             );
       },
-      child: BlocBuilder<AnketaController, AnketaModel>(
+      child: BlocBuilder<MerchantAnketaCubit, MerchantAnketaState>(
         builder: (context, state) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,9 +48,9 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
                   color: AppColor.black,
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                initialValue: state.fullName,
+                initialValue: state.anketa?.fullName ?? '',
                 onChanged: (value) {
-                  context.read<AnketaController>().change(
+                  context.read<MerchantAnketaCubit>().change(
                         fullName: value,
                       );
                 },
@@ -93,9 +92,9 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
               FormBuilderTextField(
                 name: 'Почта/номер',
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                initialValue: state.email,
+                initialValue: state.anketa?.email ?? '',
                 onChanged: (value) {
-                  context.read<AnketaController>().change(
+                  context.read<MerchantAnketaCubit>().change(
                         email: value,
                       );
                 },
@@ -145,9 +144,9 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
                 textInputAction: TextInputAction.done,
                 name: 'Номер телефона',
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                initialValue: state.phone,
+                initialValue: state.anketa?.phone ?? '',
                 onChanged: (value) {
-                  context.read<AnketaController>().change(
+                  context.read<MerchantAnketaCubit>().change(
                         phone: value,
                       );
                 },

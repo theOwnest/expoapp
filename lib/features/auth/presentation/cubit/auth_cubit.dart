@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:expo_kg/features/auth/data/models/user.dart';
+import 'package:expo_kg/features/merchant/data/models/merchant.dart';
+import 'package:expo_kg/features/merchant/data/models/shop.dart';
 import 'package:expo_kg/shared/constants/hive.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -20,7 +22,35 @@ class AuthCubit extends Cubit<AuthState> {
           Map<String, dynamic>.from(loginBox.get(HiveConstants.user) as Map);
       final user = UserModel.fromMap(userData);
       emit(
-        AuthLoggedIn(user: user),
+        AuthLoggedInCustomer(user: user),
+      );
+    }
+    initMerchant();
+  }
+
+  initMerchant() {
+    final loginBox = Hive.box(
+      HiveConstants.loginBox,
+    );
+    if (loginBox.containsKey(
+      HiveConstants.merchant,
+    )) {
+      final userData = Map<String, dynamic>.from(
+          loginBox.get(HiveConstants.merchant) as Map);
+      final merchant = MerchantModel.fromMap(userData);
+      emit(
+        AuthLoggedInMerchant(user: merchant),
+      );
+    }
+
+    if (loginBox.containsKey(
+      HiveConstants.shop,
+    )) {
+      final userData =
+          Map<String, dynamic>.from(loginBox.get(HiveConstants.shop) as Map);
+      final merchant = MerchantShopModel.fromMap(userData);
+      emit(
+        AuthLoggedInShop(user: merchant),
       );
     }
   }
@@ -30,7 +60,7 @@ class AuthCubit extends Cubit<AuthState> {
       HiveConstants.loginBox,
     );
     final user = UserModel(
-      fullName: 'Иван Сергеевич Иванов',
+      userName: 'Иван Сергеевич Иванов',
       email: email,
       phone: '+7 (123) 456 78 90',
     );
@@ -39,7 +69,7 @@ class AuthCubit extends Cubit<AuthState> {
       user.toMap(),
     );
     emit(
-      AuthLoggedIn(
+      AuthLoggedInCustomer(
         user: user,
       ),
     );
@@ -54,13 +84,43 @@ class AuthCubit extends Cubit<AuthState> {
       user.toMap(),
     );
     emit(
-      AuthLoggedIn(
+      AuthLoggedInCustomer(
         user: user,
       ),
     );
     emit(
-      AuthLoggedIn(
+      AuthLoggedInCustomer(
         user: user,
+      ),
+    );
+  }
+
+  addMerchant(MerchantModel merchant) {
+    final loginBox = Hive.box(
+      HiveConstants.loginBox,
+    );
+    loginBox.put(
+      HiveConstants.merchant,
+      merchant.toMap(),
+    );
+    emit(
+      AuthLoggedInMerchant(
+        user: merchant,
+      ),
+    );
+  }
+
+  addShop(MerchantShopModel merchant) {
+    final loginBox = Hive.box(
+      HiveConstants.loginBox,
+    );
+    loginBox.put(
+      HiveConstants.shop,
+      merchant.toMap(),
+    );
+    emit(
+      AuthLoggedInShop(
+        user: merchant,
       ),
     );
   }

@@ -85,7 +85,7 @@ class _AnketaPageState extends State<AnketaPage> {
                             ? () {
                                 context.read<AuthCubit>().register(
                                       UserModel(
-                                        fullName: nameCont.text,
+                                        userName: nameCont.text,
                                         email: emailCont.text,
                                         phone: widget.phone,
                                       ),

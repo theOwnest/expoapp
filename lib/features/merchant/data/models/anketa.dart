@@ -12,7 +12,7 @@ class AnketaModel {
   factory AnketaModel.fromUser(UserModel user) {
     return AnketaModel(
       email: user.email,
-      fullName: user.fullName,
+      fullName: user.userName,
       phone: user.phone,
     );
   }
