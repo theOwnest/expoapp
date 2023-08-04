@@ -37,8 +37,13 @@ class ProfileUserButtonsList extends StatelessWidget {
         const ForwardButton(
           title: 'Личные данные',
         ),
-        const ForwardButton(
+        ForwardButton(
           title: 'Настройка уведомлений',
+          function: () {
+            context.pushNamed(
+              RoutesNames.notificationSetting,
+            );
+          },
         ),
       ],
     );

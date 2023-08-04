@@ -28,6 +28,7 @@ import 'package:expo_kg/features/payment/presentation/pages/payment_method.dart'
 import 'package:expo_kg/features/product/presentation/pages/product.dart';
 import 'package:expo_kg/features/product/presentation/pages/shop.dart';
 import 'package:expo_kg/features/profile/data/models/order.dart';
+import 'package:expo_kg/features/profile/presentation/pages/notification.dart';
 import 'package:expo_kg/features/profile/presentation/pages/order_history.dart';
 import 'package:expo_kg/features/profile/presentation/pages/order_tracking.dart';
 import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
@@ -53,6 +54,7 @@ class Routes {
   static String deliveryLocation = '/deliveryLocation';
 
   static String profileOrderHistory = '/profileOrderHistory';
+  static String notificationSetting = '/notificationSetting';
   static String profileOrderTracking = '/profileOrderTracking';
   static String orderInfo = '/orderInfo';
   static String paymentMethod = '/paymentMethod';
@@ -86,6 +88,7 @@ class RoutesNames {
   static String deliveryLocation = 'deliveryLocation';
 
   static String profileOrderHistory = 'profileOrderHistory';
+  static String notificationSetting = 'notificationSetting';
   static String profileOrderTracking = 'profileOrderTracking';
   static String orderInfo = 'orderInfo';
   static String paymentMethod = 'paymentMethod';
@@ -255,6 +258,13 @@ final GoRouter router = GoRouter(
       name: RoutesNames.profileOrderTracking,
       pageBuilder: (context, state) => const NoTransitionPage(
         child: OrderTracking(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.notificationSetting,
+      name: RoutesNames.notificationSetting,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: NotificationSettings(),
       ),
     ),
     GoRoute(

@@ -35,8 +35,13 @@ class ProfileMerchantButtonsList extends StatelessWidget {
             );
           },
         ),
-        const ForwardButton(
+        ForwardButton(
           title: 'Настройка уведомлений',
+          function: () {
+            context.pushNamed(
+              RoutesNames.notificationSetting,
+            );
+          },
         ),
       ],
     );
