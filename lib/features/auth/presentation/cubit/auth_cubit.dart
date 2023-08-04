@@ -125,6 +125,21 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  goToCustomer() {
+    final currentState = super.state;
+    if (currentState is AuthLoggedInMerchant) {
+      final UserModel user = currentState.user;
+      emit(
+        AuthLoggedInCustomer(user: user),
+      );
+    } else if (currentState is AuthLoggedInShop) {
+      final UserModel user = currentState.user;
+      emit(
+        AuthLoggedInCustomer(user: user),
+      );
+    }
+  }
+
   logOut() {
     Hive.box(
       HiveConstants.loginBox,

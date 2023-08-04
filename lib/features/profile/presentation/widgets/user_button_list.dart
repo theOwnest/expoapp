@@ -26,8 +26,13 @@ class ProfileUserButtonsList extends StatelessWidget {
             );
           },
         ),
-        const ForwardButton(
+        ForwardButton(
           title: 'Способы оплаты',
+          function: () {
+            context.pushNamed(
+              RoutesNames.paymentMethod,
+            );
+          },
         ),
         const ForwardButton(
           title: 'Личные данные',

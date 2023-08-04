@@ -6,3 +6,9 @@ final commonThinBorder = Border.all(
   color: AppColor.lightGrey,
   width: 1,
 );
+
+const underlineInputBorder = UnderlineInputBorder(
+  borderSide: BorderSide(
+    color: AppColor.lightGrey,
+  ),
+);

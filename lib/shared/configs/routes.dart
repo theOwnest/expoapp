@@ -22,6 +22,9 @@ import 'package:expo_kg/features/merchant/presentation/pages/merchant_anketa.dar
 import 'package:expo_kg/features/onboarding/presentation/cubit/onboarding_shown.dart';
 import 'package:expo_kg/features/onboarding/presentation/pages/onboarding.dart';
 import 'package:expo_kg/features/order/presentation/pages/order_info.dart';
+import 'package:expo_kg/features/payment/presentation/cubit/card_controller.dart';
+import 'package:expo_kg/features/payment/presentation/pages/add_card_form.dart';
+import 'package:expo_kg/features/payment/presentation/pages/payment_method.dart';
 import 'package:expo_kg/features/product/presentation/pages/product.dart';
 import 'package:expo_kg/features/product/presentation/pages/shop.dart';
 import 'package:expo_kg/features/profile/data/models/order.dart';
@@ -52,6 +55,8 @@ class Routes {
   static String profileOrderHistory = '/profileOrderHistory';
   static String profileOrderTracking = '/profileOrderTracking';
   static String orderInfo = '/orderInfo';
+  static String paymentMethod = '/paymentMethod';
+  static String addCard = '/addCard';
 
   static String merchantAnketa = '/merchantAnketa';
 
@@ -83,6 +88,8 @@ class RoutesNames {
   static String profileOrderHistory = 'profileOrderHistory';
   static String profileOrderTracking = 'profileOrderTracking';
   static String orderInfo = 'orderInfo';
+  static String paymentMethod = 'paymentMethod';
+  static String addCard = 'addCard';
 
   static String merchantAnketa = 'merchantAnketa';
 
@@ -256,6 +263,23 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) => NoTransitionPage(
         child: OrderInfo(
           order: state.extra as OrderModel,
+        ),
+      ),
+    ),
+    GoRoute(
+      path: Routes.paymentMethod,
+      name: RoutesNames.paymentMethod,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: PaymentMethodPage(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.addCard,
+      name: RoutesNames.addCard,
+      pageBuilder: (context, state) => NoTransitionPage(
+        child: BlocProvider.value(
+          value: state.extra as CardController,
+          child: const AddCardPage(),
         ),
       ),
     ),

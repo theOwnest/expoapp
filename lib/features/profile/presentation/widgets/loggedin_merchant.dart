@@ -43,15 +43,18 @@ class ProfileLoggedInMerchant extends StatelessWidget {
             ),
           ],
         ),
-        const Column(
+        Column(
           children: [
-            RoundedButton(
+            const RoundedButton(
               title: '+ Добавить объявление',
               color: AppColor.black,
             ),
             sizedbox15,
             RoundedButton(
               title: 'Перейти на профиль покупателя',
+              function: () {
+                context.read<AuthCubit>().goToCustomer();
+              },
             ),
           ],
         ),
