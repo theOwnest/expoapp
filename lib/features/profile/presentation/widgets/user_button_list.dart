@@ -34,8 +34,13 @@ class ProfileUserButtonsList extends StatelessWidget {
             );
           },
         ),
-        const ForwardButton(
+        ForwardButton(
           title: 'Личные данные',
+          function: () {
+            context.pushNamed(
+              RoutesNames.personalInfo,
+            );
+          },
         ),
         ForwardButton(
           title: 'Настройка уведомлений',

@@ -6,3 +6,6 @@ const sizedbox35 = SizedBox(
 const sizedbox15 = SizedBox(
   height: 15,
 );
+const sizedbox10 = SizedBox(
+  height: 10,
+);

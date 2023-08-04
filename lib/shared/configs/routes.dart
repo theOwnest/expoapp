@@ -31,6 +31,7 @@ import 'package:expo_kg/features/profile/data/models/order.dart';
 import 'package:expo_kg/features/profile/presentation/pages/notification.dart';
 import 'package:expo_kg/features/profile/presentation/pages/order_history.dart';
 import 'package:expo_kg/features/profile/presentation/pages/order_tracking.dart';
+import 'package:expo_kg/features/profile/presentation/pages/personal_info.dart';
 import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
 import 'package:expo_kg/features/search/presentation/pages/search.dart';
 import 'package:expo_kg/shared/constants/cubit_strings.dart';
@@ -55,6 +56,7 @@ class Routes {
 
   static String profileOrderHistory = '/profileOrderHistory';
   static String notificationSetting = '/notificationSetting';
+  static String personalInfo = '/personalInfo';
   static String profileOrderTracking = '/profileOrderTracking';
   static String orderInfo = '/orderInfo';
   static String paymentMethod = '/paymentMethod';
@@ -89,6 +91,7 @@ class RoutesNames {
 
   static String profileOrderHistory = 'profileOrderHistory';
   static String notificationSetting = 'notificationSetting';
+  static String personalInfo = 'personalInfo';
   static String profileOrderTracking = 'profileOrderTracking';
   static String orderInfo = 'orderInfo';
   static String paymentMethod = 'paymentMethod';
@@ -265,6 +268,16 @@ final GoRouter router = GoRouter(
       name: RoutesNames.notificationSetting,
       pageBuilder: (context, state) => const NoTransitionPage(
         child: NotificationSettings(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.personalInfo,
+      name: RoutesNames.personalInfo,
+      pageBuilder: (context, state) => NoTransitionPage(
+        child: BlocProvider.value(
+          value: BlocProvider.of<AuthCubit>(context),
+          child: const PersonalInfo(),
+        ),
       ),
     ),
     GoRoute(

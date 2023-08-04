@@ -75,6 +75,21 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  changeInfo(UserModel user) async {
+    final loginBox = Hive.box(
+      HiveConstants.loginBox,
+    );
+    loginBox.put(
+      HiveConstants.user,
+      user.toMap(),
+    );
+    emit(
+      AuthLoggedInCustomer(
+        user: user,
+      ),
+    );
+  }
+
   register(UserModel user) {
     final loginBox = Hive.box(
       HiveConstants.loginBox,
