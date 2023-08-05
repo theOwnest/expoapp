@@ -16,4 +16,10 @@ class ChatCubit extends Cubit<ChatState> {
       ),
     );
   }
+
+  ChatModel getById(String id) {
+    return super.state.chats.firstWhere(
+          (element) => element.id == id,
+        );
+  }
 }

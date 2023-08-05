@@ -5,7 +5,7 @@ import 'package:expo_kg/shared/configs/random.dart';
 import 'package:expo_kg/shared/constants/names.dart';
 
 final chatList = List.generate(
-  random.nextInt(10),
+  random.nextInt(10) + 5,
   (index) => ChatModel(
     id: uuid.v1(),
     fullName: '${demoNames[random.nextInt(

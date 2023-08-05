@@ -2,7 +2,7 @@ import 'package:expo_kg/features/chat/data/models/message.dart';
 import 'package:expo_kg/shared/configs/random.dart';
 
 final messagesList = List.generate(
-  random.nextInt(10),
+  random.nextInt(10) + 2,
   (index) => MessageModel(
     id: uuid.v1(),
     message:

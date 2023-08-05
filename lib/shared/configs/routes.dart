@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:expo_kg/features/auth/presentation/pages/anketa.dart';
 import 'package:expo_kg/features/auth/presentation/pages/congratulation.dart';
@@ -9,7 +7,9 @@ import 'package:expo_kg/features/auth/presentation/pages/sms_code.dart';
 import 'package:expo_kg/features/cart/presentation/pages/cart.dart';
 import 'package:expo_kg/features/category/presentation/pages/category.dart';
 import 'package:expo_kg/features/category/presentation/pages/subcategory.dart';
+import 'package:expo_kg/features/chat/presentation/cubit/chat_cubit.dart';
 import 'package:expo_kg/features/chat/presentation/pages/chat.dart';
+import 'package:expo_kg/features/chat/presentation/pages/messaging.dart';
 import 'package:expo_kg/features/comment/presentation/pages/all_comments.dart';
 import 'package:expo_kg/features/comment/presentation/pages/rate_product.dart';
 import 'package:expo_kg/features/favorite/presentation/cubit/favorite_cubit.dart';
@@ -51,6 +51,8 @@ class Routes {
   static String profile = '/profile';
   static String chat = '/chat';
 
+  static String messagingPage = '/messagingPage';
+
   static String productInfo = '/productInfo';
   static String shopInfo = '/shopInfo';
 
@@ -89,6 +91,8 @@ class RoutesNames {
   static String cart = 'cart';
   static String profile = 'profile';
   static String chat = 'chat';
+
+  static String messagingPage = 'messagingPage';
 
   static String productInfo = 'productInfo';
   static String shopInfo = 'shopInfo';
@@ -192,7 +196,6 @@ final GoRouter router = GoRouter(
       path: Routes.subcategory,
       name: RoutesNames.subcategory,
       pageBuilder: (context, state) {
-        log(state.location);
         final category = state.queryParameters['category'] as String;
         final productCubit = state.extra as ProductCubit;
         return NoTransitionPage(
@@ -210,7 +213,6 @@ final GoRouter router = GoRouter(
       name: RoutesNames.productInfo,
       parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state) {
-        log(state.location);
         final productId = state.queryParameters['productId'] as String;
         final cubits = state.extra as MultipleCubits;
         final productsCubit =
@@ -237,7 +239,6 @@ final GoRouter router = GoRouter(
       name: RoutesNames.shopInfo,
       parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state) {
-        log(state.location);
         final productId = state.queryParameters['productId'] as String;
         final cubits = state.extra as MultipleCubits;
         final productsCubit =
@@ -336,6 +337,24 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) => const NoTransitionPage(
         child: AddPosterPage(),
       ),
+    ),
+    //Chat
+    GoRoute(
+      path: Routes.messagingPage,
+      name: RoutesNames.messagingPage,
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (context, state) {
+        final chatId = state.queryParameters['chatId'] as String;
+        final chatCubit = state.extra as ChatCubit;
+        return NoTransitionPage(
+          child: BlocProvider.value(
+            value: chatCubit,
+            child: MessagingPage(
+              chatId: chatId,
+            ),
+          ),
+        );
+      },
     ),
     //Comments
     GoRoute(
