@@ -2,6 +2,7 @@
 import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:expo_kg/features/merchant/data/models/merchant.dart';
 import 'package:expo_kg/features/profile/presentation/widgets/merchant_button_list.dart';
+import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/dense_text_button.dart';
@@ -9,6 +10,7 @@ import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import 'user_info.dart';
 
@@ -45,9 +47,14 @@ class ProfileLoggedInMerchant extends StatelessWidget {
         ),
         Column(
           children: [
-            const RoundedButton(
+            RoundedButton(
               title: '+ Добавить объявление',
               color: AppColor.black,
+              function: () {
+                context.pushNamed(
+                  RoutesNames.addPoster,
+                );
+              },
             ),
             sizedbox15,
             RoundedButton(

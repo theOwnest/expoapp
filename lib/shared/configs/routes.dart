@@ -18,6 +18,7 @@ import 'package:expo_kg/features/main_scaffold/presentation/cubit/location_cubit
 import 'package:expo_kg/features/main_scaffold/presentation/pages/main_scaffold.dart';
 import 'package:expo_kg/features/map/presentation/pages/address_location.dart';
 import 'package:expo_kg/features/map/presentation/pages/delivery_location.dart';
+import 'package:expo_kg/features/merchant/presentation/pages/add_poster.dart';
 import 'package:expo_kg/features/merchant/presentation/pages/merchant_anketa.dart';
 import 'package:expo_kg/features/onboarding/presentation/cubit/onboarding_shown.dart';
 import 'package:expo_kg/features/onboarding/presentation/pages/onboarding.dart';
@@ -63,6 +64,7 @@ class Routes {
   static String addCard = '/addCard';
 
   static String merchantAnketa = '/merchantAnketa';
+  static String addPoster = '/addPoster';
 
   static String category = '/category';
   static String subcategory = '/subcategory';
@@ -98,6 +100,7 @@ class RoutesNames {
   static String addCard = 'addCard';
 
   static String merchantAnketa = 'merchantAnketa';
+  static String addPoster = 'addPoster';
 
   static String category = 'category';
   static String subcategory = 'subcategory';
@@ -316,6 +319,14 @@ final GoRouter router = GoRouter(
           value: BlocProvider.of<AuthCubit>(context),
           child: const MerchantAnketa(),
         ),
+      ),
+    ),
+    GoRoute(
+      path: Routes.addPoster,
+      name: RoutesNames.addPoster,
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: AddPosterPage(),
       ),
     ),
     //Map
