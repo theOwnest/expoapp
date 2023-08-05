@@ -1,9 +1,8 @@
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/divider.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FilterSwitches extends StatelessWidget {
   const FilterSwitches({super.key});
@@ -57,11 +56,7 @@ class _FilterSwitchContainerState extends State<FilterSwitchContainer> {
             ),
           ],
         ),
-        Divider(
-          height: 30.h,
-          color: AppColor.lightGrey,
-          thickness: 1,
-        )
+        divider30,
       ],
     );
   }

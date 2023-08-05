@@ -1,5 +1,5 @@
+import 'package:expo_kg/shared/constants/divider.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 import '../configs/texts.dart';
 import '../constants/colors.dart';
@@ -52,10 +52,7 @@ class _SwitchTitleButtonState extends State<SwitchTitleButton> {
               ),
             ],
           ),
-          const Divider(
-            height: 30,
-            thickness: 1,
-          ),
+          divider30,
         ],
       ),
     );

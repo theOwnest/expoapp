@@ -3,6 +3,7 @@ import 'package:expo_kg/features/home/presentation/widgets/search_products.dart'
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/divider.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -81,10 +82,7 @@ class SubcategoryPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Divider(
-                    height: 30,
-                    thickness: 1,
-                  ),
+                  divider30,
                 ],
               ),
             ),

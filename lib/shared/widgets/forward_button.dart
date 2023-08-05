@@ -1,3 +1,4 @@
+import 'package:expo_kg/shared/constants/divider.dart';
 import 'package:flutter/material.dart';
 
 import '../configs/texts.dart';
@@ -32,10 +33,7 @@ class ForwardButton extends StatelessWidget {
               ),
             ],
           ),
-          const Divider(
-            height: 30,
-            thickness: 1,
-          ),
+          divider30,
         ],
       ),
     );

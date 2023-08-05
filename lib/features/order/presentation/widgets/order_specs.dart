@@ -1,5 +1,6 @@
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/divider.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 
@@ -85,11 +86,7 @@ class ProductSpecContainer extends StatelessWidget {
             ),
           ],
         ),
-        const Divider(
-          color: AppColor.lightGrey,
-          thickness: 1,
-          height: 30,
-        ),
+        divider30,
       ],
     );
   }
