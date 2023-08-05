@@ -1,6 +1,7 @@
+import 'package:expo_kg/features/comment/presentation/widgets/comment_container.dart';
 import 'package:expo_kg/features/product/data/datasources/comments.dart';
 import 'package:expo_kg/features/product/presentation/cubit/product_cont.dart';
-import 'package:expo_kg/features/product/presentation/widgets/comment_container.dart';
+import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/widgets/custom_text_button.dart';
@@ -8,6 +9,7 @@ import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductComments extends StatelessWidget {
   const ProductComments({super.key});
@@ -70,11 +72,21 @@ class ProductComments extends StatelessWidget {
           textStyle: st12.copyWith(
             color: AppColor.orange,
           ),
+          function: () {
+            context.pushNamed(
+              RoutesNames.allComments,
+            );
+          },
         ),
-        const RoundedButton(
+        RoundedButton(
           title: 'Добавить отзыв',
           color: AppColor.black,
           height: 60,
+          function: () {
+            context.pushNamed(
+              RoutesNames.rateProduct,
+            );
+          },
         ),
       ],
     );

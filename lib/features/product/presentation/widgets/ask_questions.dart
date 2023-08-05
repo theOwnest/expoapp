@@ -1,5 +1,5 @@
 import 'package:expo_kg/shared/configs/texts.dart';
-import 'package:expo_kg/shared/constants/border_radius.dart';
+import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
@@ -25,13 +25,7 @@ class ProductAskQuestions extends StatelessWidget {
             expands: true,
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: borderR10,
-                borderSide: const BorderSide(
-                  color: AppColor.lightGrey,
-                  width: 1,
-                ),
-              ),
+              border: outlineInputBorder,
             ),
           ),
         ),

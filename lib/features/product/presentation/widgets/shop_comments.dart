@@ -6,7 +6,7 @@ import 'package:expo_kg/shared/widgets/custom_text_button.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../widgets/comment_container.dart';
+import '../../../comment/presentation/widgets/comment_container.dart';
 
 class ShopComments extends StatelessWidget {
   const ShopComments({

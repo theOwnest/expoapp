@@ -10,6 +10,8 @@ import 'package:expo_kg/features/cart/presentation/pages/cart.dart';
 import 'package:expo_kg/features/category/presentation/pages/category.dart';
 import 'package:expo_kg/features/category/presentation/pages/subcategory.dart';
 import 'package:expo_kg/features/chat/presentation/pages/chat.dart';
+import 'package:expo_kg/features/comment/presentation/pages/all_comments.dart';
+import 'package:expo_kg/features/comment/presentation/pages/rate_product.dart';
 import 'package:expo_kg/features/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:expo_kg/features/favorite/presentation/pages/favorite.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
@@ -66,6 +68,9 @@ class Routes {
   static String merchantAnketa = '/merchantAnketa';
   static String addPoster = '/addPoster';
 
+  static String allComments = '/allComments';
+  static String rateProduct = '/rateProduct';
+
   static String category = '/category';
   static String subcategory = '/subcategory';
   static String search = '/search';
@@ -101,6 +106,9 @@ class RoutesNames {
 
   static String merchantAnketa = 'merchantAnketa';
   static String addPoster = 'addPoster';
+
+  static String allComments = 'allComments';
+  static String rateProduct = 'rateProduct';
 
   static String category = 'category';
   static String subcategory = 'subcategory';
@@ -327,6 +335,23 @@ final GoRouter router = GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (context, state) => const NoTransitionPage(
         child: AddPosterPage(),
+      ),
+    ),
+    //Comments
+    GoRoute(
+      path: Routes.allComments,
+      name: RoutesNames.allComments,
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: AllCommentsPage(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.rateProduct,
+      name: RoutesNames.rateProduct,
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: RateProductPage(),
       ),
     ),
     //Map
