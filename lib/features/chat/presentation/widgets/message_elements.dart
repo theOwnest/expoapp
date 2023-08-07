@@ -1,4 +1,5 @@
 import 'package:expo_kg/features/chat/presentation/cubit/chat_controller.dart';
+import 'package:expo_kg/features/chat/presentation/cubit/chat_cubit.dart';
 import 'package:expo_kg/features/chat/presentation/widgets/message_container.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
@@ -10,17 +11,24 @@ class MessageElements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final chat = context.read<ChatController>().state;
     return Expanded(
       child: Padding(
         padding: marginH,
-        child: ListView.separated(
-          padding: marginV,
-          itemBuilder: (context, index) => MessageContainer(
-            message: chat.messages[index],
-          ),
-          separatorBuilder: (context, index) => sizedbox10,
-          itemCount: chat.messages.length,
+        child: BlocBuilder<ChatCubit, ChatState>(
+          builder: (context, state) {
+            final chat = context.read<ChatCubit>().getById(
+                  context.read<ChatController>().state.id,
+                );
+            return ListView.separated(
+              reverse: true,
+              padding: marginV,
+              itemBuilder: (context, index) => MessageContainer(
+                message: chat.messages[chat.messages.length - index - 1],
+              ),
+              separatorBuilder: (context, index) => sizedbox10,
+              itemCount: chat.messages.length,
+            );
+          },
         ),
       ),
     );

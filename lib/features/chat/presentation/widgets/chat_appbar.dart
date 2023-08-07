@@ -1,6 +1,5 @@
 import 'package:expo_kg/features/chat/presentation/cubit/chat_controller.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
-import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
@@ -29,12 +28,14 @@ class ChatAppBar extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  Container(
-                    height: 36,
-                    width: 36,
-                    decoration: BoxDecoration(
-                      color: AppColor.lightGrey,
-                      borderRadius: borderRC,
+                  ClipOval(
+                    child: SizedBox(
+                      height: 40,
+                      width: 40,
+                      child: Image.asset(
+                        'assets/debug/person.jpg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   sizedboxH10,
