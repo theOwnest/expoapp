@@ -1,6 +1,7 @@
 import 'package:expo_kg/features/auth/data/models/user.dart';
 import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:expo_kg/features/auth/presentation/cubit/button_available.dart';
+import 'package:expo_kg/features/profile/presentation/cubit/profile_image_cubit.dart';
 import 'package:expo_kg/features/profile/presentation/widgets/anketa_form.dart';
 import 'package:expo_kg/features/profile/presentation/widgets/personal_add_photo.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
@@ -24,8 +25,15 @@ class _PersonalInfoState extends State<PersonalInfo> {
   final passCont = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ButtonAvailableCont(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ButtonAvailableCont(),
+        ),
+        BlocProvider(
+          create: (context) => ProfileImageCubit(),
+        ),
+      ],
       child: Builder(builder: (context) {
         return Column(
           children: [
