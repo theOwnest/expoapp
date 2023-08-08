@@ -1,8 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:expo_kg/features/category/data/datasources/container_colors.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/shared/configs/random.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/constants/border.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,10 +27,15 @@ class HomePopularCategories extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Пупулярные категории',
-                style: h18,
+              const Expanded(
+                child: AutoSizeText(
+                  'Популярные категории',
+                  style: h18,
+                  maxLines: 1,
+                  minFontSize: 12,
+                ),
               ),
+              sizedboxH10,
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
@@ -47,7 +54,7 @@ class HomePopularCategories extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 75.h,
+          height: 75.w,
           child: ListView.separated(
             padding: const EdgeInsets.symmetric(
               horizontal: 15,

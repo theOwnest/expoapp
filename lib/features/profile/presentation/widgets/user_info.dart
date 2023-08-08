@@ -1,6 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:expo_kg/features/auth/data/models/user.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../shared/configs/texts.dart';
@@ -21,10 +23,15 @@ class ProfileUserInfo extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              user.userName,
-              style: h24,
+            Expanded(
+              child: AutoSizeText(
+                user.userName,
+                style: h24,
+                maxLines: 1,
+                minFontSize: 16,
+              ),
             ),
+            sizedboxH10,
             Container(
               height: 36,
               width: 36,

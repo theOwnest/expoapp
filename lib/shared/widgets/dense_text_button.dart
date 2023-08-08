@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../configs/texts.dart';
 import '../constants/colors.dart';
@@ -16,7 +17,9 @@ class DenseTextButton extends StatelessWidget {
   final bool isBold;
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return TextButton(style: ButtonStyle(
+      padding: MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: 5.h,),),
+    ),
       onPressed: () {
         if (function != null) {
           function!();

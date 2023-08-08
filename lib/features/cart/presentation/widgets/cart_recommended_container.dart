@@ -26,6 +26,7 @@ class CartRecommendedContainer extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   '899 KGS',
@@ -41,7 +42,6 @@ class CartRecommendedContainer extends StatelessWidget {
                 ),
                 const Text(
                   'Продавец “Солнышко”',
-                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: st12,
                 ),

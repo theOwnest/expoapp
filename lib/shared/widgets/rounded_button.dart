@@ -3,6 +3,7 @@ import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton({
@@ -31,7 +32,7 @@ class RoundedButton extends StatelessWidget {
         }
       },
       child: Container(
-        height: height ?? 60,
+        height: height ?? 60.h,
         width: width ?? double.infinity,
         decoration: BoxDecoration(
           color: color ?? AppColor.orange,

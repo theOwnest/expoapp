@@ -1,8 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
 import 'package:expo_kg/features/category/presentation/widgets/popular_categories.dart';
 import 'package:expo_kg/features/home/presentation/widgets/search_products.dart';
 import 'package:expo_kg/features/search/data/utils/filter_bottomsheet.dart';
+import 'package:expo_kg/features/search/presentation/cubit/filter_cubit.dart';
 import 'package:expo_kg/features/search/presentation/cubit/search_cubit.dart';
 import 'package:expo_kg/features/search/presentation/cubit/search_history_cubit.dart';
 import 'package:expo_kg/features/search/presentation/widgets/popular.dart';
@@ -17,8 +19,9 @@ import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 class SearchPage extends StatefulWidget {
   const SearchPage({
     Key? key,
+    required this.filterState,
   }) : super(key: key);
-
+  final FilterState filterState;
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
@@ -34,6 +37,11 @@ class _SearchPageState extends State<SearchPage> {
         ),
         BlocProvider(
           create: (context) => SearchCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FilterCubit(
+            widget.filterState,
+          ),
         ),
       ],
       child: Builder(builder: (context) {

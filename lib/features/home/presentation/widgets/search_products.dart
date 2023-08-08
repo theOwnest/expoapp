@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
+import 'package:expo_kg/features/search/presentation/cubit/filter_cubit.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeProductSearchbar extends StatelessWidget {
   const HomeProductSearchbar({
@@ -28,6 +28,7 @@ class HomeProductSearchbar extends StatelessWidget {
         if (isSearchPage != null && isSearchPage!) return;
         context.pushNamed(
           RoutesNames.search,
+          extra: const FilterState(),
         );
       },
       child: Container(

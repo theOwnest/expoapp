@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:expo_kg/features/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:expo_kg/features/home/data/models/product.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
@@ -43,7 +44,6 @@ class ProductListContainer extends StatelessWidget {
         );
       },
       child: Container(
-        height: 135,
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
           borderRadius: borderR10,
@@ -84,15 +84,17 @@ class ProductListContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(
+                  AutoSizeText(
                     product.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: h14,
+                    minFontSize: 12,
                   ),
-                  Text(
+                  AutoSizeText(
                     product.shop.name,
                     style: st12,
+                    minFontSize: 10,
                   ),
                   CustomRatingContainer(
                     rating: product.rating,
@@ -100,11 +102,12 @@ class ProductListContainer extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      AutoSizeText(
                         '${product.price} KGS',
                         style: h16.copyWith(
                           color: AppColor.orange,
                         ),
+                        minFontSize: 12,
                       ),
                       AddToCartButton(
                         id: product.id,

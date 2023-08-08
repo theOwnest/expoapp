@@ -95,24 +95,23 @@ class OrderContainer extends StatelessWidget {
                 },
               ),
             sizedbox15,
-            SizedBox(
-              height: 50,
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 6,
-                  crossAxisSpacing: 10,
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 6,
+                crossAxisSpacing: 10,
+              ),
+              itemCount:
+                  order.products.length > 6 ? 6 : order.products.length,
+              itemBuilder: (context, index) => Container(
+                decoration: BoxDecoration(
+                  color: AppColor.lightGrey,
+                  borderRadius: borderR10,
                 ),
-                itemCount:
-                    order.products.length > 6 ? 6 : order.products.length,
-                itemBuilder: (context, index) => Container(
-                  decoration: BoxDecoration(
-                    color: AppColor.lightGrey,
-                    borderRadius: borderR10,
-                  ),
-                  padding: const EdgeInsets.all(3),
-                  child: Image.asset(
-                    order.products[index].images.first,
-                  ),
+                padding: const EdgeInsets.all(3),
+                child: Image.asset(
+                  order.products[index].images.first,
                 ),
               ),
             )

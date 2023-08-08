@@ -1,3 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:expo_kg/features/home/data/models/product.dart';
 import 'package:expo_kg/features/home/presentation/widgets/product_grid_container.dart';
@@ -22,10 +24,15 @@ class ProductOtherProducts extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              title,
-              style: h18,
+            Expanded(
+              child: AutoSizeText(
+                title,
+                style: h18,
+                maxLines: 1,
+                minFontSize: 12,
+              ),
             ),
+            sizedboxH10,
             Text(
               'Смотреть все (36)',
               style: st12.copyWith(

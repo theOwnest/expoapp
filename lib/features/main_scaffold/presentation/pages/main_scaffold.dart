@@ -44,6 +44,7 @@ class MainScaffold extends StatelessWidget {
       ],
       child: KeyboardDismisser(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: SafeArea(child: child),
           bottomNavigationBar: const MainBottomNavbar(),
         ),

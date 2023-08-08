@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:expo_kg/features/main_scaffold/data/utils/bottombar_handler.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/other.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:expo_kg/features/main_scaffold/data/datasources/bottombar_items.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/cubit/bottom_navbar_cont.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class MainBottomNavbar extends StatelessWidget {
@@ -15,7 +17,11 @@ class MainBottomNavbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BottomNavbarCont, int>(
       builder: (context, state) => Container(
-        height: 80,
+        height: 80.h,
+        constraints: BoxConstraints(
+          maxHeight: 100,
+          minHeight: 70,
+        ),
         decoration: BoxDecoration(
           color: AppColor.white,
           borderRadius: const BorderRadius.vertical(
@@ -69,8 +75,8 @@ class BottomNavbarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 12,
+      padding:  EdgeInsets.symmetric(
+        vertical: 12.h,
       ),
       width: double.infinity,
       child: Column(
@@ -84,10 +90,16 @@ class BottomNavbarItem extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Text(
-            title,
-            style: st11.copyWith(
-              color: isSelected ? AppColor.orange : AppColor.darkGrey,
+          Container(
+            height: 20,
+            alignment: Alignment.center,
+            child: AutoSizeText(
+              title,
+              style: st11.copyWith(
+                color: isSelected ? AppColor.orange : AppColor.darkGrey,
+              ),
+              maxLines: 1,
+              minFontSize: 8,
             ),
           ),
         ],
