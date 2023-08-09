@@ -1,7 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
+import 'package:expo_kg/features/map/data/models/address.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
+
+import '../cubit/yandex_map_cubit.dart';
 
 class MapContainer extends StatefulWidget {
   const MapContainer({
@@ -15,59 +20,128 @@ class MapContainer extends StatefulWidget {
 
 class _MapContainerState extends State<MapContainer> {
   late YandexMapController controller;
+  List<MapObject> mapObjects = [];
+  @override
+  void initState() {
+    super.initState();
+    if (widget.position != null) {
+      mapObjects.add(
+        PlacemarkMapObject(
+          opacity: 1,
+          mapId: const MapObjectId(
+            'my-location',
+          ),
+          icon: PlacemarkIcon.single(
+            PlacemarkIconStyle(
+              image: BitmapDescriptor.fromAssetImage(
+                'assets/icons/home/my-location.png',
+              ),
+              scale: 1,
+            ),
+          ),
+          point: Point(
+            latitude: widget.position!.latitude,
+            longitude: widget.position!.longitude,
+          ),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return YandexMap(
-      mapObjects: [
-        if (widget.position != null)
-          PlacemarkMapObject(
-            opacity: 1,
-            mapId: const MapObjectId(
-              'my-location',
-            ),
-            icon: PlacemarkIcon.single(
-              PlacemarkIconStyle(
-                image: BitmapDescriptor.fromAssetImage(
-                  'assets/icons/home/big-location.png',
-                ),
-                scale: 1.5,
-              ),
-            ),
-            point: Point(
-              latitude: widget.position!.latitude,
-              longitude: widget.position!.longitude,
-            ),
-          ),
-      ],
-      onMapCreated: (YandexMapController yandexMapController) async {
-        controller = yandexMapController;
-        if (widget.position != null) {
-          controller.moveCamera(
-            animation:
-                const MapAnimation(type: MapAnimationType.linear, duration: 1),
-            CameraUpdate.newCameraPosition(
-              CameraPosition(
-                target: Point(
+    return BlocConsumer<YandexMapCubit, YandexMapState>(
+      listener: (context, moveState) {
+        if (moveState is YandexMapAssigned) {
+          moveToLocation(
+            moveState.location,
+          );
+          addMarker(moveState.location);
+        }
+      },
+      builder: (context, state) {
+        return YandexMap(
+          mapObjects: mapObjects,
+          onMapCreated: (YandexMapController yandexMapController) async {
+            controller = yandexMapController;
+            if (widget.position != null) {
+              moveToLocation(
+                AddressModel(
+                  name: 'Delivery point',
                   latitude: widget.position!.latitude,
                   longitude: widget.position!.longitude,
                 ),
-                zoom: 12,
+              );
+            }
+          },
+          onObjectTap: (GeoObject geoObject) async {
+            debugPrint('Tapped object: ${geoObject.name}');
+
+            if (geoObject.selectionMetadata != null) {
+              await controller.selectGeoObject(geoObject.selectionMetadata!.id,
+                  geoObject.selectionMetadata!.layerId);
+            }
+          },
+          onMapTap: (argument) async {
+            if (mounted) {
+              final point = AddressModel(
+                name: "Unknown",
+                latitude: argument.latitude,
+                longitude: argument.longitude,
+              );
+              context.read<YandexMapCubit>().addPoint(point);
+            }
+          },
+          zoomGesturesEnabled: true,
+          mapMode: MapMode.driving,
+        );
+      },
+    );
+  }
+
+  Future moveToLocation(
+    AddressModel appLatLong,
+  ) async {
+    controller.moveCamera(
+      animation: const MapAnimation(type: MapAnimationType.linear, duration: 1),
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: Point(
+            latitude: appLatLong.latitude,
+            longitude: appLatLong.longitude,
+          ),
+          zoom: 12,
+        ),
+      ),
+    );
+  }
+
+  addMarker(AddressModel location) {
+    if (!mapObjects.any(
+      (element) => element.mapId.value == location.name,
+    )) {
+      mapObjects.add(
+        PlacemarkMapObject(
+          mapId: MapObjectId(
+            location.name,
+          ),
+          point: Point(
+            latitude: location.latitude,
+            longitude: location.longitude,
+          ),
+          opacity: 1,
+          icon: PlacemarkIcon.single(
+            PlacemarkIconStyle(
+              scale: 1,
+              image: BitmapDescriptor.fromAssetImage(
+                location.name == 'my-location'
+                    ? 'assets/icons/home/my-location.png'
+                    : 'assets/icons/home/location.png',
               ),
             ),
-          );
-        }
-      },
-      onObjectTap: (GeoObject geoObject) async {
-        debugPrint('Tapped object: ${geoObject.name}');
-
-        if (geoObject.selectionMetadata != null) {
-          await controller.selectGeoObject(geoObject.selectionMetadata!.id,
-              geoObject.selectionMetadata!.layerId);
-        }
-      },
-      zoomGesturesEnabled: true,
-      mapMode: MapMode.driving,
-    );
+          ),
+        ),
+      );
+    }
   }
 }

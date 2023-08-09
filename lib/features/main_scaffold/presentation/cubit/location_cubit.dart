@@ -8,7 +8,7 @@ part 'location_state.dart';
 
 class LocationCubit extends Cubit<LocationState> {
   LocationCubit() : super(LocationNotAccessed());
-  getLocation() async {
+  Future<Position?> getLocation() async {
     try {
       final currentLocation = await _getPermission();
       log('${currentLocation.latitude} - ${currentLocation.longitude}');
@@ -17,9 +17,11 @@ class LocationCubit extends Cubit<LocationState> {
           currentLocation: currentLocation,
         ),
       );
+      return currentLocation;
     } catch (e) {
       log('Error while getting location: $e');
     }
+    return null;
   }
 
   Future<Position> _getPermission() async {

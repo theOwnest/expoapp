@@ -18,7 +18,7 @@ class MainBottomNavbar extends StatelessWidget {
     return BlocBuilder<BottomNavbarCont, int>(
       builder: (context, state) => Container(
         height: 80.h,
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           maxHeight: 100,
           minHeight: 70,
         ),
