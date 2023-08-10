@@ -2,6 +2,7 @@ import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 
 class FreeDeliveryReminder extends StatelessWidget {
@@ -22,9 +23,7 @@ class FreeDeliveryReminder extends StatelessWidget {
             Icons.thumb_up,
             color: AppColor.white,
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          sizedboxH10,
           Expanded(
             child: Text(
               'Вам доступна бесплатная доставка! ',

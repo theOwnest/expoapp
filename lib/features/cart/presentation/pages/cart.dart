@@ -129,9 +129,7 @@ class CartPage extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) =>
                               const CartRecommendedContainer(),
-                          separatorBuilder: (context, index) => const SizedBox(
-                            width: 10,
-                          ),
+                          separatorBuilder: (context, index) => sizedboxH10,
                           itemCount: 5,
                         ),
                       )

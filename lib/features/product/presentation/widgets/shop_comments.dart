@@ -2,6 +2,7 @@ import 'package:expo_kg/features/home/data/models/shop.dart';
 import 'package:expo_kg/features/product/data/datasources/comments.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/custom_text_button.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +34,7 @@ class ShopComments extends StatelessWidget {
                   shop.rating.toStringAsFixed(1),
                   style: h24,
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                sizedboxH10,
                 RatingBarIndicator(
                   rating: shop.rating,
                   itemBuilder: (context, index) => const Icon(

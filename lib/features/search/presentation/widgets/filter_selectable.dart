@@ -31,9 +31,7 @@ class FilterSelectable extends StatelessWidget {
               title: categoryList[index].name,
               isSelected: index == 1,
             ),
-            separatorBuilder: (context, index) => const SizedBox(
-              width: 10,
-            ),
+            separatorBuilder: (context, index) => sizedboxH10,
             itemCount: categoryList.length,
           ),
         )

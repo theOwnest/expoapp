@@ -2,6 +2,7 @@ import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 
 class CategoryAds extends StatelessWidget {
@@ -50,9 +51,7 @@ class CategoryAds extends StatelessWidget {
             ],
           ),
         ),
-        separatorBuilder: (context, index) => const SizedBox(
-          width: 10,
-        ),
+        separatorBuilder: (context, index) => sizedboxH10,
         itemCount: categoryAds.length,
       ),
     );

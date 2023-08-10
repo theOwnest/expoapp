@@ -6,6 +6,7 @@ import 'package:expo_kg/features/chat/presentation/cubit/chat_cubit.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/divider.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -55,9 +56,7 @@ class ChatContainer extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                width: 10,
-              ),
+              sizedboxH10,
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,9 +75,7 @@ class ChatContainer extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                width: 10,
-              ),
+              sizedboxH10,
               if (chat.messages.isNotEmpty)
                 Text(
                   DateFormat('dd.MM.yyyy').format(chat.messages.last.time),

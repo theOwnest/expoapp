@@ -4,6 +4,7 @@ import 'package:expo_kg/features/product/presentation/cubit/product_cont.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/custom_text_button.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
@@ -35,9 +36,7 @@ class ProductComments extends StatelessWidget {
                       .toStringAsFixed(1),
                   style: h24,
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                sizedboxH10,
                 RatingBarIndicator(
                   rating: context.read<ProductController>().state.rating,
                   itemBuilder: (context, index) => const Icon(

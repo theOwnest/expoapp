@@ -5,7 +5,7 @@ import 'package:expo_kg/features/product/presentation/cubit/list_grid_type.dart'
 import 'package:expo_kg/features/search/data/utils/search.dart';
 import 'package:expo_kg/features/search/presentation/cubit/search_cubit.dart';
 import 'package:expo_kg/features/search/presentation/widgets/search_results_grid.dart';
-import 'package:expo_kg/shared/configs/texts.dart';
+import 'package:expo_kg/features/search/presentation/widgets/sort_dropdown.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
@@ -28,20 +28,7 @@ class SearchResults extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Row(
-                      children: [
-                        Text(
-                          'Сначала популярное',
-                          style: h14,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Icon(
-                          Icons.keyboard_arrow_down,
-                        ),
-                      ],
-                    ),
+                    const SortDropdown(),
                     BlocBuilder<ListGridType, ListGridEnum>(
                       builder: (context, state) {
                         return GestureDetector(

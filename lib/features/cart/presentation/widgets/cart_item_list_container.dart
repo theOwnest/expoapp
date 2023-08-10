@@ -10,6 +10,7 @@ import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/cubit_strings.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/models/multiple_cubits.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,9 +77,7 @@ class CartItemListContainer extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              width: 10,
-            ),
+            sizedboxH10,
             SizedBox(
               width: 170.w,
               child: Column(

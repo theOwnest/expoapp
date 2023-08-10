@@ -1,5 +1,6 @@
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -25,9 +26,7 @@ class CommentsAverageRating extends StatelessWidget {
                 '4.9',
                 style: h24,
               ),
-              const SizedBox(
-                width: 10,
-              ),
+              sizedboxH10,
               RatingBarIndicator(
                 rating: 4.9,
                 itemBuilder: (context, index) => const Icon(

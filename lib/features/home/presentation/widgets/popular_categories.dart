@@ -63,9 +63,7 @@ class HomePopularCategories extends StatelessWidget {
             itemBuilder: (context, index) => HomePopularCategoryContainer(
               category: categoryList[index],
             ),
-            separatorBuilder: (context, index) => const SizedBox(
-              width: 10,
-            ),
+            separatorBuilder: (context, index) => sizedboxH10,
             itemCount: categoryList.length,
           ),
         )

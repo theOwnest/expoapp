@@ -2,6 +2,7 @@ import 'package:expo_kg/features/main_scaffold/presentation/cubit/location_cubit
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -26,16 +27,12 @@ class HomeAddressDropDown extends StatelessWidget {
               'assets/icons/home/location.png',
               height: 17,
             ),
-            const SizedBox(
-              width: 10,
-            ),
+            sizedboxH10,
             const Text(
               'улица Центральная, д. 15',
               style: st14,
             ),
-            const SizedBox(
-              width: 10,
-            ),
+            sizedboxH10,
             const Icon(
               Icons.keyboard_arrow_down,
             ),

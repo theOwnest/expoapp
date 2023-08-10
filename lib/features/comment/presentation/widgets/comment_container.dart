@@ -3,6 +3,7 @@ import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:expo_kg/features/product/data/models/comment.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -53,9 +54,7 @@ class CommentContainer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
+                  sizedboxH10,
                   Container(
                     height: 36,
                     width: 36,
