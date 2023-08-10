@@ -18,9 +18,7 @@ class ProductOtherProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 20,
-        ),
+        sizedbox20,
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -41,9 +39,7 @@ class ProductOtherProducts extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        sizedbox10,
         LimitedBox(
           maxHeight: 250,
           child: ListView.separated(
@@ -57,9 +53,7 @@ class ProductOtherProducts extends StatelessWidget {
             itemCount: products.length,
           ),
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        sizedbox10,
       ],
     );
   }

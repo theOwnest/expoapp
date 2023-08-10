@@ -7,6 +7,7 @@ import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,9 +54,7 @@ class _AnketaPageState extends State<AnketaPage> {
                         'Анкета',
                         style: h24,
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      sizedbox10,
                       Text(
                         'Заполните поля ниже',
                         style: st14,

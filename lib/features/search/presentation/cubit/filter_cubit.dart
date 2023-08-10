@@ -1,18 +1,21 @@
-import 'package:equatable/equatable.dart';
+import 'package:expo_kg/features/search/data/datasources/filter_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'filter_state.dart';
-
-class FilterCubit extends Cubit<FilterState> {
-  FilterCubit(FilterState filterState)
+class FilterCubit extends Cubit<Map<String, String>> {
+  FilterCubit(Map<String, String> filter)
       : super(
-          filterState,
+          filter,
         );
-  addFilter({String? category}) {
+  addFilter({String? category, String? search}) {
+    Map<String, String> filter = {...super.state};
+    if (category != null) {
+      filter[FilterConstants.category] = category;
+    }
+    if (search != null) {
+      filter[FilterConstants.search] = search;
+    }
     emit(
-      FilterState(
-        category: category ?? super.state.category,
-      ),
+      filter,
     );
   }
 }

@@ -29,9 +29,7 @@ class _FilterPriceState extends State<FilterPrice> {
           'Стоимость',
           style: h14,
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        sizedbox10,
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

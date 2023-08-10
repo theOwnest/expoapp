@@ -4,6 +4,7 @@ import 'package:expo_kg/features/map/data/utils/yandex_search.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,9 +61,7 @@ class AddressContainer extends StatelessWidget {
               return const SizedBox.shrink();
             },
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          sizedbox20,
           const RoundedButton(
             title: 'Изменить',
           ),

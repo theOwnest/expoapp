@@ -56,9 +56,7 @@ class ShopInfoPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const SizedBox(
-                                height: 20,
-                              ),
+                              sizedbox20,
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -93,15 +91,11 @@ class ShopInfoPage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 30,
-                              ),
+                              sizedbox30,
                               ShopComments(
                                 shop: shop,
                               ),
-                              const SizedBox(
-                                height: 30,
-                              ),
+                              sizedbox30,
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,

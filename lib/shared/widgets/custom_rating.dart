@@ -1,5 +1,6 @@
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -24,9 +25,7 @@ class CustomRatingContainer extends StatelessWidget {
           itemSize: 15,
           direction: Axis.horizontal,
         ),
-        const SizedBox(
-          width: 8,
-        ),
+        sizedboxH10,
         Text(
           rating.toStringAsFixed(1),
           style: st14,

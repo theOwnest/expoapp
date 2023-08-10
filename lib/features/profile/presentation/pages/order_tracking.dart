@@ -2,6 +2,7 @@ import 'package:expo_kg/features/profile/data/datasources/order_history.dart';
 import 'package:expo_kg/features/profile/data/enums/order_status.dart';
 import 'package:expo_kg/features/profile/presentation/widgets/order_container.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/appbar_title.dart';
 import 'package:flutter/material.dart';
 
@@ -24,9 +25,7 @@ class OrderTracking extends StatelessWidget {
             itemBuilder: (context, index) => OrderContainer(
               order: orders[index],
             ),
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 10,
-            ),
+            separatorBuilder: (context, index) => sizedbox10,
             itemCount: orders.length,
           ),
         ),

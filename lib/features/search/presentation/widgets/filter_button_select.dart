@@ -17,18 +17,14 @@ class FilterButtonSelect extends StatelessWidget {
           'Заголовок',
           style: h14,
         ),
-        SizedBox(
-          height: 10,
-        ),
+        sizedbox10,
         Row(
           children: [
             SelectableButton(
               title: 'Lorem Ipsum',
               isSelected: true,
             ),
-            SizedBox(
-              width: 15,
-            ),
+            sizedboxH15,
             SelectableButton(
               title: 'Lorem Ipsum',
               isSelected: false,

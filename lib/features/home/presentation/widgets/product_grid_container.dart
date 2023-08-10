@@ -8,6 +8,7 @@ import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/cubit_strings.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/models/multiple_cubits.dart';
 import 'package:expo_kg/shared/widgets/custom_rating.dart';
 import 'package:flutter/material.dart';
@@ -76,9 +77,7 @@ class ProductGridContainer extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 6,
-            ),
+            sizedbox5,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

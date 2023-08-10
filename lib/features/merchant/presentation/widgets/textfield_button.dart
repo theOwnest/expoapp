@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/features/merchant/presentation/widgets/textfield_title.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/rounded_small_button.dart';
 import 'package:flutter/material.dart';
 
@@ -27,9 +28,7 @@ class TextfieldWithButton extends StatelessWidget {
           function: textFunction,
           initialValue: initialValue,
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        sizedbox10,
         RoundedSmallButton(
           title: buttonTitle,
           function: buttonFunction,

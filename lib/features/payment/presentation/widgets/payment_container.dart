@@ -3,6 +3,7 @@ import 'package:expo_kg/features/payment/presentation/cubit/selected_card.dart';
 import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,9 +47,7 @@ class PaymentTypeContainer extends StatelessWidget {
                       );
               },
             ),
-            const SizedBox(
-              width: 15,
-            ),
+            sizedboxH15,
             Text(
               title,
             ),

@@ -73,9 +73,7 @@ class CommentContainer extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          sizedbox10,
           Text(
             comment.comment,
             maxLines: 3,

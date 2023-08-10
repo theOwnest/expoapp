@@ -33,9 +33,7 @@ class _FilterCategoryState extends State<FilterCategory> {
           'Заголовок',
           style: h14,
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        sizedbox10,
         DropdownButtonHideUnderline(
           child: DropdownButton2<String>(
             isExpanded: true,

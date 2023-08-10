@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:expo_kg/features/search/presentation/cubit/filter_cubit.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
@@ -28,7 +27,7 @@ class HomeProductSearchbar extends StatelessWidget {
         if (isSearchPage != null && isSearchPage!) return;
         context.pushNamed(
           RoutesNames.search,
-          extra: const FilterState(),
+          extra: {},
         );
       },
       child: Container(

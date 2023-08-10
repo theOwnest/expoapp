@@ -47,9 +47,7 @@ class _LoginFormState extends State<LoginForm> {
                   Image.asset(
                     'assets/icons/login/person.png',
                   ),
-                  const SizedBox(
-                    width: 15,
-                  ),
+                  sizedboxH15,
                 ],
               ),
             ),
@@ -64,7 +62,7 @@ class _LoginFormState extends State<LoginForm> {
               ],
             ),
           ),
-          const SizedBox(height: 10),
+          sizedbox10,
           FormBuilderTextField(
             textInputAction: TextInputAction.done,
             name: 'Пароль',
@@ -82,9 +80,7 @@ class _LoginFormState extends State<LoginForm> {
                   Image.asset(
                     'assets/icons/login/lock.png',
                   ),
-                  const SizedBox(
-                    width: 15,
-                  ),
+                  sizedboxH15,
                 ],
               ),
               suffixIconConstraints: const BoxConstraints(

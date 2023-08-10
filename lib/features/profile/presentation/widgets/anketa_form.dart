@@ -82,9 +82,7 @@ class _PersonalInfoAnketaFormState extends State<PersonalInfoAnketaForm> {
                       'assets/icons/login/person.png',
                       color: AppColor.lightGrey,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
+                    sizedboxH15,
                   ],
                 ),
               ),
@@ -120,9 +118,7 @@ class _PersonalInfoAnketaFormState extends State<PersonalInfoAnketaForm> {
                       'assets/icons/login/phone.png',
                       color: AppColor.lightGrey,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
+                    sizedboxH15,
                   ],
                 ),
               ),
@@ -158,9 +154,7 @@ class _PersonalInfoAnketaFormState extends State<PersonalInfoAnketaForm> {
                       'assets/icons/login/email.png',
                       color: AppColor.lightGrey,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
+                    sizedboxH15,
                   ],
                 ),
               ),
@@ -199,9 +193,7 @@ class _PersonalInfoAnketaFormState extends State<PersonalInfoAnketaForm> {
                       'assets/icons/login/lock.png',
                       color: AppColor.lightGrey,
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
+                    sizedboxH15,
                   ],
                 ),
                 suffixIconConstraints: const BoxConstraints(

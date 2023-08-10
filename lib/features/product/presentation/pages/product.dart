@@ -54,9 +54,7 @@ class ProductPage extends StatelessWidget {
                           const AppbarButtonContainer(
                             icon: 'upload',
                           ),
-                          const SizedBox(
-                            width: 15,
-                          ),
+                          sizedboxH15,
                           BlocBuilder<FavoriteCubit, FavoriteState>(
                             builder: (context, state) {
                               return AppbarButtonContainer(
@@ -109,13 +107,9 @@ class ProductPage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 30,
-                              ),
+                              sizedbox30,
                               const ProductSpecs(),
-                              const SizedBox(
-                                height: 30,
-                              ),
+                              sizedbox30,
                               const ProductComments(),
                               BlocBuilder<ProductCubit, ProductState>(
                                 builder: (context, state) {

@@ -3,9 +3,9 @@ import 'dart:developer';
 
 import 'package:expo_kg/features/category/presentation/widgets/popular_categories.dart';
 import 'package:expo_kg/features/home/presentation/widgets/search_products.dart';
+import 'package:expo_kg/features/search/data/datasources/filter_constants.dart';
 import 'package:expo_kg/features/search/data/utils/filter_bottomsheet.dart';
 import 'package:expo_kg/features/search/presentation/cubit/filter_cubit.dart';
-import 'package:expo_kg/features/search/presentation/cubit/search_cubit.dart';
 import 'package:expo_kg/features/search/presentation/cubit/search_history_cubit.dart';
 import 'package:expo_kg/features/search/presentation/widgets/popular.dart';
 import 'package:expo_kg/features/search/presentation/widgets/search_history.dart';
@@ -21,7 +21,7 @@ class SearchPage extends StatefulWidget {
     Key? key,
     required this.filterState,
   }) : super(key: key);
-  final FilterState filterState;
+  final Map<String, String> filterState;
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
@@ -34,9 +34,6 @@ class _SearchPageState extends State<SearchPage> {
       providers: [
         BlocProvider(
           create: (context) => SearchHistoryCubit()..loadHistory(),
-        ),
-        BlocProvider(
-          create: (context) => SearchCubit(),
         ),
         BlocProvider(
           create: (context) => FilterCubit(
@@ -61,13 +58,13 @@ class _SearchPageState extends State<SearchPage> {
                       controller: controller,
                       function: (String query) {
                         log(query);
-                        context.read<SearchCubit>().addQuery(query);
+                        context.read<FilterCubit>().addFilter(search: query);
                       },
                     ),
                   ),
-                  BlocBuilder<SearchCubit, String?>(
+                  BlocBuilder<FilterCubit, Map<String, String>>(
                     builder: (context, state) {
-                      return state != null
+                      return state[FilterConstants.search] != null
                           ? Row(
                               children: [
                                 GestureDetector(
@@ -80,9 +77,7 @@ class _SearchPageState extends State<SearchPage> {
                                     width: 24,
                                   ),
                                 ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
+                                sizedboxH15,
                               ],
                             )
                           : const SizedBox.shrink();
@@ -90,9 +85,9 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                 ],
               ),
-              BlocBuilder<SearchCubit, String?>(
+              BlocBuilder<FilterCubit, Map<String, String>>(
                 builder: (context, state) {
-                  if (state == null) {
+                  if (state.isEmpty) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -108,13 +103,17 @@ class _SearchPageState extends State<SearchPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         sizedbox15,
-                        PopularCategories(
-                          title:
-                              'Найдено 67 товаров в категории ${context.read<SearchCubit>().state}',
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        Builder(builder: (context) {
+                          final title = context
+                                  .read<FilterCubit>()
+                                  .state[FilterConstants.search] ??
+                              context
+                                  .read<FilterCubit>()
+                                  .state[FilterConstants.category];
+                          return PopularCategories(
+                            title: 'Найдено 67 товаров в категории $title',
+                          );
+                        }),
                         const SearchResults(),
                       ],
                     ),

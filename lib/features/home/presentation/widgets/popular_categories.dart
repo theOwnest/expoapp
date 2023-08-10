@@ -113,9 +113,7 @@ class HomePopularCategoryContainer extends StatelessWidget {
                 'assets/debug/category/${category.image}.png',
               ),
             ),
-            const SizedBox(
-              height: 5,
-            ),
+            sizedbox5,
             Text(
               category.name,
               style: st12,

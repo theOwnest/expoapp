@@ -2,6 +2,7 @@
 import 'package:expo_kg/features/chat/data/models/message.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -43,9 +44,7 @@ class MessageContainer extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
-          height: 5,
-        ),
+        sizedbox5,
         Text(
           DateFormat('hh:mm').format(message.time),
         ),

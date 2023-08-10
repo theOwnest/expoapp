@@ -50,18 +50,14 @@ class ShopComments extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        sizedbox20,
         ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => CommentContainer(
             comment: commentsList[index],
           ),
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 10,
-          ),
+          separatorBuilder: (context, index) => sizedbox10,
           itemCount: commentsList.length > 1 ? 1 : commentsList.length,
         ),
         CustomTextButton(

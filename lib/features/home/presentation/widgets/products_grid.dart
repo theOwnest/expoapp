@@ -56,9 +56,7 @@ class HomeProductsGrid extends StatelessWidget {
             },
           ),
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        sizedbox25,
       ],
     );
   }

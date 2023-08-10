@@ -1,6 +1,7 @@
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,9 +35,7 @@ class DeliveryContainer extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 30,
-          ),
+          sizedbox30,
           const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -50,9 +49,7 @@ class DeliveryContainer extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          sizedbox20,
         ],
       ),
     );

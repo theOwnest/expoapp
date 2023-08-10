@@ -1,6 +1,7 @@
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/divider.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 
@@ -21,9 +22,7 @@ class OrderSpecs extends StatelessWidget {
               'Характеристики',
               style: h14,
             ),
-            SizedBox(
-              height: 20,
-            ),
+            sizedbox20,
             ProductSpecContainer(
               title: 'Дата оформления ',
               value: '14.01.2022 в 15:30',

@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:expo_kg/features/search/presentation/cubit/search_cubit.dart';
+import 'package:expo_kg/features/search/presentation/cubit/filter_cubit.dart';
 import 'package:expo_kg/features/search/presentation/cubit/search_history_cubit.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
@@ -57,8 +56,8 @@ class SearchHistoryContainer extends StatelessWidget {
                 itemBuilder: (context, index) => GestureDetector(
                   onTap: () {
                     controller.text = state[state.length - index - 1];
-                    context.read<SearchCubit>().addQuery(
-                          state[state.length - index - 1],
+                    context.read<FilterCubit>().addFilter(
+                          search: state[state.length - index - 1],
                         );
                   },
                   child: Row(
@@ -67,9 +66,7 @@ class SearchHistoryContainer extends StatelessWidget {
                         'assets/icons/home/search-history.png',
                         width: 22,
                       ),
-                      const SizedBox(
-                        width: 15,
-                      ),
+                      sizedboxH15,
                       Text(
                         state[state.length - index - 1],
                         style: st14,

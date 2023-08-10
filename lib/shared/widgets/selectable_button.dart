@@ -2,6 +2,7 @@
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 
 class SelectableButton extends StatelessWidget {
@@ -47,9 +48,7 @@ class SelectableButton extends StatelessWidget {
                         border: commonThinBorder,
                       ),
                     ),
-              const SizedBox(
-                width: 15,
-              ),
+              sizedboxH15,
               Text(
                 title,
                 style: st14,

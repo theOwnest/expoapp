@@ -36,7 +36,6 @@ import 'package:expo_kg/features/profile/presentation/pages/order_history.dart';
 import 'package:expo_kg/features/profile/presentation/pages/order_tracking.dart';
 import 'package:expo_kg/features/profile/presentation/pages/personal_info.dart';
 import 'package:expo_kg/features/profile/presentation/pages/profile.dart';
-import 'package:expo_kg/features/search/presentation/cubit/filter_cubit.dart';
 import 'package:expo_kg/features/search/presentation/pages/search.dart';
 import 'package:expo_kg/shared/constants/cubit_strings.dart';
 import 'package:expo_kg/shared/models/multiple_cubits.dart';
@@ -191,7 +190,9 @@ final GoRouter router = GoRouter(
       name: RoutesNames.search,
       pageBuilder: (context, state) => NoTransitionPage(
         child: SearchPage(
-          filterState: state.extra as FilterState,
+          filterState: Map<String, String>.from(
+            state.extra as Map,
+          ),
         ),
       ),
     ),

@@ -2,8 +2,9 @@
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/product/data/enums/list_grid_type.dart';
 import 'package:expo_kg/features/product/presentation/cubit/list_grid_type.dart';
+import 'package:expo_kg/features/search/data/datasources/filter_constants.dart';
 import 'package:expo_kg/features/search/data/utils/search.dart';
-import 'package:expo_kg/features/search/presentation/cubit/search_cubit.dart';
+import 'package:expo_kg/features/search/presentation/cubit/filter_cubit.dart';
 import 'package:expo_kg/features/search/presentation/widgets/search_results_grid.dart';
 import 'package:expo_kg/features/search/presentation/widgets/sort_dropdown.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
@@ -45,11 +46,11 @@ class SearchResults extends StatelessWidget {
                   ],
                 ),
               ),
-              sizedbox15,
-              BlocBuilder<SearchCubit, String?>(
+              sizedbox5,
+              BlocBuilder<FilterCubit, Map<String, String>>(
                 builder: (context, state) {
                   return SearchUpdater(
-                    query: state,
+                    query: state[FilterConstants.search],
                   );
                 },
               ),

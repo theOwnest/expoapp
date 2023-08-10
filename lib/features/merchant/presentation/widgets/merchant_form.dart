@@ -70,9 +70,7 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
                         'assets/icons/login/person.png',
                         color: AppColor.lightGrey,
                       ),
-                      const SizedBox(
-                        width: 15,
-                      ),
+                      sizedboxH15,
                     ],
                   ),
                 ),
@@ -84,7 +82,7 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
+              sizedbox10,
               const Text(
                 'Почта',
                 style: h14,
@@ -118,9 +116,7 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
                         'assets/icons/login/email.png',
                         color: AppColor.lightGrey,
                       ),
-                      const SizedBox(
-                        width: 15,
-                      ),
+                      sizedboxH15,
                     ],
                   ),
                 ),
@@ -135,7 +131,7 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
+              sizedbox10,
               const Text(
                 'Номер телефона',
                 style: h14,
@@ -169,9 +165,7 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
                         'assets/icons/login/phone.png',
                         color: AppColor.lightGrey,
                       ),
-                      const SizedBox(
-                        width: 15,
-                      ),
+                      sizedboxH15,
                     ],
                   ),
                 ),
@@ -191,9 +185,7 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
                     'Тип продавца',
                     style: h14,
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  sizedbox10,
                   BlocBuilder<MerchantTypeCont, MerchantTypeEnum>(
                     builder: (context, state) {
                       return Row(
@@ -207,9 +199,7 @@ class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
                                   );
                             },
                           ),
-                          const SizedBox(
-                            width: 15,
-                          ),
+                          sizedboxH15,
                           SelectableButton(
                             title: 'Юр. лицо',
                             isSelected: state == MerchantTypeEnum.person,

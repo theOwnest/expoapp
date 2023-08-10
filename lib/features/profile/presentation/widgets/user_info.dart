@@ -48,9 +48,7 @@ class ProfileUserInfo extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        sizedbox10,
         Text(
           user.phone,
           style: st14,

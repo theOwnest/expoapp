@@ -36,9 +36,7 @@ class ProductShopContainer extends StatelessWidget {
             'Продавец',
             style: st14,
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          sizedbox10,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

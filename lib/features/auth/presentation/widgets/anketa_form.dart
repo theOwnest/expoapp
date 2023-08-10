@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -60,9 +61,7 @@ class _AnketaFormState extends State<AnketaForm> {
                     'assets/icons/login/person.png',
                     color: AppColor.lightGrey,
                   ),
-                  const SizedBox(
-                    width: 15,
-                  ),
+                  sizedboxH15,
                 ],
               ),
             ),
@@ -74,7 +73,7 @@ class _AnketaFormState extends State<AnketaForm> {
               ],
             ),
           ),
-          const SizedBox(height: 10),
+          sizedbox10,
           const Text(
             'Почта',
             style: h14,
@@ -98,9 +97,7 @@ class _AnketaFormState extends State<AnketaForm> {
                     'assets/icons/login/email.png',
                     color: AppColor.lightGrey,
                   ),
-                  const SizedBox(
-                    width: 15,
-                  ),
+                  sizedboxH15,
                 ],
               ),
             ),
@@ -115,7 +112,7 @@ class _AnketaFormState extends State<AnketaForm> {
               ],
             ),
           ),
-          const SizedBox(height: 10),
+          sizedbox10,
           const Text(
             'Придумайте пароль',
             style: h14,
@@ -139,9 +136,7 @@ class _AnketaFormState extends State<AnketaForm> {
                     'assets/icons/login/lock.png',
                     color: AppColor.lightGrey,
                   ),
-                  const SizedBox(
-                    width: 15,
-                  ),
+                  sizedboxH15,
                 ],
               ),
               suffixIconConstraints: const BoxConstraints(

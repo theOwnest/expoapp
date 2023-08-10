@@ -1,11 +1,11 @@
 import 'package:expo_kg/features/category/data/datasources/subcategories.dart';
 import 'package:expo_kg/features/home/presentation/widgets/search_products.dart';
-import 'package:expo_kg/features/search/presentation/cubit/filter_cubit.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/divider.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,9 +30,7 @@ class SubcategoryPage extends StatelessWidget {
                 'assets/icons/home/filter.png',
                 height: 22,
               ),
-              const SizedBox(
-                width: 15,
-              ),
+              sizedboxH15,
             ],
           ),
         ),
@@ -62,18 +60,16 @@ class SubcategoryPage extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        sizedbox25,
         Expanded(
           child: ListView.builder(
             itemBuilder: (context, index) => GestureDetector(
               onTap: () {
                 context.pushNamed(
                   RoutesNames.search,
-                  extra: FilterState(
-                    category: subcategoryList[index],
-                  ),
+                  extra: {
+                    'category': subcategoryList[index],
+                  },
                 );
               },
               child: Padding(

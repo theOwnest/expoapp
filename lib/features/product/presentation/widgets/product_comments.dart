@@ -52,18 +52,14 @@ class ProductComments extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        sizedbox20,
         ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => CommentContainer(
             comment: commentsList[index],
           ),
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 10,
-          ),
+          separatorBuilder: (context, index) => sizedbox10,
           itemCount: commentsList.length > 3 ? 3 : commentsList.length,
         ),
         CustomTextButton(

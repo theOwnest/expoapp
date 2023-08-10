@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,9 +46,7 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
             },
           ),
         ),
-        const SizedBox(
-          height: 6,
-        ),
+        sizedbox5,
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(

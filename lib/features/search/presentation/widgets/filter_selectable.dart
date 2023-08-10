@@ -20,9 +20,7 @@ class FilterSelectable extends StatelessWidget {
           'Заголовок',
           style: h14,
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        sizedbox10,
         SizedBox(
           height: 40.h,
           child: ListView.separated(

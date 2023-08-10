@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:expo_kg/features/main_scaffold/data/utils/bottombar_handler.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/other.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:expo_kg/features/main_scaffold/data/datasources/bottombar_items.dart';
@@ -75,7 +76,7 @@ class BottomNavbarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:  EdgeInsets.symmetric(
+      padding: EdgeInsets.symmetric(
         vertical: 12.h,
       ),
       width: double.infinity,
@@ -87,9 +88,7 @@ class BottomNavbarItem extends StatelessWidget {
             height: 20,
             width: 20,
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          sizedbox10,
           Container(
             height: 20,
             alignment: Alignment.center,

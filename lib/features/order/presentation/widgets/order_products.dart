@@ -1,5 +1,6 @@
 import 'package:expo_kg/features/home/presentation/widgets/product_list_container.dart';
 import 'package:expo_kg/features/order/presentation/cubit/order_controller.dart';
+import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,9 +14,7 @@ class OrderProducts extends StatelessWidget {
       itemBuilder: (context, index) => ProductListContainer(
         product: order.products[index],
       ),
-      separatorBuilder: (context, index) => const SizedBox(
-        height: 10,
-      ),
+      separatorBuilder: (context, index) => sizedbox10,
       itemCount: order.products.length,
     );
   }
