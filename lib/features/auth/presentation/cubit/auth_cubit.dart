@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:expo_kg/features/auth/data/models/user.dart';
+import 'package:expo_kg/features/auth/data/utils/store_password.dart';
 import 'package:expo_kg/features/merchant/data/models/merchant.dart';
 import 'package:expo_kg/features/merchant/data/models/shop.dart';
 import 'package:expo_kg/shared/constants/hive.dart';
@@ -68,6 +69,7 @@ class AuthCubit extends Cubit<AuthState> {
       HiveConstants.user,
       user.toMap(),
     );
+    PasswordStorage.store(password);
     emit(
       AuthLoggedInCustomer(
         user: user,

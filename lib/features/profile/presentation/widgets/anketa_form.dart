@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:expo_kg/features/auth/data/utils/store_password.dart';
 import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:expo_kg/features/auth/presentation/cubit/button_available.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
@@ -33,13 +34,14 @@ class _PersonalInfoAnketaFormState extends State<PersonalInfoAnketaForm> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
+      (timeStamp) async {
         final currentState = context.read<AuthCubit>().state;
         if (currentState is AuthLoggedInCustomer) {
           final user = currentState.user;
           widget.nameCont.text = user.userName;
           widget.phoneCont.text = user.phone;
           widget.emailCont.text = user.email;
+          widget.passCont.text = await PasswordStorage.read() ?? '';
         }
       },
     );

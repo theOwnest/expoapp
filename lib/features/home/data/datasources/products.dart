@@ -1,3 +1,4 @@
+import 'package:expo_kg/features/home/data/datasources/categories.dart';
 import 'package:expo_kg/features/home/data/datasources/shops.dart';
 import 'package:expo_kg/features/home/data/models/product.dart';
 import 'package:expo_kg/shared/configs/random.dart';
@@ -17,6 +18,9 @@ final productsList = List.generate(
         'НLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. ',
     shop: shopsList[random.nextInt(
       shopsList.length,
+    )],
+    category: categoryList[random.nextInt(
+      categoryList.length,
     )],
   ),
 );
