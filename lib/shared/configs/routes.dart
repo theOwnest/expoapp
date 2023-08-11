@@ -14,6 +14,7 @@ import 'package:expo_kg/features/comment/presentation/pages/all_comments.dart';
 import 'package:expo_kg/features/comment/presentation/pages/rate_product.dart';
 import 'package:expo_kg/features/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:expo_kg/features/favorite/presentation/pages/favorite.dart';
+import 'package:expo_kg/features/home/data/models/product.dart';
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/home/presentation/pages/home.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/cubit/location_cubit.dart';
@@ -28,6 +29,7 @@ import 'package:expo_kg/features/order/presentation/pages/order_info.dart';
 import 'package:expo_kg/features/payment/presentation/cubit/card_controller.dart';
 import 'package:expo_kg/features/payment/presentation/pages/add_card_form.dart';
 import 'package:expo_kg/features/payment/presentation/pages/payment_method.dart';
+import 'package:expo_kg/features/product/presentation/pages/gallery.dart';
 import 'package:expo_kg/features/product/presentation/pages/product.dart';
 import 'package:expo_kg/features/product/presentation/pages/shop.dart';
 import 'package:expo_kg/features/profile/data/models/order.dart';
@@ -54,6 +56,7 @@ class Routes {
   static String messagingPage = '/messagingPage';
 
   static String productInfo = '/productInfo';
+  static String productGallery = '/productGallery';
   static String shopInfo = '/shopInfo';
 
   static String addressLocation = '/addressLocation';
@@ -95,6 +98,7 @@ class RoutesNames {
   static String messagingPage = 'messagingPage';
 
   static String productInfo = 'productInfo';
+  static String productGallery = 'productGallery';
   static String shopInfo = 'shopInfo';
 
   static String addressLocation = 'addressLocation';
@@ -375,6 +379,16 @@ final GoRouter router = GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (context, state) => const NoTransitionPage(
         child: RateProductPage(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.productGallery,
+      name: RoutesNames.productGallery,
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (context, state) => NoTransitionPage(
+        child: ProductGallery(
+          product: state.extra as ProductModel,
+        ),
       ),
     ),
     //Map

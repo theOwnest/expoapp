@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +8,7 @@ import 'package:expo_kg/features/product/presentation/cubit/product_cont.dart';
 import 'package:expo_kg/shared/constants/border_radius.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductImageSlider extends StatefulWidget {
   const ProductImageSlider({super.key});
@@ -84,16 +86,24 @@ class ProductImageSliderContainer extends StatelessWidget {
   final String image;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(6),
-      margin: marginH,
-      decoration: BoxDecoration(
-        color: AppColor.lightGrey,
-        borderRadius: borderR6,
-      ),
-      child: Image.asset(
-        image,
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed(
+          RoutesNames.productGallery,
+          extra: context.read<ProductController>().state,
+        );
+      },
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(6),
+        margin: marginH,
+        decoration: BoxDecoration(
+          color: AppColor.lightGrey,
+          borderRadius: borderR6,
+        ),
+        child: Image.asset(
+          image,
+        ),
       ),
     );
   }
