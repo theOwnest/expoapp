@@ -1,4 +1,4 @@
-import 'package:expo_kg/features/category/data/datasources/subcategories.dart';
+import 'package:expo_kg/features/home/data/datasources/categories.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
@@ -27,11 +27,11 @@ class SearchPopularContainer extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) => Text(
-              subcategoryList[index],
+              categoryList[index].name,
               style: st14,
             ),
             separatorBuilder: (context, index) => sizedbox15,
-            itemCount: subcategoryList.length > 5 ? 5 : subcategoryList.length,
+            itemCount: categoryList.length > 5 ? 5 : categoryList.length,
           ),
         )
       ],

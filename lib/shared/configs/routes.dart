@@ -210,7 +210,7 @@ final GoRouter router = GoRouter(
           child: BlocProvider.value(
             value: productCubit,
             child: SubcategoryPage(
-              category: category,
+              categoryId: category,
             ),
           ),
         );

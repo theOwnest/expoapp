@@ -2,7 +2,7 @@ import 'package:expo_kg/features/home/data/models/product.dart';
 
 List<ProductModel> searchProduct(
     String? query, List<ProductModel> allProducts) {
-  if (query == null) return [];
+  if (query == null) return allProducts;
   List<ProductModel> products = [];
   products.addAll(
     allProducts.where(

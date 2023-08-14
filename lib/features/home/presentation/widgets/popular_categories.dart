@@ -89,7 +89,7 @@ class HomePopularCategoryContainer extends StatelessWidget {
         context.pushNamed(
           RoutesNames.subcategory,
           queryParameters: {
-            'category': category.name,
+            'category': category.id,
           },
           extra: BlocProvider.of<ProductCubit>(context),
         );

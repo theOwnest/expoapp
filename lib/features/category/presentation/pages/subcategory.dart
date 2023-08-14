@@ -1,4 +1,4 @@
-import 'package:expo_kg/features/category/data/datasources/subcategories.dart';
+import 'package:expo_kg/features/home/data/datasources/categories.dart';
 import 'package:expo_kg/features/home/presentation/widgets/search_products.dart';
 import 'package:expo_kg/shared/configs/routes.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
@@ -12,11 +12,14 @@ import 'package:go_router/go_router.dart';
 class SubcategoryPage extends StatelessWidget {
   const SubcategoryPage({
     Key? key,
-    required this.category,
+    required this.categoryId,
   }) : super(key: key);
-  final String category;
+  final String categoryId;
   @override
   Widget build(BuildContext context) {
+    final category = categoryList.firstWhere(
+      (element) => element.id == categoryId,
+    );
     return Column(
       children: [
         Padding(
@@ -40,7 +43,7 @@ class SubcategoryPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                category,
+                category.name,
                 style: h24,
               ),
               GestureDetector(
@@ -68,7 +71,7 @@ class SubcategoryPage extends StatelessWidget {
                 context.pushNamed(
                   RoutesNames.search,
                   extra: {
-                    'category': subcategoryList[index],
+                    'category': categoryList[index].id,
                   },
                 );
               },
@@ -80,7 +83,7 @@ class SubcategoryPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          subcategoryList[index],
+                          categoryList[index].name,
                           style: h14,
                         ),
                         const Icon(
@@ -93,7 +96,7 @@ class SubcategoryPage extends StatelessWidget {
                 ),
               ),
             ),
-            itemCount: subcategoryList.length,
+            itemCount: categoryList.length,
           ),
         ),
       ],

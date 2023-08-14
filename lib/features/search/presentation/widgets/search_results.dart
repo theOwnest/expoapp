@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/product/data/enums/list_grid_type.dart';
 import 'package:expo_kg/features/product/presentation/cubit/list_grid_type.dart';
 import 'package:expo_kg/features/search/data/datasources/filter_constants.dart';
+import 'package:expo_kg/features/search/data/utils/filter.dart';
 import 'package:expo_kg/features/search/data/utils/search.dart';
 import 'package:expo_kg/features/search/presentation/cubit/filter_cubit.dart';
 import 'package:expo_kg/features/search/presentation/widgets/search_results_grid.dart';
@@ -50,7 +52,7 @@ class SearchResults extends StatelessWidget {
               BlocBuilder<FilterCubit, Map<String, String>>(
                 builder: (context, state) {
                   return SearchUpdater(
-                    query: state[FilterConstants.search],
+                    query: state,
                   );
                 },
               ),
@@ -65,16 +67,20 @@ class SearchResults extends StatelessWidget {
 class SearchUpdater extends StatelessWidget {
   const SearchUpdater({
     Key? key,
-    this.query,
+    required this.query,
   }) : super(key: key);
-  final String? query;
+  final Map<String, String> query;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, ProductState>(
       builder: (context, state) {
-        final products = searchProduct(
-          query,
+        final searchedProducts = searchProduct(
+          query[[FilterConstants.search]],
           state.products,
+        );
+        final products = filterProduct(
+          query,
+          searchedProducts,
         );
         return SearchResultsGrid(
           products: products,
