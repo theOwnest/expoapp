@@ -3,16 +3,16 @@ import 'package:expo_kg/features/auth/data/models/user.dart';
 class MerchantModel extends UserModel {
   final String shopName;
   final String description;
-  final String messenger;
-  final String workPhone;
+  final String? messenger;
+  final String? workPhone;
   MerchantModel({
     required super.userName,
     required super.email,
     required super.phone,
     required this.shopName,
     required this.description,
-    required this.messenger,
-    required this.workPhone,
+    this.messenger,
+    this.workPhone,
   });
 
   @override

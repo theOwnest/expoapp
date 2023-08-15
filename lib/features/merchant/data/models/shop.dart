@@ -6,20 +6,20 @@ class MerchantShopModel extends MerchantModel {
   final String openedDate;
   final List<String> photos;
   final AddressModel address;
-  final String website;
+  final String? website;
   MerchantShopModel({
     required super.userName,
     required super.email,
     required super.phone,
     required super.shopName,
     required super.description,
-    required super.messenger,
-    required super.workPhone,
+    super.messenger,
+    super.workPhone,
     required this.inn,
     required this.openedDate,
     required this.photos,
     required this.address,
-    required this.website,
+    this.website,
   });
   factory MerchantShopModel.empty() {
     return MerchantShopModel(

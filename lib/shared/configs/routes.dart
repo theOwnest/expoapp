@@ -19,6 +19,7 @@ import 'package:expo_kg/features/home/presentation/cubit/product_cubit.dart';
 import 'package:expo_kg/features/home/presentation/pages/home.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/cubit/location_cubit.dart';
 import 'package:expo_kg/features/main_scaffold/presentation/pages/main_scaffold.dart';
+import 'package:expo_kg/features/map/presentation/cubit/selected_location_cubit.dart';
 import 'package:expo_kg/features/map/presentation/pages/address_location.dart';
 import 'package:expo_kg/features/map/presentation/pages/delivery_location.dart';
 import 'package:expo_kg/features/merchant/presentation/pages/add_poster.dart';
@@ -396,12 +397,29 @@ final GoRouter router = GoRouter(
       path: Routes.addressLocation,
       name: RoutesNames.addressLocation,
       parentNavigatorKey: _rootNavigatorKey,
-      pageBuilder: (context, state) => NoTransitionPage(
-        child: BlocProvider.value(
-          value: state.extra as LocationCubit,
-          child: const AddressLocation(),
-        ),
-      ),
+      pageBuilder: (context, state) {
+        final cubits = state.extra as MultipleCubits;
+        final locationCubit =
+            cubits.cubits[CubitStrings.locationCubit] as LocationCubit;
+
+        final selectedLocationCubit =
+            cubits.cubits[CubitStrings.selectedLocationCubit]
+                as SelectedLocationCubit;
+
+        return NoTransitionPage(
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider.value(
+                value: locationCubit,
+              ),
+              BlocProvider.value(
+                value: selectedLocationCubit,
+              ),
+            ],
+            child: const AddressLocation(),
+          ),
+        );
+      },
     ),
     GoRoute(
       path: Routes.deliveryLocation,

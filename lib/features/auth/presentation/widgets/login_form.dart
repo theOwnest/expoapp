@@ -31,6 +31,7 @@ class _LoginFormState extends State<LoginForm> {
         children: [
           FormBuilderTextField(
             key: _emailFieldKey,
+            controller: emailCont,
             name: 'Почта/номер',
             textInputAction: TextInputAction.next,
             style: st14.copyWith(
@@ -69,6 +70,7 @@ class _LoginFormState extends State<LoginForm> {
             style: st14.copyWith(
               color: AppColor.black,
             ),
+            controller: passCont,
             decoration: InputDecoration(
               labelText: 'Пароль',
               prefixIconConstraints: const BoxConstraints(

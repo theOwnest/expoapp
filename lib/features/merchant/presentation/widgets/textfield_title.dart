@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
-import 'package:flutter/material.dart';
 
 class TextfieldWithTitle extends StatelessWidget {
   const TextfieldWithTitle({
@@ -11,10 +13,12 @@ class TextfieldWithTitle extends StatelessWidget {
     required this.title,
     this.initialValue,
     this.function,
+    this.validator,
   }) : super(key: key);
   final String title;
   final String? initialValue;
   final Function? function;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,7 +29,8 @@ class TextfieldWithTitle extends StatelessWidget {
           title,
           style: h14,
         ),
-        TextFormField(
+        FormBuilderTextField(
+          name: title,
           initialValue: initialValue,
           textInputAction: TextInputAction.next,
           style: st14.copyWith(
@@ -43,6 +48,8 @@ class TextfieldWithTitle extends StatelessWidget {
               ),
             ),
           ),
+          validator: validator,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
         ),
       ],
     );

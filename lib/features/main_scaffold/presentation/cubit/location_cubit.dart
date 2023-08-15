@@ -11,7 +11,6 @@ class LocationCubit extends Cubit<LocationState> {
   Future<Position?> getLocation() async {
     try {
       final currentLocation = await _getPermission();
-      log('${currentLocation.latitude} - ${currentLocation.longitude}');
       emit(
         LocationAccessed(
           currentLocation: currentLocation,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:expo_kg/features/main_scaffold/presentation/cubit/location_cubit.dart';
 import 'package:expo_kg/features/map/data/models/address.dart';
 import 'package:expo_kg/features/map/data/utils/yandex_search.dart';
@@ -105,26 +107,30 @@ class _AddressContainerTextfieldState extends State<AddressContainerTextfield> {
         ),
         suffixIcon: GestureDetector(
           onTap: () async {
-            final locationState = context.read<LocationCubit>().state;
-            late AddressModel myLocation;
-            if (locationState is LocationAccessed) {
-              myLocation = AddressModel(
-                name: 'my-Location',
-                latitude: locationState.currentLocation.latitude,
-                longitude: locationState.currentLocation.longitude,
-              );
-            } else {
-              final point = await context.read<LocationCubit>().getLocation();
-              if (point != null && context.mounted) {
+            try {
+              final locationState = context.read<LocationCubit>().state;
+              late AddressModel myLocation;
+              if (locationState is LocationAccessed) {
                 myLocation = AddressModel(
                   name: 'my-Location',
-                  latitude: point.latitude,
-                  longitude: point.longitude,
+                  latitude: locationState.currentLocation.latitude,
+                  longitude: locationState.currentLocation.longitude,
                 );
+              } else {
+                final point = await context.read<LocationCubit>().getLocation();
+                if (point != null && context.mounted) {
+                  myLocation = AddressModel(
+                    name: 'my-Location',
+                    latitude: point.latitude,
+                    longitude: point.longitude,
+                  );
+                }
               }
-            }
-            if (context.mounted) {
-              context.read<YandexMapCubit>().addPoint(myLocation);
+              if (context.mounted) {
+                context.read<YandexMapCubit>().addPoint(myLocation);
+              }
+            } catch (e) {
+              log("Couldn't get to the current location: $e");
             }
           },
           child: Image.asset(

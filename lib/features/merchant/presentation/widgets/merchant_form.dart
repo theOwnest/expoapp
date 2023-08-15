@@ -11,214 +11,198 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-import '../../../auth/presentation/cubit/button_available.dart';
-
-class MerchantAnketaForm extends StatefulWidget {
+class MerchantAnketaForm extends StatelessWidget {
   const MerchantAnketaForm({
     Key? key,
   }) : super(key: key);
   @override
-  State<MerchantAnketaForm> createState() => _MerchantAnketaFormState();
-}
-
-class _MerchantAnketaFormState extends State<MerchantAnketaForm> {
-  final _formKey = GlobalKey<FormBuilderState>();
-  @override
   Widget build(BuildContext context) {
-    return FormBuilder(
-      key: _formKey,
-      onChanged: () {
-        context.read<ButtonAvailableCont>().change(
-              _formKey.currentState!.isValid,
-            );
-      },
-      child: BlocBuilder<MerchantAnketaCubit, MerchantAnketaState>(
-        builder: (context, state) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'ФИО',
-                style: h14,
+    return BlocBuilder<MerchantAnketaCubit, MerchantAnketaState>(
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'ФИО',
+              style: h14,
+            ),
+            FormBuilderTextField(
+              name: 'ФИО',
+              textInputAction: TextInputAction.next,
+              style: st14.copyWith(
+                color: AppColor.black,
               ),
-              FormBuilderTextField(
-                name: 'ФИО',
-                textInputAction: TextInputAction.next,
-                style: st14.copyWith(
-                  color: AppColor.black,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              initialValue: state.anketa?.fullName ?? '',
+              onChanged: (value) {
+                context.read<MerchantAnketaCubit>().change(
+                      fullName: value,
+                    );
+              },
+              decoration: InputDecoration(
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColor.lightGrey,
+                  ),
                 ),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                initialValue: state.anketa?.fullName ?? '',
-                onChanged: (value) {
-                  context.read<MerchantAnketaCubit>().change(
-                        fullName: value,
-                      );
-                },
-                decoration: InputDecoration(
-                  enabledBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(
+                prefixIconConstraints: const BoxConstraints(
+                  maxHeight: 20,
+                ),
+                prefixIcon: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      'assets/icons/login/person.png',
                       color: AppColor.lightGrey,
                     ),
-                  ),
-                  prefixIconConstraints: const BoxConstraints(
-                    maxHeight: 20,
-                  ),
-                  prefixIcon: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        'assets/icons/login/person.png',
-                        color: AppColor.lightGrey,
-                      ),
-                      sizedboxH15,
-                    ],
-                  ),
-                ),
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.required(
-                      errorText: 'Заполните поле',
-                    ),
+                    sizedboxH15,
                   ],
                 ),
               ),
-              sizedbox10,
-              const Text(
-                'Почта',
-                style: h14,
-              ),
-              FormBuilderTextField(
-                name: 'Почта/номер',
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                initialValue: state.anketa?.email ?? '',
-                onChanged: (value) {
-                  context.read<MerchantAnketaCubit>().change(
-                        email: value,
-                      );
-                },
-                textInputAction: TextInputAction.next,
-                style: st14.copyWith(
-                  color: AppColor.black,
-                ),
-                decoration: InputDecoration(
-                  enabledBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColor.lightGrey,
-                    ),
-                  ),
-                  prefixIconConstraints: const BoxConstraints(
-                    maxHeight: 20,
-                  ),
-                  prefixIcon: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        'assets/icons/login/email.png',
-                        color: AppColor.lightGrey,
-                      ),
-                      sizedboxH15,
-                    ],
-                  ),
-                ),
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.required(
-                      errorText: 'Заполните поле',
-                    ),
-                    FormBuilderValidators.email(
-                      errorText: 'Неверно введена почта/номер',
-                    ),
-                  ],
-                ),
-              ),
-              sizedbox10,
-              const Text(
-                'Номер телефона',
-                style: h14,
-              ),
-              FormBuilderTextField(
-                textInputAction: TextInputAction.done,
-                name: 'Номер телефона',
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                initialValue: state.anketa?.phone ?? '',
-                onChanged: (value) {
-                  context.read<MerchantAnketaCubit>().change(
-                        phone: value,
-                      );
-                },
-                style: st14.copyWith(
-                  color: AppColor.black,
-                ),
-                decoration: InputDecoration(
-                  enabledBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColor.lightGrey,
-                    ),
-                  ),
-                  prefixIconConstraints: const BoxConstraints(
-                    maxHeight: 20,
-                  ),
-                  prefixIcon: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        'assets/icons/login/phone.png',
-                        color: AppColor.lightGrey,
-                      ),
-                      sizedboxH15,
-                    ],
-                  ),
-                ),
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.required(
-                      errorText: 'Заполните поле',
-                    ),
-                  ],
-                ),
-              ),
-              sizedbox35,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Тип продавца',
-                    style: h14,
-                  ),
-                  sizedbox10,
-                  BlocBuilder<MerchantTypeCont, MerchantTypeEnum>(
-                    builder: (context, state) {
-                      return Row(
-                        children: [
-                          SelectableButton(
-                            title: 'Магазин',
-                            isSelected: state == MerchantTypeEnum.shop,
-                            function: () {
-                              context.read<MerchantTypeCont>().change(
-                                    MerchantTypeEnum.shop,
-                                  );
-                            },
-                          ),
-                          sizedboxH15,
-                          SelectableButton(
-                            title: 'Юр. лицо',
-                            isSelected: state == MerchantTypeEnum.person,
-                            function: () {
-                              context.read<MerchantTypeCont>().change(
-                                    MerchantTypeEnum.person,
-                                  );
-                            },
-                          ),
-                        ],
-                      );
-                    },
+              validator: FormBuilderValidators.compose(
+                [
+                  FormBuilderValidators.required(
+                    errorText: 'Заполните поле',
                   ),
                 ],
               ),
-            ],
-          );
-        },
-      ),
+            ),
+            sizedbox10,
+            const Text(
+              'Почта',
+              style: h14,
+            ),
+            FormBuilderTextField(
+              name: 'Почта/номер',
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              initialValue: state.anketa?.email ?? '',
+              onChanged: (value) {
+                context.read<MerchantAnketaCubit>().change(
+                      email: value,
+                    );
+              },
+              textInputAction: TextInputAction.next,
+              style: st14.copyWith(
+                color: AppColor.black,
+              ),
+              decoration: InputDecoration(
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColor.lightGrey,
+                  ),
+                ),
+                prefixIconConstraints: const BoxConstraints(
+                  maxHeight: 20,
+                ),
+                prefixIcon: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      'assets/icons/login/email.png',
+                      color: AppColor.lightGrey,
+                    ),
+                    sizedboxH15,
+                  ],
+                ),
+              ),
+              validator: FormBuilderValidators.compose(
+                [
+                  FormBuilderValidators.required(
+                    errorText: 'Заполните поле',
+                  ),
+                  FormBuilderValidators.email(
+                    errorText: 'Неверно введена почта/номер',
+                  ),
+                ],
+              ),
+            ),
+            sizedbox10,
+            const Text(
+              'Номер телефона',
+              style: h14,
+            ),
+            FormBuilderTextField(
+              textInputAction: TextInputAction.done,
+              name: 'Номер телефона',
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              initialValue: state.anketa?.phone ?? '',
+              onChanged: (value) {
+                context.read<MerchantAnketaCubit>().change(
+                      phone: value,
+                    );
+              },
+              style: st14.copyWith(
+                color: AppColor.black,
+              ),
+              decoration: InputDecoration(
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColor.lightGrey,
+                  ),
+                ),
+                prefixIconConstraints: const BoxConstraints(
+                  maxHeight: 20,
+                ),
+                prefixIcon: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      'assets/icons/login/phone.png',
+                      color: AppColor.lightGrey,
+                    ),
+                    sizedboxH15,
+                  ],
+                ),
+              ),
+              validator: FormBuilderValidators.compose(
+                [
+                  FormBuilderValidators.required(
+                    errorText: 'Заполните поле',
+                  ),
+                ],
+              ),
+            ),
+            sizedbox35,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Тип продавца',
+                  style: h14,
+                ),
+                sizedbox10,
+                BlocBuilder<MerchantTypeCont, MerchantTypeEnum>(
+                  builder: (context, state) {
+                    return Row(
+                      children: [
+                        SelectableButton(
+                          title: 'Магазин',
+                          isSelected: state == MerchantTypeEnum.shop,
+                          function: () {
+                            context.read<MerchantTypeCont>().change(
+                                  MerchantTypeEnum.shop,
+                                );
+                          },
+                        ),
+                        sizedboxH15,
+                        SelectableButton(
+                          title: 'Юр. лицо',
+                          isSelected: state == MerchantTypeEnum.person,
+                          function: () {
+                            context.read<MerchantTypeCont>().change(
+                                  MerchantTypeEnum.person,
+                                );
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ],
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -1,11 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:expo_kg/features/map/data/models/address.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
+import '../cubit/selected_location_cubit.dart';
 import '../cubit/yandex_map_cubit.dart';
 
 class MapContainer extends StatefulWidget {
@@ -53,6 +52,9 @@ class _MapContainerState extends State<MapContainer> {
     return BlocConsumer<YandexMapCubit, YandexMapState>(
       listener: (context, moveState) {
         if (moveState is YandexMapAssigned) {
+          context.read<SelectedLocationCubit>().addPoint(
+                moveState.location,
+              );
           moveToLocation(
             moveState.location,
           );
