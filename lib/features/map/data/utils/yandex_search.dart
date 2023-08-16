@@ -33,7 +33,7 @@ void yandexSearch(
     List<AddressModel> locations = results.items!
         .map(
           (e) => AddressModel(
-            name: e.toponymMetadata?.address.formattedAddress ?? '',
+            name: e.toponymMetadata?.address.formattedAddress ?? 'Unknown',
             latitude: e.toponymMetadata!.balloonPoint.latitude,
             longitude: e.toponymMetadata!.balloonPoint.longitude,
           ),

@@ -1,4 +1,6 @@
 import 'package:expo_kg/features/map/data/models/address.dart';
+import 'package:expo_kg/features/map/data/utils/geocoder.dart';
+import 'package:expo_kg/shared/configs/random.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
@@ -85,6 +87,7 @@ class _MapContainerState extends State<MapContainer> {
             }
           },
           onMapTap: (argument) async {
+            geocoder(argument.latitude, argument.longitude);
             if (mounted) {
               final point = AddressModel(
                 name: "Unknown",
@@ -119,13 +122,34 @@ class _MapContainerState extends State<MapContainer> {
   }
 
   addMarker(AddressModel location) {
-    if (!mapObjects.any(
-      (element) => element.mapId.value == location.name,
-    )) {
+    if (location.name == 'my-Location') {
+      if (!mapObjects.any((element) => element.mapId.value == 'my-Location')) {
+        mapObjects.add(
+          PlacemarkMapObject(
+            mapId: const MapObjectId(
+              'my-Location',
+            ),
+            point: Point(
+              latitude: location.latitude,
+              longitude: location.longitude,
+            ),
+            opacity: 1,
+            icon: PlacemarkIcon.single(
+              PlacemarkIconStyle(
+                scale: 1.2,
+                image: BitmapDescriptor.fromAssetImage(
+                  'assets/icons/home/my-location.png',
+                ),
+              ),
+            ),
+          ),
+        );
+      }
+    } else {
       mapObjects.add(
         PlacemarkMapObject(
           mapId: MapObjectId(
-            location.name,
+            uuid.v1(),
           ),
           point: Point(
             latitude: location.latitude,
@@ -136,9 +160,7 @@ class _MapContainerState extends State<MapContainer> {
             PlacemarkIconStyle(
               scale: 1,
               image: BitmapDescriptor.fromAssetImage(
-                location.name == 'my-location'
-                    ? 'assets/icons/home/my-location.png'
-                    : 'assets/icons/home/location.png',
+                'assets/icons/home/location.png',
               ),
             ),
           ),

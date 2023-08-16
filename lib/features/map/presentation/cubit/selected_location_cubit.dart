@@ -7,10 +7,10 @@ part 'selected_location_state.dart';
 class SelectedLocationCubit extends Cubit<SelectedLocationState> {
   SelectedLocationCubit() : super(const SelectedLocationState());
   addPoint(AddressModel location) {
-    emit(
-      SelectedLocationState(
-        location: location,
-      ),
-    );
+    // emit(
+    //   SelectedLocationState(
+    //     location: location,
+    //   ),
+    // );
   }
 }
