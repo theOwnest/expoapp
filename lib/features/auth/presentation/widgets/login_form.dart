@@ -2,12 +2,12 @@ import 'package:expo_kg/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
+import 'package:expo_kg/shared/utils/pop_page.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -132,9 +132,7 @@ class _LoginFormState extends State<LoginForm> {
                           emailCont.text,
                           passCont.text,
                         );
-                    if (context.canPop()) {
-                      context.pop();
-                    }
+                    popPage(context);
                   }
                   // On another side, can access all field values without saving form with instantValues
                   // _formKey.currentState?.validate();

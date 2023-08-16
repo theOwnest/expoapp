@@ -5,11 +5,11 @@ import 'package:expo_kg/features/profile/presentation/cubit/profile_image_cubit.
 import 'package:expo_kg/features/profile/presentation/widgets/anketa_form.dart';
 import 'package:expo_kg/features/profile/presentation/widgets/personal_add_photo.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/utils/pop_page.dart';
 import 'package:expo_kg/shared/widgets/appbar_title.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({super.key});
@@ -65,7 +65,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                       phone: phoneCont.text,
                                     ),
                                   );
-                              context.pop();
+                              popPage(context);
                             },
                           ),
                         ],

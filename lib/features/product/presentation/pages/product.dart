@@ -11,9 +11,9 @@ import 'package:expo_kg/features/product/presentation/widgets/shop_container.dar
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
+import 'package:expo_kg/shared/utils/pop_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 class ProductPage extends StatelessWidget {
@@ -44,9 +44,7 @@ class ProductPage extends StatelessWidget {
                       AppbarButtonContainer(
                         icon: 'back',
                         function: () {
-                          if (context.canPop()) {
-                            context.pop();
-                          }
+                          popPage(context);
                         },
                       ),
                       Row(

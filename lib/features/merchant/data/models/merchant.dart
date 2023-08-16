@@ -35,8 +35,8 @@ class MerchantModel extends UserModel {
       phone: map['phone'] as String,
       shopName: map['shopName'] as String,
       description: map['description'] as String,
-      messenger: map['messenger'] as String,
-      workPhone: map['workPhone'] as String,
+      messenger: map['messenger'],
+      workPhone: map['workPhone'],
     );
   }
 }

@@ -3,11 +3,11 @@ import 'package:expo_kg/features/comment/presentation/widgets/comment_textfield.
 import 'package:expo_kg/features/comment/presentation/widgets/rate_container.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
 import 'package:expo_kg/shared/constants/sizedbox.dart';
+import 'package:expo_kg/shared/utils/pop_page.dart';
 import 'package:expo_kg/shared/widgets/appbar_title.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 import '../../../../shared/constants/colors.dart';
@@ -52,7 +52,7 @@ class RateProductPage extends StatelessWidget {
                               isAvailable ? AppColor.white : AppColor.orange,
                           function: isAvailable
                               ? () {
-                                  if (context.canPop()) context.pop();
+                                  popPage(context);
                                 }
                               : null,
                         );

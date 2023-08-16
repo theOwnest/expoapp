@@ -5,12 +5,12 @@ import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/border.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/utils/pop_page.dart';
 import 'package:expo_kg/shared/widgets/appbar_title.dart';
 import 'package:expo_kg/shared/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:go_router/go_router.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 import '../../../../shared/constants/sizedbox.dart';
@@ -117,7 +117,7 @@ class _AddCardPageState extends State<AddCardPage> {
                                             isCvvFocused,
                                           ),
                                         );
-                                    if (context.canPop()) context.pop();
+                                    popPage(context);
                                   }
                                 : null,
                           );

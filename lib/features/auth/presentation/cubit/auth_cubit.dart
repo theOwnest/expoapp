@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:expo_kg/features/auth/data/models/user.dart';
 import 'package:expo_kg/features/auth/data/utils/store_password.dart';
@@ -26,7 +28,11 @@ class AuthCubit extends Cubit<AuthState> {
         AuthLoggedInCustomer(user: user),
       );
     }
-    initMerchant();
+    try {
+      initMerchant();
+    } catch (e) {
+      log('Iniating merchant: $e');
+    }
   }
 
   initMerchant() {

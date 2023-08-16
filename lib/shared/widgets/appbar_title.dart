@@ -2,8 +2,8 @@
 import 'package:expo_kg/shared/configs/texts.dart';
 import 'package:expo_kg/shared/constants/colors.dart';
 import 'package:expo_kg/shared/constants/margin.dart';
+import 'package:expo_kg/shared/utils/pop_page.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class AppbarTitle extends StatelessWidget {
   const AppbarTitle({
@@ -44,9 +44,7 @@ class AppbarBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (context.canPop()) {
-          context.pop();
-        }
+        popPage(context);
       },
       child: SizedBox(
         height: 21,

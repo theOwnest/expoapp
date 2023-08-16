@@ -62,20 +62,22 @@ class MerchantShopModel extends MerchantModel {
 
   factory MerchantShopModel.fromMap(Map<String, dynamic> map) {
     return MerchantShopModel(
-      userName: map['userName'] as String,
-      email: map['email'] as String,
-      phone: map['phone'] as String,
-      shopName: map['shopName'] as String,
-      description: map['description'] as String,
-      messenger: map['messenger'] as String,
-      workPhone: map['workPhone'] as String,
-      inn: map['inn'] as String,
-      openedDate: map['openedDate'] as String,
+      userName: map['userName'] ?? '',
+      email: map['email'] ?? '',
+      phone: map['phone'] ?? '',
+      shopName: map['shopName'] ?? '',
+      description: map['description'] ?? '',
+      messenger: map['messenger'],
+      workPhone: map['workPhone'],
+      inn: map['inn'] ?? '',
+      openedDate: map['openedDate'] ?? '',
       photos: List<String>.from(
-        (map['photos'] as List<String>),
+        (map['photos'] as List),
       ),
-      address: AddressModel.fromMap(map['address'] as Map<String, dynamic>),
-      website: map['website'] as String,
+      address: AddressModel.fromMap(
+        Map<String, dynamic>.from(map['address'] as Map),
+      ),
+      website: map['website'],
     );
   }
 }

@@ -18,9 +18,9 @@ class AddressModel {
 
   factory AddressModel.fromMap(Map<String, dynamic> map) {
     return AddressModel(
-      name: map['name'] as String,
-      latitude: map['latitude'] as double,
-      longitude: map['longitude'] as double,
+      name: map['name'] ?? 'Unknown',
+      latitude: map['latitude'] ?? 0,
+      longitude: map['longitude'] ?? 0,
     );
   }
 }
